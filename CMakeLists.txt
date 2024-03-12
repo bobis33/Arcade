@@ -1,0 +1,89 @@
+cmake_minimum_required(VERSION 3.22)
+
+project(arcade)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_BUILD_TYPE Release)
+
+set(WARNING_FLAGS
+        -Wall
+        -Wduplicated-branches
+        -Wduplicated-cond
+        -Weffc++
+        -Wextra
+        -Wlogical-op
+        -Wmisleading-indentation
+        -Wnull-dereference
+        -Woverloaded-virtual
+        -Wpedantic
+        -Wshadow
+        -Wsign-conversion
+        -Wuseless-cast
+        -Wnon-virtual-dtor
+        -Wunused
+        -Wcast-align
+        -Wno-padded
+        -Wconversion
+        -Wdouble-promotion
+        -Wformat=2
+        -Winit-self
+        -Wmissing-include-dirs
+        -Wold-style-cast
+        -Wredundant-decls
+        -Wswitch-default
+        -Wswitch-enum
+        -Wundef
+)
+
+set(GCC_WARNING_FLAGS
+        -Wmisleading-indentation
+        -Wduplicated-cond
+        -Wduplicated-branches
+        -Wlogical-op
+        -Wnull-dereference
+        -Wuseless-cast
+        -fno-gnu-unique
+)
+
+set(SOURCES
+        Core/src/main.cpp
+        Core/src/Core.cpp
+)
+
+set(INCLUDE_DIRS
+        Core/include/
+)
+
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
+
+set(CMAKE_SHARED_LIBRARY_PREFIX "")
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+
+include_directories(${INCLUDE_DIRS})
+
+add_subdirectory(Graphics)
+add_subdirectory(Games)
+
+add_library(arcade-abstractions INTERFACE)
+
+set_property(TARGET arcade-abstractions PROPERTY CXX_STANDARD 20)
+set_property(TARGET arcade-abstractions PROPERTY CXX_STANDARD_REQUIRED ON)
+
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+target_link_libraries(
+        arcade
+        arcade-abstractions
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
+
+target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS} ${GCC_WARNING_FLAGS})
+
+target_link_options(arcade PRIVATE -rdynamic)
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
