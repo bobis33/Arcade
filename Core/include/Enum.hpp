@@ -1,0 +1,35 @@
+/*
+** EPITECH PROJECT, 2024
+** Arcade
+** File description:
+** Enum.hpp
+*/
+
+#pragma once
+
+#ifndef ARCADE_ENUM_HPP
+#define ARCADE_ENUM_HPP
+
+namespace Arcade {
+
+    enum class GameMode {
+        GAME,
+        GAME_OVER,
+        MENU,
+        QUIT,
+    };
+
+    enum class GameEvent {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        SHOOT,
+        PAUSE,
+        QUIT,
+        NONE,
+    };
+
+}
+
+#endif // ARCADE_ENUM_HPP
