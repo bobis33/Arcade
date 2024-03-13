@@ -1,0 +1,46 @@
+name: Arcade CI
+run-name: ${{github.actor}} Arcade CI
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+
+env:
+  EXECUTABLE: "arcade"
+  GRAPHICAL_LIBRARY: "arcade-ncurses.so,arcade-sfml.so"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+        image: epitechcontent/epitest-docker:latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check compilation
+        run: |
+          mkdir ./build && cd ./build
+          cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
+          cmake --build .
+          cd ..
+
+      - name: Check binary
+        run: |
+          if [[ ! -x "./${EXECUTABLE}" ]]; then
+          echo "Error: Binary ${EXECUTABLE} not found."
+          exit 1
+          fi
+
+      - name: Check shared libraries (Graphical libraries)
+        run: |
+          IFS=',' read -ra ADDR <<< $GRAPHICAL_LIBRARY
+          for lib in "${ADDR[@]}"; do
+            if [[ ! -e "./lib/${lib}" ]]; then
+              echo "Error: Library $lib not found."
+              exit 1
+            fi
+          done
