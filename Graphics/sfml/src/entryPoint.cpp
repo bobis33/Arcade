@@ -8,8 +8,7 @@
 #include "Sfml.hpp"
 
 extern "C" {
-std::unique_ptr<Arcade::AGraphic> entryPoint() {
-    std::unique_ptr<Arcade::Sfml> sfml = std::make_unique<Arcade::Sfml>();
-    return sfml->openWindow();
-}
+    std::unique_ptr<Arcade::AGraphic> entryPoint() {
+        return std::make_unique<Arcade::Sfml>();
+    }
 }

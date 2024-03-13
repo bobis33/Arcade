@@ -12,16 +12,18 @@
 
 #include <iostream>
 #include <exception>
+#include <memory>
+#include <utility>
 #include "Enum.hpp"
+#include "abstractions/AGraphic.hpp"
 
 namespace Arcade
 {
-
     class Core
     {
         private:
-            GameMode _gameMode{GameMode::MENU};
-            GameEvent _gameEvent{GameEvent::NONE};
+            CoreMode _coreMode{CoreMode::MENU};
+            std::unique_ptr<AGraphic> _graphicLib{nullptr};
 
         public:
             Core() = default;
@@ -34,22 +36,23 @@ namespace Arcade
 
             void gameLoop();
             void handleEvents();
+            void setMode(CoreMode gameMode) { _coreMode = gameMode; };
 
         class CoreException : public std::exception
         {
-        public:
-            CoreException(const std::string &msg) : _msg{msg} {}
-            ~CoreException() override = default;
+            public:
+                explicit CoreException(std::string msg) : _msg{std::move(msg)} {}
+                ~CoreException() override = default;
 
-            const char *what() const noexcept override { return _msg.c_str(); };
+                [[nodiscard]] const char *what() const noexcept override { return _msg.c_str(); };
 
-        private:
-            std::string _msg;
+            private:
+                std::string _msg;
 
         }; // Exception
 
     }; // Core
 
-}
+} // Arcade
 
 #endif // ARCADE_CORE_HPP

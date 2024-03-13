@@ -8,7 +8,9 @@
 #include <map>
 #include <functional>
 #include <dlfcn.h>
+#include <memory>
 #include "Core.hpp"
+#include "abstractions/AGraphic.hpp"
 
 static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &)>> MAP_EVENT = {
         /*
@@ -36,28 +38,37 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
                 [](Arcade::Core &core) -> void {
                     std::cout << "PAUSE" << std::endl;
                 }},
+                        */
+
         {Arcade::GameEvent::QUIT,
                 [](Arcade::Core &core) -> void {
-                    std::cout << "QUIT" << std::endl;
+                    core.setMode(Arcade::CoreMode::QUIT);
                 }},
-        */
 };
 
 void Arcade::Core::handleEvents()
 {
-    while (_gameEvent != GameEvent::NONE)
-        for (auto mapEvent : MAP_EVENT)
+    std::cout << "Handling events" << std::endl;
+    while (_coreMode != CoreMode::QUIT) {
+        /*
+        for (auto &mapEvent: MAP_EVENT)
             if (mapEvent.first == _gameEvent) {
                 mapEvent.second(*this);
                 return;
             }
+            */
+    }
 }
+
 
 void Arcade::Core::gameLoop()
 {
-    while (_gameMode != GameMode::QUIT) {
+    /*
+    while (_graphicLib->_gameMode != GameMode::QUIT && _gameEvent != Arcade::GameEvent::QUIT) {
+        _graphicLib->loopEvent();
         handleEvents();
     }
+     */
 }
 
 void Arcade::Core::parser(const std::string &path)
@@ -66,5 +77,11 @@ void Arcade::Core::parser(const std::string &path)
     if (!handle) {
         throw CoreException{std::string(dlerror())};
     }
+    auto *entryPointFunc = reinterpret_cast<std::unique_ptr<AGraphic> (*)()>(dlsym(handle, "entryPoint"));
+    if (!entryPointFunc) {
+        throw CoreException{std::string(dlerror())};
+    }
+    _graphicLib = entryPointFunc();
+    gameLoop();
     dlclose(handle);
 }

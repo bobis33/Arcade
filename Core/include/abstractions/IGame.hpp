@@ -17,7 +17,9 @@ namespace Arcade {
 
         IGame(const IGame &) = delete;
         IGame &operator=(const IGame &) = delete;
+
     }; // IGame
+
 } // Arcade
 
 #endif // ARCADE_IGAME_HPP

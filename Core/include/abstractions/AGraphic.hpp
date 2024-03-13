@@ -10,18 +10,20 @@
 #ifndef ARCADE_AGRAPHIC_HPP
 #define ARCADE_AGRAPHIC_HPP
 
+#include <iostream>
 #include "IGraphic.hpp"
 
 namespace Arcade {
     class AGraphic : public IGraphic {
     public:
-        virtual ~AGraphic() override = default;
+        AGraphic() = default;
+        ~AGraphic() override = default;
 
-        void openWindow() override;
-        void closeWindow() override;
-        void clearWindow() override;
-        void displayWindow() override;
+        AGraphic(const AGraphic &) = delete;
+        AGraphic &operator=(const AGraphic &) = delete;
+
     }; // AGraphic
+
 } // Arcade
 
 #endif //ARCADE_AGRAPHIC_HPP

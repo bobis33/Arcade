@@ -18,20 +18,14 @@ namespace Arcade
 	class Sfml : public AGraphic
     {
         public:
-            Sfml() = default;
+            Sfml();
             ~Sfml() override = default;
 
             Sfml(const Sfml &) = delete;
             Sfml &operator=(const Sfml &) = delete;
 
-            void openWindow() override final;
-            void closeWindow() override final;
-            void clearWindow() override final;
-            void displayWindow() override final;
-
         private:
             sf::RenderWindow _window;
-            std::string _name;
 
     }; // Sfml
 }

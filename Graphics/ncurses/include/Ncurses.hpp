@@ -10,6 +10,7 @@
 #ifndef ARCADE_NCURSES_HPP
 #define ARCADE_NCURSES_HPP
 
+#include <ncurses.h>
 #include "abstractions/AGraphic.hpp"
 
 namespace Arcade
@@ -17,16 +18,15 @@ namespace Arcade
 	class Ncurses : public AGraphic
     {
         public:
-            Ncurses() = default;
+            Ncurses();
             ~Ncurses() override = default;
 
             Ncurses(const Ncurses &) = delete;
             Ncurses &operator=(const Ncurses &) = delete;
 
-            void openWindow() override final;
-            void closeWindow() override final;
-            void clearWindow() override final;
-            void displayWindow() override final;
+            void openWindow();
+            void closeWindow();
+
 
         private:
             WINDOW *_window = nullptr;

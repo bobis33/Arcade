@@ -7,13 +7,21 @@
 
 #include "Sfml.hpp"
 
-void Arcade::Sfml::openWindow()
+Arcade::Sfml::Sfml() : _window(sf::VideoMode(1920, 1080), "SFML window")
 {
-    _window.create(sf::VideoMode(1920, 1080),
-                   "Arcade - SFML",
-                   sf::Style::Resize |
-                   sf::Style::Close |
-                   sf::Style::Fullscreen);
+}
+/*
+
+ void Arcade::Sfml::loopEvent()
+{
+    sf::Event event{};
+    while (_window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            _gameEvent = Arcade::GameEvent::QUIT;
+            _window.close();
+            return;
+        }
+    }
 }
 
 void Arcade::Sfml::closeWindow()
@@ -30,3 +38,4 @@ void Arcade::Sfml::displayWindow()
 {
     _window.display();
 }
+*/
