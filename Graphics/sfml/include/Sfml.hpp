@@ -24,6 +24,8 @@ namespace Arcade
             Sfml(const Sfml &) = delete;
             Sfml &operator=(const Sfml &) = delete;
 
+            GameEvent getEvent() override;
+
         private:
             sf::RenderWindow _window;
 

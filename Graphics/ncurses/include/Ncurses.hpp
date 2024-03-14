@@ -24,9 +24,10 @@ namespace Arcade
             Ncurses(const Ncurses &) = delete;
             Ncurses &operator=(const Ncurses &) = delete;
 
+            GameEvent getEvent() override;
+
             void openWindow();
             void closeWindow();
-
 
         private:
             WINDOW *_window = nullptr;

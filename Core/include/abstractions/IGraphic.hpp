@@ -10,6 +10,8 @@
 #ifndef ARCADE_IGRAPHIC_HPP
 #define ARCADE_IGRAPHIC_HPP
 
+#include "Enum.hpp"
+
 namespace Arcade {
     class IGraphic {
     public:
@@ -18,6 +20,8 @@ namespace Arcade {
 
         IGraphic(const IGraphic &) = delete;
         IGraphic &operator=(const IGraphic &) = delete;
+
+        virtual GameEvent getEvent() = 0;
 
     }; // IGraphic
 

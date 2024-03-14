@@ -24,6 +24,7 @@ namespace Arcade
         private:
             CoreMode _coreMode{CoreMode::MENU};
             std::unique_ptr<AGraphic> _graphicLib{nullptr};
+            GameEvent _event{GameEvent::NONE};
 
         public:
             Core() = default;

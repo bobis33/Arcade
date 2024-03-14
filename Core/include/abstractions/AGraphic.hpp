@@ -10,7 +10,6 @@
 #ifndef ARCADE_AGRAPHIC_HPP
 #define ARCADE_AGRAPHIC_HPP
 
-#include <iostream>
 #include "IGraphic.hpp"
 
 namespace Arcade {
@@ -21,6 +20,9 @@ namespace Arcade {
 
         AGraphic(const AGraphic &) = delete;
         AGraphic &operator=(const AGraphic &) = delete;
+
+    protected:
+        GameEvent _event{GameEvent::NONE};
 
     }; // AGraphic
 

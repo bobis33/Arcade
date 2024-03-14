@@ -5,6 +5,7 @@
 ** entryPoint.cpp
 */
 
+#include <memory>
 #include "Sfml.hpp"
 
 extern "C" {

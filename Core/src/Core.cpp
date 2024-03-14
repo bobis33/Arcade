@@ -48,27 +48,20 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
 
 void Arcade::Core::handleEvents()
 {
-    std::cout << "Handling events" << std::endl;
-    while (_coreMode != CoreMode::QUIT) {
-        /*
-        for (auto &mapEvent: MAP_EVENT)
-            if (mapEvent.first == _gameEvent) {
-                mapEvent.second(*this);
-                return;
-            }
-            */
-    }
+    for (auto &mapEvent: MAP_EVENT)
+        if (mapEvent.first == _event) {
+            mapEvent.second(*this);
+            return;
+        }
 }
 
 
 void Arcade::Core::gameLoop()
 {
-    /*
-    while (_graphicLib->_gameMode != GameMode::QUIT && _gameEvent != Arcade::GameEvent::QUIT) {
-        _graphicLib->loopEvent();
+    while (_coreMode != CoreMode::QUIT) {
+        _event = _graphicLib->getEvent();
         handleEvents();
     }
-     */
 }
 
 void Arcade::Core::parser(const std::string &path)
