@@ -75,5 +75,4 @@ void Arcade::Core::parser(const std::string &path)
     }
     _graphicLib = entryPointFunc();
     gameLoop();
-    dlclose(handle);
 }
