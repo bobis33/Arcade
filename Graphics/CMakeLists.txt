@@ -1,4 +1,5 @@
 project(Graphics)
 
-add_subdirectory(sfml)
-add_subdirectory(ncurses)
+add_subdirectory(SDL2)
+add_subdirectory(NCurses)
+add_subdirectory(SFML)
