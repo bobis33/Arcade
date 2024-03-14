@@ -12,6 +12,12 @@
 
 namespace Arcade {
 
+    enum class CoreMode {
+        GAME,
+        MENU,
+        QUIT,
+    };
+
     enum class GameMode {
         GAME,
         GAME_OVER,
@@ -30,6 +36,6 @@ namespace Arcade {
         NONE,
     };
 
-}
+} // Arcade
 
 #endif // ARCADE_ENUM_HPP

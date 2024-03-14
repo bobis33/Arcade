@@ -16,7 +16,9 @@ namespace Arcade {
     class AGame : public IGame {
     public:
         ~AGame() override = default;
+
     }; // AGame
+
 } // Arcade
 
 #endif // ARCADE_AGAME_HPP

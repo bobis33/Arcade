@@ -15,13 +15,17 @@
 namespace Arcade {
     class AGraphic : public IGraphic {
     public:
-        virtual ~AGraphic() override = default;
+        AGraphic() = default;
+        ~AGraphic() override = default;
 
-        void openWindow() override;
-        void closeWindow() override;
-        void clearWindow() override;
-        void displayWindow() override;
+        AGraphic(const AGraphic &) = delete;
+        AGraphic &operator=(const AGraphic &) = delete;
+
+    protected:
+        GameEvent _event{GameEvent::NONE};
+
     }; // AGraphic
+
 } // Arcade
 
 #endif //ARCADE_AGRAPHIC_HPP

@@ -9,10 +9,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_BUILD_TYPE Release)
 
 # Set directories
-set(INCLUDE_DIRS
+set(INCLUDE_DIR
         Core/include/
 )
-set(CORE_SRC_DIR
+set(SRC_DIR
         Core/src/
 )
 
@@ -58,8 +58,8 @@ set(GCC_WARNING_FLAGS
 
 #Set sources
 set(SOURCES
-        ${CORE_SRC_DIR}/main.cpp
-        ${CORE_SRC_DIR}/Core.cpp
+        ${SRC_DIR}/main.cpp
+        ${SRC_DIR}/Core.cpp
 )
 
 # Set output directories
@@ -68,7 +68,7 @@ set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 # Add include directories
-include_directories(${INCLUDE_DIRS})
+include_directories(${INCLUDE_DIR})
 
 # Add subdirectories
 add_subdirectory(Graphics)
@@ -81,7 +81,7 @@ set_property(TARGET arcade-abstractions PROPERTY CXX_STANDARD_REQUIRED ON)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 
 # Set compile and link options
 target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS} ${GCC_WARNING_FLAGS})

@@ -5,8 +5,12 @@
 ** Ncurses.cpp
 */
 
-#include <ncurses.h>
 #include "Ncurses.hpp"
+
+Arcade::Ncurses::Ncurses()
+{
+    openWindow();
+}
 
 void Arcade::Ncurses::openWindow()
 {
@@ -25,7 +29,19 @@ void Arcade::Ncurses::closeWindow()
     endwin();
 }
 
-void Arcade::Ncurses::clearWindow()
+Arcade::GameEvent Arcade::Ncurses::getEvent()
+{
+    int ch = getch();
+    if (ch == 'q') {
+        closeWindow();
+        return GameEvent::QUIT;
+    }
+    return GameEvent::NONE;
+}
+
+/*
+
+ void Arcade::Ncurses::clearWindow()
 {
     werase(_window);
     wrefresh(_window);
@@ -35,3 +51,4 @@ void Arcade::Ncurses::displayWindow()
 {
     wrefresh(_window);
 }
+ */
