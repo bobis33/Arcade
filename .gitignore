@@ -20,6 +20,7 @@ CMakeScripts
 Makefile
 cmake_install.cmake
 cmake-build-debug/*
+build/*
 
 # Others
 .vscode

@@ -2,11 +2,21 @@ cmake_minimum_required(VERSION 3.22)
 
 project(arcade)
 
+# Set C++ standard and build type
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_BUILD_TYPE Release)
 
+# Set directories
+set(INCLUDE_DIRS
+        Core/include/
+)
+set(CORE_SRC_DIR
+        Core/src/
+)
+
+# Set warning flags
 set(WARNING_FLAGS
         -Wall
         -Wduplicated-branches
@@ -36,7 +46,6 @@ set(WARNING_FLAGS
         -Wswitch-enum
         -Wundef
 )
-
 set(GCC_WARNING_FLAGS
         -Wmisleading-indentation
         -Wduplicated-cond
@@ -47,43 +56,38 @@ set(GCC_WARNING_FLAGS
         -fno-gnu-unique
 )
 
+#Set sources
 set(SOURCES
-        Core/src/main.cpp
-        Core/src/Core.cpp
+        ${CORE_SRC_DIR}/main.cpp
+        ${CORE_SRC_DIR}/Core.cpp
 )
 
-set(INCLUDE_DIRS
-        Core/include/
-)
-
+# Set output directories
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
-
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
+# Add include directories
 include_directories(${INCLUDE_DIRS})
 
+# Add subdirectories
 add_subdirectory(Graphics)
 add_subdirectory(Games)
 
+# Interface library
 add_library(arcade-abstractions INTERFACE)
-
 set_property(TARGET arcade-abstractions PROPERTY CXX_STANDARD 20)
 set_property(TARGET arcade-abstractions PROPERTY CXX_STANDARD_REQUIRED ON)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_link_libraries(
-        arcade
-        arcade-abstractions
-)
-
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
 
+# Set compile and link options
 target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS} ${GCC_WARNING_FLAGS})
-
 target_link_options(arcade PRIVATE -rdynamic)
 
+# Set properties
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
