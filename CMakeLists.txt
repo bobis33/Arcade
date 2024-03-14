@@ -53,7 +53,6 @@ set(GCC_WARNING_FLAGS
         -Wlogical-op
         -Wnull-dereference
         -Wuseless-cast
-        -fno-gnu-unique
 )
 
 #Set sources
