@@ -41,7 +41,7 @@ $> ./arcade [graphical_library.so]
 [...]
 ```
 
-### Keybindings
+### Key bindings
 
 |  Actions   |  ncurses  |   sfml    |   sdl2    |
 |:----------:|:---------:|:---------:|:---------:|
