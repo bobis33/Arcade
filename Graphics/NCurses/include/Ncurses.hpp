@@ -32,7 +32,7 @@ namespace Arcade
         private:
             WINDOW *_window = nullptr;
 
-	}; // ncurses
+	}; // NCurses
 }
 
 #endif // ARCADE_NCURSES_HPP
