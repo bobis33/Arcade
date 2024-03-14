@@ -10,6 +10,8 @@
 #ifndef ARCADE_SDL2_HPP
 #define ARCADE_SDL2_HPP
 
+#include <iostream>
+#include <SDL2/SDL.h>
 #include "abstractions/AGraphic.hpp"
 
 namespace Arcade
@@ -24,6 +26,9 @@ namespace Arcade
             Sdl2 &operator=(const Sdl2 &) = delete;
 
             GameEvent getEvent() override;
+
+        private:
+            SDL_Window *_window;
 
     }; // Sdl2
 

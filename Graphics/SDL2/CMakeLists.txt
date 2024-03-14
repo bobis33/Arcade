@@ -12,6 +12,6 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)
 
 target_include_directories(arcade_sdl2 PRIVATE ${INCLUDE_DIR})
 target_compile_options(arcade_sdl2 PRIVATE ${WARNING_FLAGS})
-target_link_libraries(arcade_sdl2 PRIVATE arcade_abstractions sfml-graphics sfml-window)
+target_link_libraries(arcade_sdl2 PRIVATE arcade_abstractions SDL2)
 set_property(TARGET arcade_sdl2 PROPERTY CXX_STANDARD 20)
 set_property(TARGET arcade_sdl2 PROPERTY CXX_STANDARD_REQUIRED ON)
