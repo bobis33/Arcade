@@ -7,7 +7,7 @@
 
 #include "Sfml.hpp"
 
-Arcade::Sfml::Sfml() : _window(sf::VideoMode(1920, 1080), "SFML window")
+Arcade::Sfml::Sfml() : _window(sf::VideoMode(1920, 1080), "Arcade - SFML")
 {
 }
 

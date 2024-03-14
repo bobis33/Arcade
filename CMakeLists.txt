@@ -75,9 +75,9 @@ add_subdirectory(Graphics)
 add_subdirectory(Games)
 
 # Interface library
-add_library(arcade-abstractions INTERFACE)
-set_property(TARGET arcade-abstractions PROPERTY CXX_STANDARD 20)
-set_property(TARGET arcade-abstractions PROPERTY CXX_STANDARD_REQUIRED ON)
+add_library(arcade_abstractions INTERFACE)
+set_property(TARGET arcade_abstractions PROPERTY CXX_STANDARD 20)
+set_property(TARGET arcade_abstractions PROPERTY CXX_STANDARD_REQUIRED ON)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
