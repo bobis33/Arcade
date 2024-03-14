@@ -6,6 +6,7 @@ add_library(
         arcade_sfml SHARED
         src/entryPoint.cpp
         src/Sfml.cpp
+        src/Events.cpp
 )
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)

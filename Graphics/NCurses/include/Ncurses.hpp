@@ -29,6 +29,9 @@ namespace Arcade
             void openWindow();
             void closeWindow();
 
+            void clearWindow() override { clear(); };
+            void displayWindow() override { refresh(); };
+
         private:
             WINDOW *_window = nullptr;
 

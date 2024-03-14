@@ -27,6 +27,9 @@ namespace Arcade
 
             GameEvent getEvent() override;
 
+            void clearWindow() override { SDL_RenderClear(SDL_GetRenderer(_window)); };
+            void displayWindow() override { SDL_RenderPresent(SDL_GetRenderer(_window)); };
+
         private:
             SDL_Window *_window;
 

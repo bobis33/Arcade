@@ -21,9 +21,6 @@ namespace Arcade {
         AGraphic(const AGraphic &) = delete;
         AGraphic &operator=(const AGraphic &) = delete;
 
-    protected:
-        GameEvent _event{GameEvent::NONE};
-
     }; // AGraphic
 
 } // Arcade

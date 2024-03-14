@@ -7,25 +7,9 @@
 
 #include "Sfml.hpp"
 
-Arcade::Sfml::Sfml() : _window(sf::VideoMode(1920, 1080), "Arcade - SFML")
-{
-}
-
-Arcade::GameEvent Arcade::Sfml::getEvent()
-{
-    sf::Event event{};
-    while (_window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            _event = Arcade::GameEvent::QUIT;
-            _window.close();
-            return _event;
-        }
-    }
-    return _event;
-}
+Arcade::Sfml::Sfml() : _window(sf::VideoMode(1920, 1080), "Arcade - SFML") {}
 
 /*
-
 
 void Arcade::Sfml::closeWindow()
 {

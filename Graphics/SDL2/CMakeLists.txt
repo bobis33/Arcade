@@ -6,6 +6,7 @@ add_library(
         arcade_sdl2 SHARED
         src/entryPoint.cpp
         src/Sdl2.cpp
+        src/Events.cpp
 )
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)

@@ -34,22 +34,21 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
                 [](Arcade::Core &core) -> void {
                     std::cout << "SHOOT" << std::endl;
                 }},
+                                        */
         {Arcade::GameEvent::PAUSE,
                 [](Arcade::Core &core) -> void {
-                    std::cout << "PAUSE" << std::endl;
+                    core.setMode(Arcade::CoreMode::PAUSE);
                 }},
-                        */
-
         {Arcade::GameEvent::QUIT,
                 [](Arcade::Core &core) -> void {
                     core.setMode(Arcade::CoreMode::QUIT);
                 }},
 };
 
-void Arcade::Core::handleEvents()
+void Arcade::Core::handleEvents(GameEvent event)
 {
     for (auto &mapEvent: MAP_EVENT)
-        if (mapEvent.first == _event) {
+        if (mapEvent.first == event) {
             mapEvent.second(*this);
             return;
         }
@@ -58,8 +57,8 @@ void Arcade::Core::handleEvents()
 void Arcade::Core::gameLoop()
 {
     while (_coreMode != CoreMode::QUIT) {
-        _event = _graphicLib->getEvent();
-        handleEvents();
+        handleEvents(_window->getEvent());
+        _window->displayWindow();
     }
 }
 
@@ -73,6 +72,6 @@ void Arcade::Core::parser(const std::string &path)
     if (!entryPointFunc) {
         throw CoreException{std::string(dlerror())};
     }
-    _graphicLib = entryPointFunc();
+    _window = entryPointFunc();
     gameLoop();
 }

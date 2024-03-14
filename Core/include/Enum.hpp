@@ -15,6 +15,7 @@ namespace Arcade {
     enum class CoreMode {
         GAME,
         MENU,
+        PAUSE,
         QUIT,
     };
 
@@ -22,6 +23,7 @@ namespace Arcade {
         GAME,
         GAME_OVER,
         MENU,
+        PAUSE,
         QUIT,
     };
 

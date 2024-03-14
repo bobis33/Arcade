@@ -23,8 +23,7 @@ namespace Arcade
     {
         private:
             CoreMode _coreMode{CoreMode::MENU};
-            std::unique_ptr<AGraphic> _graphicLib{nullptr};
-            GameEvent _event{GameEvent::NONE};
+            std::unique_ptr<AGraphic> _window{nullptr};
 
         public:
             Core() = default;
@@ -36,7 +35,7 @@ namespace Arcade
             void parser(const std::string &path);
 
             void gameLoop();
-            void handleEvents();
+            void handleEvents(GameEvent event);
             void setMode(CoreMode gameMode) { _coreMode = gameMode; };
 
         class CoreException : public std::exception

@@ -29,16 +29,6 @@ void Arcade::Ncurses::closeWindow()
     endwin();
 }
 
-Arcade::GameEvent Arcade::Ncurses::getEvent()
-{
-    int ch = getch();
-    if (ch == 'q') {
-        closeWindow();
-        return GameEvent::QUIT;
-    }
-    return GameEvent::NONE;
-}
-
 /*
 
  void Arcade::Ncurses::clearWindow()
