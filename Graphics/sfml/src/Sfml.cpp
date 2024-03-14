@@ -26,17 +26,6 @@ Arcade::GameEvent Arcade::Sfml::getEvent()
 
 /*
 
- void Arcade::Sfml::loopEvent()
-{
-    sf::Event event{};
-    while (_window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            _gameEvent = Arcade::GameEvent::QUIT;
-            _window.close();
-            return;
-        }
-    }
-}
 
 void Arcade::Sfml::closeWindow()
 {

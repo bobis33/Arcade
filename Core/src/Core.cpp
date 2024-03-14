@@ -55,7 +55,6 @@ void Arcade::Core::handleEvents()
         }
 }
 
-
 void Arcade::Core::gameLoop()
 {
     while (_coreMode != CoreMode::QUIT) {
