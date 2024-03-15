@@ -5,6 +5,11 @@
 ** Sfml.hpp
 */
 
+/**
+ * @file Sfml.hpp
+ * @brief File declaring Sfml class
+ */
+
 #pragma once
 
 #ifndef ARCADE_SFML_HPP
@@ -17,6 +22,11 @@ constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
 
 namespace Arcade
 {
+
+    /**
+    * @brief Sfml class
+    * @details Sfml class for the Arcade project
+    */
 	class Sfml : public AGraphic
     {
         public:

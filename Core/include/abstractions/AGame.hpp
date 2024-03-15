@@ -5,6 +5,11 @@
 ** AGame.hpp
 */
 
+/**
+ * @file AGame.hpp
+ * @brief File declaring Game Abstract class
+ */
+
 #pragma once
 
 #ifndef ARCADE_AGAME_HPP
@@ -13,6 +18,11 @@
 #include "IGame.hpp"
 
 namespace Arcade {
+
+    /**
+    * @brief Game abstract class
+    * @details Set of method to implement for the business logic of the Arcade project
+    */
     class AGame : public IGame {
     public:
         ~AGame() override = default;

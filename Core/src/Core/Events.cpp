@@ -10,7 +10,6 @@
 #include "abstractions/AGraphic.hpp"
 #include "Core.hpp"
 
-
 static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &)>> MAP_EVENT = {
         /*
         {Arcade::GameEvent::UP,

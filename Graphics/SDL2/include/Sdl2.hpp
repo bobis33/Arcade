@@ -5,6 +5,11 @@
 ** Sdl2.hpp
 */
 
+/**
+ * @file Sdl2.hpp
+ * @brief File declaring Sdl2 class
+ */
+
 #pragma once
 
 #ifndef ARCADE_SDL2_HPP
@@ -18,6 +23,11 @@ constexpr std::string_view WINDOW_TITLE = "Arcade - SDL2";
 
 namespace Arcade
 {
+
+    /**
+    * @brief Sdl2 class
+    * @details Sdl2 class for the Arcade project
+    */
 	class Sdl2 : public AGraphic
     {
         public:

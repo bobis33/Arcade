@@ -5,12 +5,23 @@
 ** constants.hpp
 */
 
+/**
+ * @file constants.hpp
+ *
+ * @brief File declaring Constants
+ */
+
 #pragma once
 
 #ifndef ARCADE_CONSTANTS_HPP
 #define ARCADE_CONSTANTS_HPP
 
 #include <string_view>
+
+/**
+ * @brief Constants for the Arcade project
+ * @details Set of constants used in the Arcade project
+ */
 
 namespace
 {

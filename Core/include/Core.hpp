@@ -5,6 +5,12 @@
 ** Core.hpp
 */
 
+/**
+ * @file Core.hpp
+ *
+ * @brief File declaring Core
+ */
+
 #pragma once
 
 #ifndef ARCADE_CORE_HPP
@@ -16,8 +22,18 @@
 #include "Enum.hpp"
 #include "abstractions/AGraphic.hpp"
 
+/**
+ * @namespace Arcade
+ * @brief Main namespace for the Arcade project
+ */
+
 namespace Arcade
 {
+    /**
+     * @brief Core class
+     * @details Core class for the Arcade project
+     */
+
     class Core
     {
         private:
@@ -34,12 +50,23 @@ namespace Arcade
             void parser(const std::string &path);
             int runArcade(const std::string &path);
 
+            /**
+             * @brief Game loop
+             * @details Main game loop
+             */
             void gameLoop();
             void handleEvents(const GameEvent &event);
-
+            /**
+             * @brief Set the mode object
+             * @param gameMode
+             */
             void setMode(const CoreMode &gameMode) { _mode = gameMode; };
             void closeWindow() { _window->closeWindow(); };
 
+         /**
+          * @brief CoreException class
+          * @details Exception class for the Core class
+          */
         class CoreException : public std::exception
         {
             public:

@@ -10,7 +10,6 @@
 #include "Core.hpp"
 #include "Constants.hpp"
 
-
 void Arcade::Core::parser(const std::string &path)
 {
     if (!getenv("DISPLAY"))

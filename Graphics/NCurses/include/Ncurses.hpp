@@ -5,6 +5,11 @@
 ** Ncurses.hpp
 */
 
+/**
+ * @file Ncurses.hpp
+ * @brief File declaring Ncurses
+ */
+
 #pragma once
 
 #ifndef ARCADE_NCURSES_HPP
@@ -18,6 +23,11 @@ constexpr std::string_view WINDOW_TITLE = "Arcade - NCurses\n";
 
 namespace Arcade
 {
+
+    /**
+    * @brief Ncurses class
+    * @details Ncurses class for the Arcade project
+    */
 	class Ncurses : public AGraphic
     {
         public:
