@@ -21,8 +21,8 @@ set(WARNING_FLAGS
         -Wall
         -Wduplicated-branches
         -Wduplicated-cond
-        -Weffc++
         -Wextra
+        -Wdeprecated-copy
         -Wlogical-op
         -Wmisleading-indentation
         -Wnull-dereference
@@ -36,8 +36,7 @@ set(WARNING_FLAGS
         -Wcast-align
         -Wno-padded
         -Wconversion
-        -Wdouble-promotion
-        -Wformat=2
+        -Wformat
         -Winit-self
         -Wmissing-include-dirs
         -Wold-style-cast
