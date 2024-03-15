@@ -16,7 +16,7 @@ This also applies to your games.
 
 ## Prerequisites
 
-- CMake 3.27
+- CMake 3.22
 - C++20
 - SDL2
 - NCURSES
@@ -63,9 +63,9 @@ $> ./arcade [graphical_library.so]
 ```
     arcade
     │
-    │─ .github/workflows/       workflows
+    │─ .github/workflows/       Workflows
     │
-    │─ doc/                    Documentation
+    │─ doc/                     Documentation
     │
     │─ Core/                    Core program source code
     │

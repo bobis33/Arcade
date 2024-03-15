@@ -5,10 +5,21 @@
 ** Enum.hpp
 */
 
+/**
+ * @file Enum.hpp
+ *
+ * @brief File declaring Enum
+ */
+
 #pragma once
 
 #ifndef ARCADE_ENUM_HPP
 #define ARCADE_ENUM_HPP
+
+/**
+ * @brief Enum for the Arcade project
+ * @details Set of enum used in the Arcade project
+ */
 
 namespace Arcade {
 
@@ -27,6 +38,10 @@ namespace Arcade {
         QUIT,
     };
 
+    /**
+     * @brief Enum for the GameEvent
+     * @details Set of enum used for the game event
+     */
     enum class GameEvent {
         UP,
         DOWN,

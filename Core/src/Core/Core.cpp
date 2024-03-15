@@ -8,7 +8,6 @@
 #include "abstractions/AGraphic.hpp"
 #include "Core.hpp"
 
-
 void Arcade::Core::gameLoop()
 {
     while (_mode != CoreMode::QUIT) {

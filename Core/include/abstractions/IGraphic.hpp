@@ -5,6 +5,12 @@
 ** IGraphic.hpp
 */
 
+/**
+ * @file IGraphic.hpp
+ * @brief File declaring Graphic Interface
+ */
+
+
 #pragma once
 
 #ifndef ARCADE_IGRAPHIC_HPP
@@ -13,6 +19,11 @@
 #include "Enum.hpp"
 
 namespace Arcade {
+
+    /**
+     * @brief Graphic Interface
+     * @details Set of method to implement for the business logic of the Arcade project
+     */
     class IGraphic {
     public:
         IGraphic() = default;
@@ -21,8 +32,11 @@ namespace Arcade {
         IGraphic(const IGraphic &) = delete;
         IGraphic &operator=(const IGraphic &) = delete;
 
+        /**
+         * @brief Get the event object
+         * @return GameEvent
+         */
         virtual GameEvent getEvent() = 0;
-
         virtual void displayWindow() = 0;
         virtual void clearWindow() = 0;
         virtual void closeWindow() = 0;
