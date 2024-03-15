@@ -35,9 +35,9 @@ namespace Arcade
             int runArcade(const std::string &path);
 
             void gameLoop();
-            void handleEvents(GameEvent event);
+            void handleEvents(const GameEvent &event);
 
-            void setMode(CoreMode gameMode) { _mode = gameMode; };
+            void setMode(const CoreMode &gameMode) { _mode = gameMode; };
             void closeWindow() { _window->closeWindow(); };
 
         class CoreException : public std::exception

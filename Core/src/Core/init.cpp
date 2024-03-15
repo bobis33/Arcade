@@ -17,11 +17,11 @@ void Arcade::Core::parser(const std::string &path)
         throw CoreException{NO_DISPLAY.data()};
 
     void *handle = dlopen(path.c_str(), RTLD_LAZY);
-    if (!handle) {
+    if (handle == nullptr) {
         throw CoreException(dlerror());
     }
     auto *entryPointFunc = reinterpret_cast<std::unique_ptr<AGraphic> (*)()>(dlsym(handle, "entryPoint"));
-    if (!entryPointFunc) {
+    if (entryPointFunc == nullptr) {
         throw CoreException(dlerror());
     }
     _window = entryPointFunc();

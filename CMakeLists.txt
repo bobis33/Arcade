@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(arcade)
+project(arcade
+        VERSION 1.0.0
+        LANGUAGES CXX)
 
 # Set C++ standard and build type
 set(CMAKE_CXX_STANDARD 20)

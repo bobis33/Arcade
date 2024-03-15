@@ -13,11 +13,10 @@ Arcade::Ncurses::Ncurses()
 {
     initscr();
     raw();
-    keypad(stdscr, TRUE);
     noecho();
-    _window = newwin(20, 80, 0, 0);
     curs_set(0);
-    box(_window, 0, 0);
+    keypad(stdscr, TRUE);
+    _window = newwin(20, 80, 0, 0);
     mvprintw(0, WINDOW_TITLE_POSITION, WINDOW_TITLE.data());
     wrefresh(_window);
 }
