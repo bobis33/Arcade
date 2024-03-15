@@ -41,6 +41,7 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
                 }},
         {Arcade::GameEvent::QUIT,
                 [](Arcade::Core &core) -> void {
+                    core.closeWindow();
                     core.setMode(Arcade::CoreMode::QUIT);
                 }},
 };
@@ -56,7 +57,7 @@ void Arcade::Core::handleEvents(GameEvent event)
 
 void Arcade::Core::gameLoop()
 {
-    while (_coreMode != CoreMode::QUIT) {
+    while (_mode != CoreMode::QUIT) {
         handleEvents(_window->getEvent());
         _window->displayWindow();
     }

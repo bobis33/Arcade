@@ -27,11 +27,16 @@ namespace Arcade
 
             GameEvent getEvent() override;
 
-            void clearWindow() override { SDL_RenderClear(SDL_GetRenderer(_window)); };
-            void displayWindow() override { SDL_RenderPresent(SDL_GetRenderer(_window)); };
+            void displayWindow() override { SDL_RenderPresent(_renderer); };
+            void clearWindow() override { SDL_RenderClear(_renderer); };
+            void closeWindow() override { SDL_DestroyWindow(_window); SDL_Quit(); };
 
         private:
-            SDL_Window *_window;
+            SDL_Window *_window{nullptr};
+            SDL_Renderer *_renderer{nullptr};
+
+            static GameEvent keyboardEvent(SDL_Event event);
+
 
     }; // Sdl2
 

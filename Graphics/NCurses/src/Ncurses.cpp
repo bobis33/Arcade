@@ -5,40 +5,20 @@
 ** Ncurses.cpp
 */
 
+#include <cstring>
 #include "Ncurses.hpp"
 
-Arcade::Ncurses::Ncurses()
-{
-    openWindow();
-}
+constexpr char const *TITLE = "Arcade - Ncurses";
 
-void Arcade::Ncurses::openWindow()
+Arcade::Ncurses::Ncurses()
 {
     initscr();
     raw();
     keypad(stdscr, TRUE);
     noecho();
     _window = newwin(20, 80, 0, 0);
+    curs_set(0);
     box(_window, 0, 0);
+    mvprintw(0, (COLS - static_cast<int>(strlen(TITLE))) / 2, TITLE);
     wrefresh(_window);
 }
-
-void Arcade::Ncurses::closeWindow()
-{
-    delwin(_window);
-    endwin();
-}
-
-/*
-
- void Arcade::Ncurses::clearWindow()
-{
-    werase(_window);
-    wrefresh(_window);
-}
-
-void Arcade::Ncurses::displayWindow()
-{
-    wrefresh(_window);
-}
- */

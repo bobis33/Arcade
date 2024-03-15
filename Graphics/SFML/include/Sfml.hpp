@@ -25,11 +25,15 @@ namespace Arcade
             Sfml &operator=(const Sfml &) = delete;
 
             GameEvent getEvent() override;
-            void clearWindow() override { _window.clear(); };
+
             void displayWindow() override { _window.display(); };
+            void clearWindow() override { _window.clear(); };
+            void closeWindow() override { _window.close(); };
 
         private:
             sf::RenderWindow _window;
+
+            static GameEvent keyboardEvent(sf::Event event);
 
     }; // Sfml
 }

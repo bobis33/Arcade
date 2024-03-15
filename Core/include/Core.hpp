@@ -22,7 +22,7 @@ namespace Arcade
     class Core
     {
         private:
-            CoreMode _coreMode{CoreMode::MENU};
+            CoreMode _mode{CoreMode::MENU};
             std::unique_ptr<AGraphic> _window{nullptr};
 
         public:
@@ -36,7 +36,9 @@ namespace Arcade
 
             void gameLoop();
             void handleEvents(GameEvent event);
-            void setMode(CoreMode gameMode) { _coreMode = gameMode; };
+
+            void setMode(CoreMode gameMode) { _mode = gameMode; };
+            void closeWindow() { _window->closeWindow(); };
 
         class CoreException : public std::exception
         {

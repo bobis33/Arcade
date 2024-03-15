@@ -20,7 +20,6 @@ Arcade::GameEvent Arcade::Ncurses::getEvent()
         case KEY_RIGHT:
             return GameEvent::RIGHT;
         case 'q':
-            closeWindow();
             return GameEvent::QUIT;
 
         default:

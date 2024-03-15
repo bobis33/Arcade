@@ -18,8 +18,9 @@ This also applies to your games.
 
 - CMake
 - C++20
-- SFML
+- SDL2
 - NCURSES
+- SFML
 
 ## Usage
 

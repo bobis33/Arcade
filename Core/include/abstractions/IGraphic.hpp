@@ -22,8 +22,10 @@ namespace Arcade {
         IGraphic &operator=(const IGraphic &) = delete;
 
         virtual GameEvent getEvent() = 0;
-        virtual void clearWindow() = 0;
+
         virtual void displayWindow() = 0;
+        virtual void clearWindow() = 0;
+        virtual void closeWindow() = 0;
 
     }; // IGraphic
 

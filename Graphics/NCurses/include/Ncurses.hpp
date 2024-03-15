@@ -26,16 +26,14 @@ namespace Arcade
 
             GameEvent getEvent() override;
 
-            void openWindow();
-            void closeWindow();
-
-            void clearWindow() override { clear(); };
             void displayWindow() override { refresh(); };
+            void clearWindow() override { clear(); };
+            void closeWindow() override { delwin(_window); endwin(); };
 
         private:
             WINDOW *_window = nullptr;
 
 	}; // NCurses
-}
+} // Arcade
 
 #endif // ARCADE_NCURSES_HPP
