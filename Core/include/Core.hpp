@@ -46,7 +46,9 @@ namespace Arcade
                 explicit CoreException(std::string msg) : _msg{std::move(msg)} {}
                 ~CoreException() override = default;
 
-                [[nodiscard]] const char *what() const noexcept override { return _msg.c_str(); };
+                CoreException(CoreException const &) = delete;
+
+            [[nodiscard]] const char *what() const noexcept override { return _msg.c_str(); };
 
             private:
                 std::string _msg;

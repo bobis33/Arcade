@@ -35,6 +35,12 @@ int Arcade::Core::runArcade(const std::string &path)
     } catch (CoreException &e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return EPITECH_ERROR;
+    } catch (const std::exception &e) {
+        std::cerr << "std::exception: " << e.what() << std::endl;
+        return EPITECH_ERROR;
+    } catch (...) {
+        std::cerr << "Unknown error" << std::endl;
+        return EPITECH_ERROR;
     }
     return SUCCESS;
 }
