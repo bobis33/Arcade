@@ -9,6 +9,7 @@
 #include "abstractions/AGraphic.hpp"
 #include "Core.hpp"
 #include "Constants.hpp"
+#include "RuntimeException.hpp"
 
 void Arcade::Core::parser(const std::string &path)
 {
@@ -32,10 +33,10 @@ int Arcade::Core::runArcade(const std::string &path)
         parser(path);
         gameLoop();
     } catch (CoreException &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Core exception: " << e.what() << std::endl;
         return EPITECH_ERROR;
-    } catch (const std::exception &e) {
-        std::cerr << "std::exception: " << e.what() << std::endl;
+    } catch (const RuntimeException &e) {
+        std::cerr << "Runtime exception: " << e.what() << std::endl;
         return EPITECH_ERROR;
     } catch (...) {
         std::cerr << "Unknown error" << std::endl;
