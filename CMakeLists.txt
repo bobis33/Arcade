@@ -65,6 +65,41 @@ set(SOURCES
         ${SRC_DIR}/Core/Events.cpp
 )
 
+# Doxygen
+find_package(Doxygen)
+
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+    set(DOXYGEN_GENERATE_LATEX YES)
+    set(DOXYGEN_QUIET YES)
+    set(DOXYGEN_STRIP_FROM_INC_PATH Core/include)
+    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/doc/doxygen)
+    set(DOXYGEN_HTML_EXTRA_STYLESHEET doc/doxygen/style/doxygen-awesome.css)
+    set(DOXYGEN_DISABLE_INDEX NO)
+    set(DOXYGEN_FULL_SIDEBAR NO)
+    set(DOXYGEN_HTML_COLORSTYLE LIGHT)
+    doxygen_add_docs(doc
+            Core/include
+            Graphics/SDL2/include
+            Graphics/NCurses/include
+            Graphics/SFML/include
+            ALL
+    )
+    add_custom_command(TARGET doc
+            POST_BUILD
+            WORKING_DIRECTORY ${DOXYGEN_OUTPUT_DIRECTORY}/latex
+            COMMAND ${CMAKE_MAKE_PROGRAM} > /dev/null
+            && ${CMAKE_COMMAND} -E copy
+            ${DOXYGEN_OUTPUT_DIRECTORY}/latex/refman.pdf
+            ${CMAKE_SOURCE_DIR}/doc/Arcade.pdf
+            BYPRODUCTS ${CMAKE_SOURCE_DIR}/doc/Arcade.pdf
+            VERBATIM
+    )
+else ()
+    message(WARNING "Doxygen is necessary for docs")
+endif ()
+
+
 # Set output directories
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
 set(CMAKE_SHARED_LIBRARY_PREFIX "")

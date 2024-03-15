@@ -18,6 +18,10 @@
 
 namespace Arcade
 {
+    /**
+     * @brief Core class
+     */
+
     class Core
     {
         private:

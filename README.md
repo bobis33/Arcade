@@ -1,6 +1,6 @@
 # EPITECH | B-OOP-400 | Arcade
 
-![Epitech](doc/Epitech_banner.png)
+![Epitech](doc/png/Epitech_banner.png)
 
 ## Description
 
@@ -16,11 +16,13 @@ This also applies to your games.
 
 ## Prerequisites
 
-- CMake
+- CMake 3.27
 - C++20
 - SDL2
 - NCURSES
 - SFML
+- Doxygen
+- TeX
 
 ## Usage
 
@@ -55,13 +57,15 @@ $> ./arcade [graphical_library.so]
 ## Architecture
 
 <p align="center">
-    <img src="doc/Core_Program.png" alt="Architecture">
+    <img src="doc/png/Core_Program.png" alt="Architecture">
 </p>
 
 ```
     arcade
     │
     │─ .github/workflows/       workflows
+    │
+    │─ doc/                    Documentation
     │
     │─ Core/                    Core program source code
     │
