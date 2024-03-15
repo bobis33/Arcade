@@ -58,7 +58,9 @@ set(GCC_WARNING_FLAGS
 #Set sources
 set(SOURCES
         ${SRC_DIR}/main.cpp
-        ${SRC_DIR}/Core.cpp
+        ${SRC_DIR}/Core/init.cpp
+        ${SRC_DIR}/Core/Core.cpp
+        ${SRC_DIR}/Core/Events.cpp
 )
 
 # Set output directories

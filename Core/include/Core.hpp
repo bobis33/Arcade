@@ -32,6 +32,7 @@ namespace Arcade
             Core &operator=(const Core &) = delete;
 
             void parser(const std::string &path);
+            int runArcade(const std::string &path);
 
             void gameLoop();
             void handleEvents(GameEvent event);

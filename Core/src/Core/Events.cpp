@@ -2,15 +2,14 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Core.cpp
+** Events.cpp
 */
 
 #include <map>
 #include <functional>
-#include <dlfcn.h>
-#include <memory>
-#include "Core.hpp"
 #include "abstractions/AGraphic.hpp"
+#include "Core.hpp"
+
 
 static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &)>> MAP_EVENT = {
         /*
@@ -53,26 +52,4 @@ void Arcade::Core::handleEvents(GameEvent event)
             mapEvent.second(*this);
             return;
         }
-}
-
-void Arcade::Core::gameLoop()
-{
-    while (_mode != CoreMode::QUIT) {
-        handleEvents(_window->getEvent());
-        _window->displayWindow();
-    }
-}
-
-void Arcade::Core::parser(const std::string &path)
-{
-    void *handle = dlopen(path.c_str(), RTLD_LAZY);
-    if (!handle) {
-        throw CoreException{std::string(dlerror())};
-    }
-    auto *entryPointFunc = reinterpret_cast<std::unique_ptr<AGraphic> (*)()>(dlsym(handle, "entryPoint"));
-    if (!entryPointFunc) {
-        throw CoreException{std::string(dlerror())};
-    }
-    _window = entryPointFunc();
-    gameLoop();
 }

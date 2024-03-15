@@ -11,9 +11,10 @@
 #define ARCADE_NCURSES_HPP
 
 #include <ncurses.h>
+#include <string_view>
 #include "abstractions/AGraphic.hpp"
 
-constexpr const char *WINDOW_TITLE = "Arcade - NCurses\n";
+constexpr std::string_view WINDOW_TITLE = "Arcade - NCurses\n";
 
 namespace Arcade
 {

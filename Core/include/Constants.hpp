@@ -15,13 +15,13 @@
 namespace
 {
     constexpr int EPITECH_ERROR = 84;
-    constexpr int EPITECH_SUCCESS = 0;
-    constexpr int ERROR = 1;
+    constexpr int SUCCESS = 0;
 
     constexpr std::string_view USAGE_MSG = "USAGE\n"
                                      "\t./arcade path\n"
                                      "DESCRIPTION\n"
-                                     "\tpath\tPath to the graphical library\n";
+                                     "\tpath\tPath to the graphical library";
+
     constexpr std::string_view NO_DISPLAY = "DISPLAY environment variable is not set";
 }
 
