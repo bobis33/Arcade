@@ -22,6 +22,7 @@ set(WARNING_FLAGS
         -Wduplicated-branches
         -Wduplicated-cond
         -Wextra
+        -Werror
         -Wdeprecated-copy
         -Wlogical-op
         -Wmisleading-indentation

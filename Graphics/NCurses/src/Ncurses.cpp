@@ -8,7 +8,6 @@
 #include <cstring>
 #include "Ncurses.hpp"
 
-constexpr char const *TITLE = "Arcade - Ncurses";
 
 Arcade::Ncurses::Ncurses()
 {
@@ -19,6 +18,6 @@ Arcade::Ncurses::Ncurses()
     _window = newwin(20, 80, 0, 0);
     curs_set(0);
     box(_window, 0, 0);
-    mvprintw(0, (COLS - static_cast<int>(strlen(TITLE))) / 2, TITLE);
+    mvprintw(0, (COLS - static_cast<int>(strlen(WINDOW_TITLE))) / 2, WINDOW_TITLE);
     wrefresh(_window);
 }

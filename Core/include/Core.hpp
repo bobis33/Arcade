@@ -13,7 +13,6 @@
 #include <iostream>
 #include <exception>
 #include <memory>
-#include <utility>
 #include "Enum.hpp"
 #include "abstractions/AGraphic.hpp"
 

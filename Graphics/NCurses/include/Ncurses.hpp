@@ -13,6 +13,8 @@
 #include <ncurses.h>
 #include "abstractions/AGraphic.hpp"
 
+constexpr const char *WINDOW_TITLE = "Arcade - NCurses\n";
+
 namespace Arcade
 {
 	class Ncurses : public AGraphic
@@ -28,7 +30,7 @@ namespace Arcade
 
             void displayWindow() override { refresh(); };
             void clearWindow() override { clear(); };
-            void closeWindow() override { delwin(_window); endwin(); };
+            void closeWindow() override { curs_set(1); delwin(_window); endwin(); };
 
         private:
             WINDOW *_window = nullptr;

@@ -13,6 +13,8 @@
 #include <SFML/Graphics.hpp>
 #include "abstractions/AGraphic.hpp"
 
+constexpr const char *WINDOW_TITLE = "Arcade - SFML";
+
 namespace Arcade
 {
 	class Sfml : public AGraphic

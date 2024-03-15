@@ -14,6 +14,8 @@
 #include <SDL2/SDL.h>
 #include "abstractions/AGraphic.hpp"
 
+constexpr const char *WINDOW_TITLE = "Arcade - SDL2";
+
 namespace Arcade
 {
 	class Sdl2 : public AGraphic
