@@ -27,5 +27,4 @@ build/*
 .cache
 .idea/*
 .git/*
-.doxygen/html
-.doxygen/latex
+.doxygen/*
