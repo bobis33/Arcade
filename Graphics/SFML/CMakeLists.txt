@@ -1,16 +1,20 @@
-project(arcade_sfml)
-
-add_library(arcade_sfml SHARED
-        src/entryPoint.cpp
-        src/Sfml.cpp
-        src/Events.cpp
+project(arcade_sfml
+        VERSION 0.1.0
+        DESCRIPTION "SFML library for the Arcade project"
+        LANGUAGES CXX
 )
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)
 
+add_library(arcade_sfml SHARED ${SOURCE})
+
+target_sources(${PROJECT_NAME} PRIVATE
+        src/entryPoint.cpp
+        src/Sfml.cpp
+        src/Events.cpp
+)
 target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_INCLUDE_DIRS})
-target_compile_options(${PROJECT_NAME} PRIVATE ${COMMON_WARNING_FLAGS})
+target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS})
 target_link_libraries(${PROJECT_NAME} PRIVATE arcade_abstractions sfml-graphics sfml-window)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)

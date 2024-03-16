@@ -16,6 +16,7 @@
 #ifndef ARCADE_RUNTIME_EXCEPTION_HPP
 #define ARCADE_RUNTIME_EXCEPTION_HPP
 
+#include <iostream>
 #include <exception>
 
 namespace Arcade

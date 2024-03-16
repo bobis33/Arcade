@@ -2,19 +2,19 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** IGraphic.hpp
+** IRenderer.hpp
 */
 
 /**
- * @file IGraphic.hpp
+ * @file IRenderer.hpp
  * @brief File declaring Graphic Interface
  */
 
 
 #pragma once
 
-#ifndef ARCADE_IGRAPHIC_HPP
-#define ARCADE_IGRAPHIC_HPP
+#ifndef ARCADE_IRENDERER_HPP
+#define ARCADE_IRENDERER_HPP
 
 #include "Enum.hpp"
 
@@ -24,13 +24,13 @@ namespace Arcade {
      * @brief Graphic Interface
      * @details Set of method to implement for the business logic of the Arcade project
      */
-    class IGraphic {
+    class IRenderer {
     public:
-        IGraphic() = default;
-        virtual ~IGraphic() = default;
+        IRenderer() = default;
+        virtual ~IRenderer() = default;
 
-        IGraphic(const IGraphic &) = delete;
-        IGraphic &operator=(const IGraphic &) = delete;
+        IRenderer(const IRenderer &) = delete;
+        IRenderer &operator=(const IRenderer &) = delete;
 
         /**
          * @brief Get the event object
@@ -53,8 +53,8 @@ namespace Arcade {
          */
         virtual void closeWindow() = 0;
 
-    }; // IGraphic
+    }; // IRenderer
 
 } // Arcade
 
-#endif //ARCADE_IGRAPHIC_HPP
+#endif //ARCADE_IRENDERER_HPP

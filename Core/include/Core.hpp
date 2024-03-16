@@ -20,7 +20,7 @@
 #include <exception>
 #include <memory>
 #include "Enum.hpp"
-#include "abstractions/AGraphic.hpp"
+#include "abstractions/IRenderer.hpp"
 
 /**
  * @namespace Arcade
@@ -38,7 +38,7 @@ namespace Arcade
     {
         private:
             CoreMode _mode{CoreMode::MENU};
-            std::unique_ptr<AGraphic> _window{nullptr};
+            std::unique_ptr<IRenderer> _window{nullptr};
 
         public:
             Core() = default;

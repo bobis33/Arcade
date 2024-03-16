@@ -17,7 +17,7 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "abstractions/AGraphic.hpp"
+#include "abstractions/IRenderer.hpp"
 
 constexpr std::string_view WINDOW_TITLE = "Arcade - SDL2";
 
@@ -28,7 +28,7 @@ namespace Arcade
     * @brief Sdl2 class
     * @details Sdl2 class for the Arcade project
     */
-	class Sdl2 : public AGraphic
+	class Sdl2 : public IRenderer
     {
         public:
             Sdl2();

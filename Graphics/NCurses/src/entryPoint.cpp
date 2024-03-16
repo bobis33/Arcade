@@ -9,7 +9,7 @@
 #include "Ncurses.hpp"
 
 extern "C" {
-    std::unique_ptr<Arcade::AGraphic> entryPoint() {
+    std::unique_ptr<Arcade::IRenderer> entryPoint() {
         return std::make_unique<Arcade::Ncurses>();
     }
 }

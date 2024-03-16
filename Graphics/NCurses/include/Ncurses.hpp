@@ -17,7 +17,7 @@
 
 #include <ncurses.h>
 #include <string_view>
-#include "abstractions/AGraphic.hpp"
+#include "abstractions/IRenderer.hpp"
 
 constexpr std::string_view WINDOW_TITLE = "Arcade - NCurses\n";
 
@@ -28,7 +28,7 @@ namespace Arcade
     * @brief Ncurses class
     * @details Ncurses class for the Arcade project
     */
-	class Ncurses : public AGraphic
+	class Ncurses : public IRenderer
     {
         public:
             Ncurses();

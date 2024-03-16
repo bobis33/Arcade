@@ -5,7 +5,7 @@
 ** Core.cpp
 */
 
-#include "abstractions/AGraphic.hpp"
+#include "abstractions/IRenderer.hpp"
 #include "Core.hpp"
 
 void Arcade::Core::gameLoop()

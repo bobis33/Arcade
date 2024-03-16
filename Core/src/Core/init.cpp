@@ -6,7 +6,7 @@
 */
 
 #include <dlfcn.h>
-#include "abstractions/AGraphic.hpp"
+#include "abstractions/IRenderer.hpp"
 #include "Core.hpp"
 #include "Constants.hpp"
 #include "RuntimeException.hpp"
@@ -20,7 +20,7 @@ void Arcade::Core::parser(const std::string &path)
     if (handle == nullptr) {
         throw CoreException(dlerror());
     }
-    auto *entryPointFunc = reinterpret_cast<std::unique_ptr<AGraphic> (*)()>(dlsym(handle, "entryPoint"));
+    auto *entryPointFunc = reinterpret_cast<std::unique_ptr<IRenderer> (*)()>(dlsym(handle, "entryPoint"));
     if (entryPointFunc == nullptr) {
         throw CoreException(dlerror());
     }

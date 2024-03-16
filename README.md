@@ -10,9 +10,7 @@ must be implemented as **dynamic libraries**, loaded at run-time.
 Each GUI available for the program must be used as a shared library that will be loaded and used dynamically by the main program.
 
 It is **STRICTLY FORBIDDEN** to refer to a graphics library explicitly in your main program.
-
-Only your dynamic libraries can do so.
-This also applies to your games.
+Only your dynamic libraries can do so. This also applies to your games.
 
 ## Prerequisites
 

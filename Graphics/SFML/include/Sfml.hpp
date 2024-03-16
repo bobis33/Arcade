@@ -16,7 +16,7 @@
 #define ARCADE_SFML_HPP
 
 #include <SFML/Graphics.hpp>
-#include "abstractions/AGraphic.hpp"
+#include "abstractions/IRenderer.hpp"
 
 constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
 
@@ -27,7 +27,7 @@ namespace Arcade
     * @brief Sfml class
     * @details Sfml class for the Arcade project
     */
-	class Sfml : public AGraphic
+	class Sfml : public IRenderer
     {
         public:
             Sfml();
