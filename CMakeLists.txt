@@ -57,6 +57,11 @@ set(GCC_WARNING_FLAGS
         -Wuseless-cast
 )
 
+set(COMMON_WARNING_FLAGS
+        ${WARNING_FLAGS}
+        ${GCC_WARNING_FLAGS}
+)
+
 #Set sources
 set(SOURCES
         ${SRC_DIR}/main.cpp
@@ -68,7 +73,6 @@ set(SOURCES
 # Doxygen
 find_package(Doxygen)
 
-find_package(Doxygen)
 if (DOXYGEN_FOUND)
     set(DOXYGEN_GENERATE_LATEX YES)
     set(DOXYGEN_QUIET YES)
@@ -98,14 +102,10 @@ else ()
     message(WARNING "Doxygen is necessary for docs")
 endif ()
 
-
 # Set output directories
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
-# Add include directories
-include_directories(${INCLUDE_DIR})
 
 # Add subdirectories
 add_subdirectory(Graphics)
@@ -121,7 +121,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 
 # Set compile and link options
-target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS} ${GCC_WARNING_FLAGS})
+target_compile_options(${PROJECT_NAME} PRIVATE ${COMMON_WARNING_FLAGS})
 target_link_options(arcade PRIVATE -rdynamic)
 
 # Set properties
