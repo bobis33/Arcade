@@ -6,7 +6,7 @@
 */
 
 #include <memory>
-#include "Sfml.hpp"
+#include "Arcade/Sfml.hpp"
 
 extern "C" {
     std::unique_ptr<Arcade::IRenderer> entryPoint() {

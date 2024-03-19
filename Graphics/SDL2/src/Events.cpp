@@ -5,7 +5,7 @@
 ** Events.cpp
 */
 
-#include "Sdl2.hpp"
+#include "Arcade/Sdl2.hpp"
 
 /*
  * push on the top of the switch cases that will be the most used (and who's implemented too)

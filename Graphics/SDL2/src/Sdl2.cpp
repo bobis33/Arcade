@@ -5,7 +5,7 @@
 ** Sdl2.cpp
 */
 
-#include "Sdl2.hpp"
+#include "Arcade/Sdl2.hpp"
 
 Arcade::Sdl2::Sdl2() {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)

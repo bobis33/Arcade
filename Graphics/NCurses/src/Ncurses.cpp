@@ -5,18 +5,21 @@
 ** Ncurses.cpp
 */
 
-#include "Ncurses.hpp"
+#include <cstring>
+#include "Arcade/Ncurses.hpp"
 
-#define WINDOW_TITLE_POSITION ((COLS - 17) / 2)
 
 Arcade::Ncurses::Ncurses()
 {
+    int index = 0;
     initscr();
     raw();
     noecho();
     curs_set(0);
     keypad(stdscr, TRUE);
     _window = newwin(20, 80, 0, 0);
-    mvprintw(0, WINDOW_TITLE_POSITION, WINDOW_TITLE.data());
+    for (; _title.data()[index]; index++);
+    const int window_position = (COLS - index) / 2;
+    mvprintw(0, window_position, "%s", _title.data());
     wrefresh(_window);
 }

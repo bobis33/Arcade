@@ -5,7 +5,7 @@
 ** Sfml.cpp
 */
 
-#include "Sfml.hpp"
+#include "Arcade/Sfml.hpp"
 
 /*
  * push on the top of the switch cases that will be the most used (and who's implemented too)

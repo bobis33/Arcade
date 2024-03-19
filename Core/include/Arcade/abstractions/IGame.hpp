@@ -28,6 +28,16 @@ namespace Arcade {
         IGame(const IGame &) = delete;
         IGame &operator=(const IGame &) = delete;
 
+        /**
+         * @brief start the game
+         */
+        virtual void start() = 0;
+
+        /**
+         * @brief stop the game
+         */
+        virtual void stop() = 0;
+
     }; // IGame
 
 } // Arcade

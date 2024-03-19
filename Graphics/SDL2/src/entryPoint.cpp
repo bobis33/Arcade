@@ -6,7 +6,7 @@
 */
 
 #include <memory>
-#include "Sdl2.hpp"
+#include "Arcade/Sdl2.hpp"
 
 extern "C" {
     std::unique_ptr<Arcade::IRenderer> entryPoint() {

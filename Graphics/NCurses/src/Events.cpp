@@ -5,7 +5,7 @@
 ** Events.cpp
 */
 
-#include "Ncurses.hpp"
+#include "Arcade/Ncurses.hpp"
 
 Arcade::GameEvent Arcade::Ncurses::getEvent()
 {

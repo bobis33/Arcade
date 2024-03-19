@@ -16,7 +16,8 @@
 #ifndef ARCADE_IRENDERER_HPP
 #define ARCADE_IRENDERER_HPP
 
-#include "Enum.hpp"
+#include <string>
+#include "Arcade/Enum.hpp"
 
 namespace Arcade {
 
@@ -52,6 +53,12 @@ namespace Arcade {
          * @brief close actual window
          */
         virtual void closeWindow() = 0;
+
+        /**
+         * @brief set window title
+         * @param title
+         */
+        virtual void setTitle(const std::string &title) = 0;
 
     }; // IRenderer
 

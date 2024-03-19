@@ -5,8 +5,8 @@
 ** Core.cpp
 */
 
-#include "abstractions/IRenderer.hpp"
-#include "Core.hpp"
+#include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/Core.hpp"
 
 void Arcade::Core::gameLoop()
 {
