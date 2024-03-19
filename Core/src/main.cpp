@@ -5,8 +5,13 @@
 ** main.cpp
 */
 
-#include "Core.hpp"
-#include "Constants.hpp"
+#include "Arcade/Core.hpp"
+#include "Arcade/Constants.hpp"
+
+constexpr std::string_view USAGE_MSG = "USAGE\n"
+                                       "\t./arcade path\n"
+                                       "DESCRIPTION\n"
+                                       "\tpath\tPath to the graphical library";
 
 int main(int argc, const char* argv[]) {
     if (argc != 2) {

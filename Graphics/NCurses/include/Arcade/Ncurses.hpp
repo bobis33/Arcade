@@ -17,9 +17,7 @@
 
 #include <ncurses.h>
 #include <string_view>
-#include "abstractions/IRenderer.hpp"
-
-constexpr std::string_view WINDOW_TITLE = "Arcade - NCurses\n";
+#include "Arcade/abstractions/IRenderer.hpp"
 
 namespace Arcade
 {
@@ -42,9 +40,11 @@ namespace Arcade
             void displayWindow() override { refresh(); };
             void clearWindow() override { clear(); };
             void closeWindow() override { curs_set(1); delwin(_window); endwin(); };
+            void setTitle(const std::string &title) override { _title = title; };
 
         private:
-            WINDOW *_window = nullptr;
+            WINDOW *_window{nullptr};
+            std::string_view _title{"Arcade - NCurses\n"};
 
 	}; // NCurses
 } // Arcade

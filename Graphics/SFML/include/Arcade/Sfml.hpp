@@ -16,7 +16,7 @@
 #define ARCADE_SFML_HPP
 
 #include <SFML/Graphics.hpp>
-#include "abstractions/IRenderer.hpp"
+#include "Arcade/abstractions/IRenderer.hpp"
 
 constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
 
@@ -41,6 +41,7 @@ namespace Arcade
             void displayWindow() override { _window.display(); };
             void clearWindow() override { _window.clear(); };
             void closeWindow() override { _window.close(); };
+            void setTitle(const std::string &title) override { _window.setTitle(title); };
 
         private:
             sf::RenderWindow _window;

@@ -17,7 +17,7 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "abstractions/IRenderer.hpp"
+#include "Arcade/abstractions/IRenderer.hpp"
 
 constexpr std::string_view WINDOW_TITLE = "Arcade - SDL2";
 
@@ -42,6 +42,7 @@ namespace Arcade
             void displayWindow() override { SDL_RenderPresent(_renderer); };
             void clearWindow() override { SDL_RenderClear(_renderer); };
             void closeWindow() override { SDL_DestroyWindow(_window); SDL_Quit(); };
+            void setTitle(const std::string &title) override { SDL_SetWindowTitle(_window, title.c_str()); };
 
         private:
             SDL_Window *_window{nullptr};

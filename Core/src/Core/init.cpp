@@ -6,15 +6,20 @@
 */
 
 #include <dlfcn.h>
-#include "abstractions/IRenderer.hpp"
-#include "Core.hpp"
-#include "Constants.hpp"
-#include "RuntimeException.hpp"
+#include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/Core.hpp"
+#include "Arcade/Constants.hpp"
+#include "Arcade/RuntimeException.hpp"
+
+constexpr char const *NO_DISPLAY = "DISPLAY environment variable is not set";
+constexpr std::string_view UNKNOW_ERROR = "Unknown error";
+constexpr std::string_view CORE_EXCEPT = "Core exception: ";
+constexpr std::string_view RUNTIME_EXCEPT = "Runtime exception: ";
 
 void Arcade::Core::parser(const std::string &path)
 {
     if (!getenv("DISPLAY"))
-        throw CoreException{NO_DISPLAY.data()};
+        throw CoreException{NO_DISPLAY};
 
     void *handle = dlopen(path.c_str(), RTLD_LAZY);
     if (handle == nullptr) {
@@ -33,13 +38,13 @@ int Arcade::Core::runArcade(const std::string &path)
         parser(path);
         gameLoop();
     } catch (CoreException &e) {
-        std::cerr << "Core exception: " << e.what() << std::endl;
+        std::cerr << CORE_EXCEPT << e.what() << std::endl;
         return EPITECH_ERROR;
     } catch (const RuntimeException &e) {
-        std::cerr << "Runtime exception: " << e.what() << std::endl;
+        std::cerr << RUNTIME_EXCEPT << e.what() << std::endl;
         return EPITECH_ERROR;
     } catch (...) {
-        std::cerr << "Unknown error" << std::endl;
+        std::cerr << UNKNOW_ERROR << std::endl;
         return EPITECH_ERROR;
     }
     return SUCCESS;

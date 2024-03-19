@@ -7,8 +7,8 @@
 
 #include <map>
 #include <functional>
-#include "abstractions/IRenderer.hpp"
-#include "Core.hpp"
+#include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/Core.hpp"
 
 static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &)>> MAP_EVENT = {
         /*

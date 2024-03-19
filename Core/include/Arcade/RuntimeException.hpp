@@ -7,7 +7,6 @@
 
 /**
  * @file RuntimeException.hpp
- *
  * @brief File declaring RuntimeException
  */
 
