@@ -36,6 +36,7 @@ int Arcade::Core::runArcade(const std::string &path)
 {
     try {
         parser(path);
+        _window->openWindow(1920, 1080);
         gameLoop();
     } catch (CoreException &e) {
         std::cerr << CORE_EXCEPT << e.what() << std::endl;

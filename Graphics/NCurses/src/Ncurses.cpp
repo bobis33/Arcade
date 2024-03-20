@@ -7,8 +7,9 @@
 
 #include "Arcade/Ncurses.hpp"
 
-Arcade::Ncurses::Ncurses()
+void Arcade::Ncurses::openWindow(const unsigned int width, const unsigned int height)
 {
+    (void)width; (void)height;
     int size_title = 0;
     initscr();
     raw();
@@ -17,7 +18,6 @@ Arcade::Ncurses::Ncurses()
     keypad(stdscr, TRUE);
     _window = newwin(0, 0, 0, 0);
     for (; _title.data()[size_title]; size_title++);
-    const int title_position = (COLS - size_title) / 2;
-    mvprintw(0, title_position, "%s", _title.data());
+    _titlePos = (COLS - size_title) / 2;
     wrefresh(_window);
 }

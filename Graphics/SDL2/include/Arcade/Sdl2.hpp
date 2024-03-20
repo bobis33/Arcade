@@ -31,7 +31,7 @@ namespace Arcade
 	class Sdl2 : public IRenderer
     {
         public:
-            Sdl2();
+            Sdl2() = default;
             ~Sdl2() override = default;
 
             Sdl2(const Sdl2 &) = delete;
@@ -39,6 +39,7 @@ namespace Arcade
 
             GameEvent getEvent() override;
 
+            void openWindow(unsigned int width, unsigned int height) override;
             void displayWindow() override { SDL_RenderPresent(_renderer); };
             void clearWindow() override { SDL_RenderClear(_renderer); };
             void closeWindow() override { SDL_DestroyWindow(_window); SDL_Quit(); };
@@ -48,6 +49,8 @@ namespace Arcade
         private:
             SDL_Window *_window{nullptr};
             SDL_Renderer *_renderer{nullptr};
+            int _widht{0};
+            int _height{0};
 
             static GameEvent keyboardEvent(SDL_Event event);
 

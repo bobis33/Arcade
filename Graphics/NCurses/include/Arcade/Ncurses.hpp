@@ -29,7 +29,7 @@ namespace Arcade
 	class Ncurses : public IRenderer
     {
         public:
-            Ncurses();
+            Ncurses() = default;
             ~Ncurses() override = default;
 
             Ncurses(const Ncurses &) = delete;
@@ -37,7 +37,8 @@ namespace Arcade
 
             GameEvent getEvent() override;
 
-            void displayWindow() override { refresh(); };
+            void openWindow(unsigned int width, unsigned int height) override;
+            void displayWindow() override { refresh(); mvprintw(0, _titlePos, "%s", _title.data()); };
             void clearWindow() override { clear(); };
             void closeWindow() override { curs_set(1); delwin(_window); endwin(); };
             void setTitle(const std::string &title) override { _title = title; };
@@ -45,7 +46,8 @@ namespace Arcade
 
         private:
             WINDOW *_window{nullptr};
-            std::string_view _title{"Arcade - NCurses\n"};
+            std::string _title{"Arcade - NCurses\n"};
+            int _titlePos{0};
 
 	}; // NCurses
 } // Arcade

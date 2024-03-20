@@ -18,8 +18,6 @@
 #include <SFML/Graphics.hpp>
 #include "Arcade/abstractions/IRenderer.hpp"
 
-constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
-
 namespace Arcade
 {
 
@@ -38,6 +36,7 @@ namespace Arcade
 
             GameEvent getEvent() override;
 
+            void openWindow(unsigned int width, unsigned int height) override;
             void displayWindow() override { _window.display(); };
             void clearWindow() override { _window.clear(); };
             void closeWindow() override { _window.close(); };
@@ -46,12 +45,17 @@ namespace Arcade
 
         private:
             sf::RenderWindow _window;
-            sf::Font _font;
-            sf::Texture _texture;
             sf::Sprite _sprite;
             sf::Text _text;
+            std::map<std::string, sf::Font> _fonts;
+            std::map<std::string, sf::Texture> _textures;
+
+            unsigned int _width{0};
+            unsigned int _height{0};
 
             static GameEvent keyboardEvent(sf::Event event);
+            bool loadTexture(const std::string &filepath, const std::string &name);
+            bool loadFont(const std::string &filepath, const std::string &name);
 
     }; // Sfml
 }
