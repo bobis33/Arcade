@@ -42,9 +42,14 @@ namespace Arcade
             void clearWindow() override { _window.clear(); };
             void closeWindow() override { _window.close(); };
             void setTitle(const std::string &title) override { _window.setTitle(title); };
+            void displayMenu() override;
 
         private:
             sf::RenderWindow _window;
+            sf::Font _font;
+            sf::Texture _texture;
+            sf::Sprite _sprite;
+            sf::Text _text;
 
             static GameEvent keyboardEvent(sf::Event event);
 

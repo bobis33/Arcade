@@ -41,6 +41,7 @@ namespace Arcade
             void clearWindow() override { clear(); };
             void closeWindow() override { curs_set(1); delwin(_window); endwin(); };
             void setTitle(const std::string &title) override { _title = title; };
+            void displayMenu() override{};
 
         private:
             WINDOW *_window{nullptr};

@@ -60,6 +60,11 @@ namespace Arcade {
          */
         virtual void setTitle(const std::string &title) = 0;
 
+        /**
+         * @brief display menu
+         */
+        virtual void displayMenu() = 0;
+
     }; // IRenderer
 
 } // Arcade

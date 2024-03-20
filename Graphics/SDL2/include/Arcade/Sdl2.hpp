@@ -43,6 +43,7 @@ namespace Arcade
             void clearWindow() override { SDL_RenderClear(_renderer); };
             void closeWindow() override { SDL_DestroyWindow(_window); SDL_Quit(); };
             void setTitle(const std::string &title) override { SDL_SetWindowTitle(_window, title.c_str()); };
+            void displayMenu() override{};
 
         private:
             SDL_Window *_window{nullptr};
