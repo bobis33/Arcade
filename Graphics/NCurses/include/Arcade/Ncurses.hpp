@@ -41,6 +41,11 @@ namespace Arcade
             void closeWindow() override { curs_set(1); delwin(_window); endwin(); };
             void setTitle(const std::string &title) override { _title = title; };
             void displayMenu() override{};
+            bool isASCII() override { return true; };
+            bool loadTexture(const std::string &texture, const std::string &name) override { (void)texture; (void)name; return true;};
+            bool loadFont(const std::string &filepath, const std::string &name) override {(void) filepath; (void) name; return true;};
+
+            void initMenu() override {};
 
         private:
             WINDOW *_window{nullptr};

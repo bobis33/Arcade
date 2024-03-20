@@ -43,8 +43,12 @@ namespace Arcade
             void closeWindow() override { SDL_DestroyWindow(_window); SDL_Quit(); };
             void setTitle(const std::string &title) override { SDL_SetWindowTitle(_window, title.c_str()); };
             void displayMenu() override{};
+            bool isASCII() override { return false; };
+            bool loadTexture(const std::string &texture, const std::string &name) override { (void)texture; (void)name; return true;};
+            bool loadFont(const std::string &filepath, const std::string &name) override { (void)filepath; (void)name; return true;};
 
-        private:
+            void initMenu() override {};
+    private:
             SDL_Window *_window{nullptr};
             SDL_Renderer *_renderer{nullptr};
             int _widht{0};

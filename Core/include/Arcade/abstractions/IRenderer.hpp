@@ -71,6 +71,30 @@ namespace Arcade {
          */
         virtual void displayMenu() = 0;
 
+        /**
+         * @brief Check if the renderer is ASCII
+         * @return bool
+         */
+        virtual bool isASCII() = 0;
+
+        /**
+         * @brief Load a texture
+         * @param texture
+         * @param name
+         * @return bool
+         */
+        virtual bool loadTexture(const std::string &texture, const std::string &name) = 0;
+
+        /**
+         * @brief Load a font
+         * @param filepath
+         * @param name
+         * @return bool
+         */
+        virtual bool loadFont(const std::string &filepath, const std::string &name) = 0;
+
+        virtual void initMenu() = 0;
+
     }; // IRenderer
 
 } // Arcade

@@ -40,6 +40,11 @@ namespace Arcade
             void closeWindow() override { _window.close(); };
             void setTitle(const std::string &title) override { _window.setTitle(title); };
             void displayMenu() override;
+            bool isASCII() override { return false; };
+            bool loadTexture(const std::string &texture, const std::string &name) override;
+            bool loadFont(const std::string &filepath, const std::string &name) override;
+
+            void initMenu() override;
 
         private:
             sf::RenderWindow _window;
@@ -52,8 +57,6 @@ namespace Arcade
             unsigned int _height{0};
 
             static GameEvent keyboardEvent(sf::Event event);
-            bool loadTexture(const std::string &filepath, const std::string &name);
-            bool loadFont(const std::string &filepath, const std::string &name);
 
     }; // Sfml
 }
