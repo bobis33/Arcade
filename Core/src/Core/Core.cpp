@@ -11,10 +11,11 @@
 void Arcade::Core::gameLoop()
 {
     while (_mode != CoreMode::QUIT) {
+        _window->displayWindow();
         handleEvents(_window->getEvent());
         if (_mode == CoreMode::MENU) {
             _window->displayMenu();
+            _window->displayWindow();
         }
-        _window->displayWindow();
     }
 }

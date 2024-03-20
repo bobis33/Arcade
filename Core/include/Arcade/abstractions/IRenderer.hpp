@@ -34,6 +34,13 @@ namespace Arcade {
         IRenderer &operator=(const IRenderer &) = delete;
 
         /**
+         * @brief Create a window
+         * @param width
+         * @param height
+         */
+        virtual void openWindow(const unsigned int width, const unsigned int height) = 0;
+
+        /**
          * @brief Get the event object
          * @return GameEvent
          */
