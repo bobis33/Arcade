@@ -6,16 +6,27 @@
 */
 
 /**
- * @file constants.hpp
- *
- * @brief File declaring Constants for the Arcade project
- * @details Set of constants used in the Arcade project
+ * @file Constants.hpp
+ * @brief File containing constant values used in the Arcade project
+ * @details This file provides a set of constant values that are used throughout the Arcade project.
  */
 
 #ifndef ARCADE_CONSTANTS_HPP
 #define ARCADE_CONSTANTS_HPP
 
+/**
+ * @brief Exit code for Epitech errors
+ */
 constexpr int EPITECH_ERROR = 84;
+
+/**
+ * @brief Exit code indicating that the program has executed successfully
+ */
 constexpr int SUCCESS = 0;
+
+/**
+ * @brief Exit code indicating that an error has occurred
+ */
+constexpr int ERROR = -1;
 
 #endif // ARCADE_CONSTANTS_HPP

@@ -1,11 +1,34 @@
 #!/bin/bash
 
-if [ $# -eq 0 ]; then
-    echo "Usage : $0 [ build | clean ]"
-    exit 1
-fi
+function clean() {
+    if [ -d "build" ]; then
+        rm -rf build/*
+        echo "build directory has been removed."
+    else
+        echo "build directory does not exist."
+    fi
+    if [ -d ".doxygen" ]; then
+        rm -rf .doxygen/*
+        echo ".doxygen directory has been removed."
+    else
+        echo ".doxygen directory does not exist."
+    fi
+    if [ -d "lib" ]; then
+        rm -rf lib/*
+        echo "lib directory has been removed."
+    else
+        echo "lib directory does not exist."
+    fi
+    if [ -f "arcade" ]; then
+        rm arcade
+        echo "arcade binary has been removed."
+    else
+        echo "arcade binary does not exist."
+    fi
+}
 
 function build() {
+  clean
     debug=$1
     if [ ! -d "build" ]; then
         mkdir -p build
@@ -18,25 +41,14 @@ function build() {
     fi
 }
 
-function clean() {
-    if [ -d "build" ]; then
-        rm -rf build/*
-        echo "build directory has been removed."
-    else
-        echo "build directory does not exist."
-    fi
-
-    if [ -d ".doxygen" ]; then
-        rm -rf .doxygen/*
-        echo ".doxygen directory has been removed."
-    else
-        echo ".doxygen directory does not exist."
-    fi
-}
+if [ $# -eq 0 ]; then
+    echo "Usage $0 build [debug] | clean"
+    exit 1
+fi
 
 case $1 in
     build)
-        if [ $2 == "debug" ]; then
+        if [ "$2" == "debug" ]; then
             build true
         else
             build false
@@ -46,7 +58,7 @@ case $1 in
         clean
         ;;
     *)
-        echo "Unknown argument : Usage $0 build [debug] | clean"
+        echo "Usage $0 build [debug] | clean"
         exit 1
         ;;
 esac

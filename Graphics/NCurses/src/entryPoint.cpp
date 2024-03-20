@@ -6,6 +6,7 @@
 */
 
 #include <memory>
+
 #include "Arcade/Ncurses.hpp"
 
 extern "C" {

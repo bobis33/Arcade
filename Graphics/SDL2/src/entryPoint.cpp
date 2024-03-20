@@ -6,6 +6,7 @@
 */
 
 #include <memory>
+
 #include "Arcade/Sdl2.hpp"
 
 extern "C" {
