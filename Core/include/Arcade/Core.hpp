@@ -13,8 +13,6 @@
 #ifndef ARCADE_CORE_HPP
 #define ARCADE_CORE_HPP
 
-#include <exception>
-#include <iostream>
 #include <memory>
 
 #include "Arcade/Enum.hpp"
@@ -44,8 +42,8 @@ namespace Arcade
 
             Core(const Core &) = delete;
             Core &operator=(const Core &) = delete;
-            Core(Core &&) = default;
-            Core &operator=(Core &&) = default;
+            Core(const Core &&) = delete;
+            Core &operator=(const Core &&) = delete;
 
         /**
         * @brief CoreException class
@@ -59,13 +57,13 @@ namespace Arcade
 
             CoreException(const CoreException &) = delete;
             CoreException &operator=(const CoreException &) = delete;
-            CoreException(CoreException &&) = default;
-            CoreException &operator=(CoreException &&) = default;
+            CoreException(const CoreException &&) = delete;
+            CoreException &operator=(const CoreException &&) = delete;
 
             [[nodiscard]] const char *what() const noexcept override { return _msg.c_str(); };
 
         private:
-            std::string _msg;
+            std::string _msg{0};
 
         }; // Exception
 

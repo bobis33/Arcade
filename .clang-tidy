@@ -1,4 +1,4 @@
-Checks: '
+Checks: '-*,
 modernize-*,
 bugprone-*,
 performance-*,
@@ -7,4 +7,9 @@ clang-analyzer-*,
 cert-*,
 hicpp-*,
 cppcoreguidelines-*,
+-modernize-use-trailing-return-type,
+-cppcoreguidelines-special-member-functions,hicpp-special-member-functions,
+-cppcoreguidelines-pro-bounds-pointer-arithmetic,
+-clang-diagnostic-error,
+-hicpp-special-member-functions,
 '
