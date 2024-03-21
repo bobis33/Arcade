@@ -15,12 +15,7 @@
 #ifndef ARCADE_CONSTANTS_HPP
 #define ARCADE_CONSTANTS_HPP
 
-#include <string_view>
-
-namespace
-{
-    constexpr int EPITECH_ERROR = 84;
-    constexpr int SUCCESS = 0;
-}
+constexpr int EPITECH_ERROR = 84;
+constexpr int SUCCESS = 0;
 
 #endif // ARCADE_CONSTANTS_HPP

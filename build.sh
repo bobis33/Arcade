@@ -6,11 +6,16 @@ if [ $# -eq 0 ]; then
 fi
 
 function build() {
+    debug=$1
     if [ ! -d "build" ]; then
-      mkdir -p build
+        mkdir -p build
     fi
     cd build || exit 1
-    cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release && cmake --build .
+    if [ "$debug" == "true" ]; then
+        cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DUSE_CLANG_TIDY=ON && cmake --build .
+    else
+        cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release && cmake --build .
+    fi
 }
 
 function clean() {
@@ -31,13 +36,17 @@ function clean() {
 
 case $1 in
     build)
-        build
+        if [ $2 == "debug" ]; then
+            build true
+        else
+            build false
+        fi
         ;;
     clean)
         clean
         ;;
     *)
-        echo "Unknown argument : Usage $0 [build|clean]"
+        echo "Unknown argument : Usage $0 build [debug] | clean"
         exit 1
         ;;
 esac
