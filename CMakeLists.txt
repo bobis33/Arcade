@@ -43,6 +43,9 @@ set(WARNING_FLAGS
 # Build Doxygen documentation
 include(cmake/MakeDoc.cmake)
 
+# Clang format
+include(cmake/ClangFormat.cmake)
+
 # Set output directories
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
