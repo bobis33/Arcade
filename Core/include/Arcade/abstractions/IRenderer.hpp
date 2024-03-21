@@ -15,6 +15,7 @@
 #define ARCADE_IRENDERER_HPP
 
 #include <string>
+
 #include "Arcade/Enum.hpp"
 
 namespace Arcade {
@@ -36,7 +37,7 @@ namespace Arcade {
          * @param width
          * @param height
          */
-        virtual void openWindow(const unsigned int width, const unsigned int height) = 0;
+        virtual void openWindow(unsigned int width, unsigned int height) = 0;
 
         /**
          * @brief Get the event object

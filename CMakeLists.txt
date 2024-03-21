@@ -8,22 +8,21 @@ project(arcade
         LANGUAGES CXX
 )
 
+option(USE_CLANG_TIDY "Use Clang-tidy" OFF)
+
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core/src/)
 
 set(WARNING_FLAGS
         -Wall
-        -Wduplicated-cond
         -Wextra
         -Werror
         -Wdeprecated-copy
-        -Wlogical-op
         -Wmisleading-indentation
         -Wnull-dereference
         -Woverloaded-virtual
         -Wpedantic
         -Wshadow
         -Wsign-conversion
-        -Wuseless-cast
         -Wnon-virtual-dtor
         -Wunused
         -Wcast-align
@@ -37,11 +36,15 @@ set(WARNING_FLAGS
         -Wswitch-default
         -Wswitch-enum
         -Wundef
-        -Wduplicated-branches
 )
 
 # Build Doxygen documentation
 include(cmake/MakeDoc.cmake)
+
+# Clang format
+if (USE_CLANG_TIDY)
+    include(cmake/ClangTidy.cmake)
+endif()
 
 # Set output directories
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
@@ -69,6 +72,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/C
 # Set compile and link options
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS})
-target_link_options(arcade PRIVATE -rdynamic)
+target_link_options(${PROJECT_NAME} PRIVATE -rdynamic)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
