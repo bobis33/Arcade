@@ -11,8 +11,6 @@
  * @details Set of enum used in the Arcade project
  */
 
-#pragma once
-
 #ifndef ARCADE_ENUM_HPP
 #define ARCADE_ENUM_HPP
 

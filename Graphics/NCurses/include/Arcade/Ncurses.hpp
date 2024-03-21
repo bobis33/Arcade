@@ -10,8 +10,6 @@
  * @brief File declaring Ncurses
  */
 
-#pragma once
-
 #ifndef ARCADE_NCURSES_HPP
 #define ARCADE_NCURSES_HPP
 

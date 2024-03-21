@@ -12,8 +12,6 @@
  * @details Set of constants used in the Arcade project
  */
 
-#pragma once
-
 #ifndef ARCADE_CONSTANTS_HPP
 #define ARCADE_CONSTANTS_HPP
 

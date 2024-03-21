@@ -10,8 +10,6 @@
  * @brief File declaring Sfml class
  */
 
-#pragma once
-
 #ifndef ARCADE_SFML_HPP
 #define ARCADE_SFML_HPP
 

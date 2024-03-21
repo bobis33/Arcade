@@ -10,8 +10,6 @@
  * @brief File declaring Sprite Interface
  */
 
-#pragma once
-
 #ifndef ARCADE_ISPRITE_HPP
 #define ARCADE_ISPRITE_HPP
 
