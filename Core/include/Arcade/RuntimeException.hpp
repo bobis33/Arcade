@@ -10,8 +10,6 @@
  * @brief File declaring RuntimeException
  */
 
-#pragma once
-
 #ifndef ARCADE_RUNTIME_EXCEPTION_HPP
 #define ARCADE_RUNTIME_EXCEPTION_HPP
 

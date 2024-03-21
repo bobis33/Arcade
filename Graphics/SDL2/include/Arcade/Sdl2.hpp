@@ -10,8 +10,6 @@
  * @brief File declaring Sdl2 class
  */
 
-#pragma once
-
 #ifndef ARCADE_SDL2_HPP
 #define ARCADE_SDL2_HPP
 

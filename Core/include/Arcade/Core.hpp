@@ -7,11 +7,8 @@
 
 /**
  * @file Core.hpp
- *
  * @brief File declaring Core
  */
-
-#pragma once
 
 #ifndef ARCADE_CORE_HPP
 #define ARCADE_CORE_HPP

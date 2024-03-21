@@ -11,8 +11,6 @@
  */
 
 
-#pragma once
-
 #ifndef ARCADE_IRENDERER_HPP
 #define ARCADE_IRENDERER_HPP
 

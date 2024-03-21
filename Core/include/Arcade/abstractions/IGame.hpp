@@ -10,8 +10,6 @@
  * @brief File declaring Game Interface
  */
 
-#pragma once
-
 #ifndef ARCADE_IGAME_HPP
 #define ARCADE_IGAME_HPP
 
