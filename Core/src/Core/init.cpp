@@ -42,9 +42,9 @@ void Arcade::Core::loadGraphic() {
         //loadTextures(someasciiartonlyformenu, "ascii art name");
     } else {
         if (!_window->loadFont("assets/fonts/menu_i.ttf", "menu_i")) {
-            throw std::runtime_error("Cannot load fonts");
+            throw RuntimeException("Cannot load fonts");
         } if (!_window->loadTexture("assets/textures/background.jpg", "background")) {
-            throw std::runtime_error("Cannot load background texture");
+            throw RuntimeException("Cannot load background texture");
         }
         _window->createSprite("background", 0, 0, 1, 1);
         _window->createText("menu_i", "MENU", 50, width / 2 - 100, height / 2 - 100);

@@ -10,6 +10,7 @@
 void Arcade::Sdl2::openWindow(unsigned int width, unsigned int height) {
     _widht = static_cast<int>(width);
     _height = static_cast<int>(height);
+    TTF_Init();
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         throw std::runtime_error("SDL_Init Error: " + std::string(SDL_GetError()));
     }
