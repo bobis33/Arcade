@@ -7,10 +7,8 @@ option(USE_CLANG_TIDY "Use Clang-tidy" OFF)
 project(arcade
         VERSION 0.1.0
         DESCRIPTION "EPITECH | B-OOP-400 | Arcade"
-        LANGUAGES CXX
+        LANGUAGES C CXX
 )
-
-set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core/src)
 
 set(WARNING_FLAGS
         -Wall
@@ -38,18 +36,21 @@ set(WARNING_FLAGS
         -Wundef
 )
 
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core/src)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+set(CMAKE_SHARED_LIBRARY_PREFIX "")
+
+# Set output directories
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
+set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
+
 # Build Doxygen documentation
-include(cmake/MakeDoc.cmake)
+include(${CMAKE_MODULE_PATH}/MakeDoc.cmake)
 
 # Clang format
 if (USE_CLANG_TIDY)
-    include(cmake/ClangTidy.cmake)
+    include(${CMAKE_MODULE_PATH}/ClangTidy.cmake)
 endif()
-
-# Set output directories
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
-set(CMAKE_SHARED_LIBRARY_PREFIX "")
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 # Add subdirectories
 add_subdirectory(Graphics)
@@ -67,7 +68,7 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Core/Events.cpp
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Core/include/)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include/)
 
 # Set compile and link options
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)

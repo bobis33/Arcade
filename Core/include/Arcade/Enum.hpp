@@ -16,14 +16,14 @@
 
 namespace Arcade {
 
-    enum class CoreMode : std::uint8_t {
+    enum class CoreMode {
         GAME,
         MENU,
         PAUSE,
         QUIT,
     };
 
-    enum class GameMode : std::uint8_t {
+    enum class GameMode {
         GAME,
         GAME_OVER,
         MENU,
@@ -35,7 +35,7 @@ namespace Arcade {
      * @brief Enum for the GameEvent
      * @details Set of enum used for the game event
      */
-    enum class GameEvent : std::uint8_t {
+    enum class GameEvent {
         UP,
         DOWN,
         LEFT,

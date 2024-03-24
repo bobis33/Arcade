@@ -1,7 +1,7 @@
 project(arcade_sdl2
         VERSION 0.1.0
         DESCRIPTION "SDL2 library for the arcade project"
-        LANGUAGES CXX
+        LANGUAGES C CXX
 )
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)

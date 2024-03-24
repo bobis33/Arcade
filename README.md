@@ -25,12 +25,8 @@ Only your dynamic libraries can do so. This also applies to your games.
 ### Build
 
 ```bash
-$> mkdir ./build && cd ./build/
-$> cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
+$> ./build.sh build
 [...]
-$> cmake --build .
-[...]
-$> cd ..
 ```
 
 ### Launch arcade
@@ -60,6 +56,10 @@ $> ./arcade [graphical_library.so]
     arcade
     │
     │─ .github/workflows/       Workflows
+    │
+    │─ assets/                  assets files (images, sounds, etc.)
+    │
+    │─ cmake/modules/           cmake modules 
     │
     │─ doc/                     Documentation
     │
