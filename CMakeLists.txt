@@ -10,7 +10,7 @@ project(arcade
         LANGUAGES CXX
 )
 
-set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core/src/)
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core/src)
 
 set(WARNING_FLAGS
         -Wall

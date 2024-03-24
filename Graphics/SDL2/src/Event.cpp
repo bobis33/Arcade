@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Events.cpp
+** Event.cpp
 */
 
 #include "Arcade/Sdl2.hpp"

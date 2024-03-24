@@ -6,12 +6,14 @@ project(arcade_sdl2
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)
 
+set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
+
 add_library(arcade_sdl2 SHARED ${SOURCE})
 
 target_sources(${PROJECT_NAME} PRIVATE
-        src/entryPoint.cpp
-        src/Sdl2.cpp
-        src/Events.cpp
+        ${SRC_DIR}/entryPoint.cpp
+        ${SRC_DIR}/Sdl2.cpp
+        ${SRC_DIR}/Event.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_INCLUDE_DIRS})
 target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS})

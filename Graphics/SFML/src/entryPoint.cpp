@@ -6,6 +6,7 @@
 */
 
 #include <memory>
+
 #include "Arcade/Sfml.hpp"
 
 extern "C" {

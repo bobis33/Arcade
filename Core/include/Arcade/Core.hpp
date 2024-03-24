@@ -33,7 +33,14 @@ namespace Arcade
     class Core
     {
         private:
+            /**
+            * @brief Core mode
+            */
             CoreMode _mode{CoreMode::MENU};
+
+            /**
+             * @brief Window renderer
+             */
             std::unique_ptr<IRenderer> _window{nullptr};
 
         public:
@@ -102,6 +109,16 @@ namespace Arcade
              * @brief close the window
              */
             void closeWindow() { _window->closeWindow(); };
+
+            /**
+             * @brief load graphic
+             */
+            void loadGraphic();
+
+            /**
+             * @brief display menu
+             */
+            void displayMenu();
 
     }; // Core
 

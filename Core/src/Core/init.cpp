@@ -33,13 +33,29 @@ void Arcade::Core::parser(const std::string &path)
     _window = entryPointFunc();
 }
 
-int Arcade::Core::runArcade(const std::string &path)
-{
+void Arcade::Core::loadGraphic() {
     const unsigned int width = 1920;
     const unsigned int height = 1080;
+
+    _window->openWindow(width, height);
+    if (_window->isASCII()) {
+        //loadTextures(someasciiartonlyformenu, "ascii art name");
+    } else {
+        if (!_window->loadFont("assets/fonts/menu_i.ttf", "menu_i")) {
+            throw std::runtime_error("Cannot load fonts");
+        } if (!_window->loadTexture("assets/textures/background.jpg", "background")) {
+            throw std::runtime_error("Cannot load background texture");
+        }
+        _window->createSprite("background", 0, 0, 1, 1);
+        _window->createText("menu_i", "MENU", 50, width / 2 - 100, height / 2 - 100);
+    }
+}
+
+int Arcade::Core::runArcade(const std::string &path)
+{
     try {
         parser(path);
-        _window->openWindow(width, height);
+        loadGraphic();
         gameLoop();
     } catch (CoreException &e) {
         std::cerr << CORE_EXCEPT << e.what() << '\n';

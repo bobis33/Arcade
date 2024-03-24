@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Sfml.cpp
+** Event.cpp
 */
 
 #include "Arcade/Sfml.hpp"
