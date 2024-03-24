@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.22)
 
 set(CMAKE_BUILD_TYPE Release)
 
+option(USE_CLANG_TIDY "Use Clang-tidy" OFF)
+
 project(arcade
         VERSION 0.1.0
         DESCRIPTION "EPITECH | B-OOP-400 | Arcade"
         LANGUAGES CXX
 )
-
-option(USE_CLANG_TIDY "Use Clang-tidy" OFF)
 
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core/src/)
 

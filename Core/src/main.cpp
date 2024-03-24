@@ -5,6 +5,8 @@
 ** main.cpp
 */
 
+#include <iostream>
+
 #include "Arcade/Core.hpp"
 #include "Arcade/Constants.hpp"
 
@@ -15,7 +17,7 @@ constexpr std::string_view USAGE_MSG = "USAGE\n"
 
 int main(int argc, const char* argv[]) {
     if (argc != 2) {
-        std::cerr << USAGE_MSG << std::endl;
+        std::cerr << USAGE_MSG << '\n';
         return EPITECH_ERROR;
     }
     return Arcade::Core().runArcade(argv[1]);

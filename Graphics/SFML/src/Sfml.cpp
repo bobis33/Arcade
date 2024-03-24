@@ -11,10 +11,12 @@ constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
 
 Arcade::Sfml::Sfml() {
     // to move in menu
-    if (!loadFont("assets/fonts/menu_i.ttf", "menu_i"))
+    if (!loadFont("assets/fonts/menu_i.ttf", "menu_i")) {
         throw std::runtime_error("Cannot load fonts");
-    if (!loadTexture("assets/textures/background.jpg", "background"))
+    }
+    if (!loadTexture("assets/textures/background.jpg", "background")) {
         throw std::runtime_error("Cannot load background texture");
+    }
     _sprite.setTexture(_textures["background"]);
     _text.setFont(_fonts["menu_i"]);
     _text.setString("MENU");
@@ -28,8 +30,9 @@ Arcade::Sfml::Sfml() {
 bool Arcade::Sfml::loadFont(const std::string &filePath, const std::string &name) {
     sf::Font font;
 
-    if (!font.loadFromFile(filePath))
+    if (!font.loadFromFile(filePath)) {
         return false;
+    }
     _fonts[name] = font;
     return true;
 }
@@ -37,8 +40,9 @@ bool Arcade::Sfml::loadFont(const std::string &filePath, const std::string &name
 bool Arcade::Sfml::loadTexture(const std::string &filePath, const std::string &name) {
     sf::Texture texture;
 
-    if (!texture.loadFromFile(filePath))
+    if (!texture.loadFromFile(filePath)) {
         return false;
+    }
     _textures[name] = texture;
     return true;
 }

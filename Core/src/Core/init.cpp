@@ -18,8 +18,9 @@ constexpr std::string_view RUNTIME_EXCEPT = "Runtime exception: ";
 
 void Arcade::Core::parser(const std::string &path)
 {
-    if (!getenv("DISPLAY"))
+    if (getenv("DISPLAY") == nullptr) {
         throw CoreException{NO_DISPLAY};
+    }
 
     void *handle = dlopen(path.c_str(), RTLD_LAZY);
     if (handle == nullptr) {
@@ -34,18 +35,20 @@ void Arcade::Core::parser(const std::string &path)
 
 int Arcade::Core::runArcade(const std::string &path)
 {
+    const unsigned int width = 1920;
+    const unsigned int height = 1080;
     try {
         parser(path);
-        _window->openWindow(1920, 1080);
+        _window->openWindow(width, height);
         gameLoop();
     } catch (CoreException &e) {
-        std::cerr << CORE_EXCEPT << e.what() << std::endl;
+        std::cerr << CORE_EXCEPT << e.what() << '\n';
         return EPITECH_ERROR;
     } catch (const RuntimeException &e) {
-        std::cerr << RUNTIME_EXCEPT << e.what() << std::endl;
+        std::cerr << RUNTIME_EXCEPT << e.what() << '\n';
         return EPITECH_ERROR;
     } catch (...) {
-        std::cerr << UNKNOW_ERROR << std::endl;
+        std::cerr << UNKNOW_ERROR << '\n';
         return EPITECH_ERROR;
     }
     return SUCCESS;

@@ -47,6 +47,7 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
 void Arcade::Core::handleEvents(const GameEvent &event)
 {
     auto map_event = MAP_EVENT.find(event);
-    if (map_event != MAP_EVENT.end())
+    if (map_event != MAP_EVENT.end()) {
         map_event->second(*this);
+    }
 }
