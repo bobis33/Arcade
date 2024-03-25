@@ -14,6 +14,7 @@
 #define ARCADE_CORE_HPP
 
 #include <memory>
+#include <vector>
 
 #include "Arcade/Enum.hpp"
 #include "Arcade/abstractions/IRenderer.hpp"
@@ -42,6 +43,16 @@ namespace Arcade
              * @brief Window renderer
              */
             std::unique_ptr<IRenderer> _window{nullptr};
+
+            /**
+             * @brief Graphic libraries actives
+             */
+            std::vector<std::string> _graphicLibraries;
+
+            /**
+             * @brief Game libraries actives
+             */
+            std::vector<std::string> _gameLibraries;
 
         public:
             Core() = default;
@@ -88,6 +99,11 @@ namespace Arcade
             int runArcade(const std::string &path);
 
             /**
+             * @brief Get actives libraries
+             */
+            void getLibraries();
+
+            /**
              * @brief Game loop
              * @details Main game loop
              */
@@ -122,6 +138,6 @@ namespace Arcade
 
     }; // Core
 
-}
+} // namespace Arcade
 
 #endif // ARCADE_CORE_HPP

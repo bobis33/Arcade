@@ -66,6 +66,7 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Core/init.cpp
         ${SRC_DIR}/Core/Core.cpp
         ${SRC_DIR}/Core/Events.cpp
+        ${SRC_DIR}/Core/libraries.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include/)

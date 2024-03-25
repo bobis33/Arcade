@@ -47,7 +47,13 @@ void Arcade::Core::loadGraphic() {
             throw RuntimeException("Cannot load background texture");
         }
         _window->createSprite("background", 0, 0, 1, 1);
-        _window->createText("menu_i", "MENU", 50, width / 2 - 100, height / 2 - 100);
+        _window->createText("menu_i", "MENU", 50, width / 2 - 100, height / 12);
+        for (unsigned int index = 0; index < _graphicLibraries.size(); index++) {
+            _window->createText("menu_i", _graphicLibraries[index], 30, width * 0.6, (static_cast<float>(height / 2 - 100 + 50 * (index + 1))));
+        }
+        for (unsigned int index = 0; index < _gameLibraries.size(); index++) {
+            _window->createText("menu_i", _gameLibraries[index], 30, width * 0.1, (static_cast<float>(height / 2 - 100 + 50 * (index + 1))));
+        }
     }
 }
 
@@ -55,6 +61,7 @@ int Arcade::Core::runArcade(const std::string &path)
 {
     try {
         parser(path);
+        getLibraries();
         loadGraphic();
         gameLoop();
     } catch (CoreException &e) {

@@ -11,6 +11,12 @@
 void Arcade::Core::displayMenu() {
     _window->displaySprite("background");
     _window->displayText("MENU");
+    for (const auto & graphicLibrarie : _graphicLibraries) {
+        _window->displayText(graphicLibrarie);
+    }
+    for (const auto & gameLibrarie : _gameLibraries) {
+        _window->displayText(gameLibrarie);
+    }
 }
 
 void Arcade::Core::gameLoop()
