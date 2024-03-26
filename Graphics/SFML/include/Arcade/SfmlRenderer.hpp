@@ -2,40 +2,36 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Sfml.hpp
+** SfmlRenderer.hpp
 */
 
 /**
- * @file Sfml.hpp
- * @brief File declaring Sfml class
+ * @file SfmlRenderer.hpp
+ * @brief File declaring SfmlRenderer class
  */
 
-#ifndef ARCADE_SFML_HPP
-#define ARCADE_SFML_HPP
+#ifndef ARCADE_SFML_RENDERER_HPP
+#define ARCADE_SFML_RENDERER_HPP
 
 #include <SFML/Graphics.hpp>
 
 #include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/abstractions/IWindow.hpp"
+#include "Arcade/SfmlWindow.hpp"
 
 namespace Arcade
 {
 
     /**
-    * @brief Sfml class
-    * @details Sfml class for the Arcade project
+    * @brief SfmlRenderer class
+    * @details SfmlRenderer class for the Arcade project
     */
-	class Sfml : public IRenderer
+	class SfmlRenderer : public IRenderer
     {
         public:
-            ~Sfml() override = default;
+            ~SfmlRenderer() override = default;
 
             GameEvent getEvent() override;
-
-            void openWindow(unsigned int width, unsigned int height) override;
-            void displayWindow() override { _window.display(); };
-            void clearWindow() override { _window.clear(); };
-            void closeWindow() override { _window.close(); };
-            void setTitle(const std::string &title) override { _window.setTitle(title); };
 
             bool loadTexture(const std::string &texture, const std::string &name) override;
             bool loadFont(const std::string &filepath, const std::string &name) override;
@@ -46,8 +42,10 @@ namespace Arcade
 
             bool isASCII() override { return false; };
 
+            IWindow *getWindow() override { return &_window; };
+
         private:
-            sf::RenderWindow _window;
+            SfmlWindow _window;
 
             std::map<std::string, sf::Texture> _textures;
             std::map<std::string, sf::Sprite> _sprites;
@@ -59,7 +57,8 @@ namespace Arcade
 
             static GameEvent keyboardEvent(sf::Event event);
 
-    }; // Sfml
-}
+    }; // SfmlRenderer
 
-#endif // ARCADE_SFML_HPP
+} // namespace Arcade
+
+#endif // ARCADE_SFML_RENDERER_HPP

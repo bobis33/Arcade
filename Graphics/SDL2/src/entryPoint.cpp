@@ -7,10 +7,10 @@
 
 #include <memory>
 
-#include "Arcade/Sdl2.hpp"
+#include "Arcade/Sdl2Renderer.hpp"
 
 extern "C" {
     std::unique_ptr<Arcade::IRenderer> entryPoint() {
-        return std::make_unique<Arcade::Sdl2>();
+        return std::make_unique<Arcade::Sdl2Renderer>();
     }
 }

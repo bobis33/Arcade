@@ -2,14 +2,14 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Sfml.cpp
+** SfmlRenderer.cpp
 */
 
-#include "Arcade/Sfml.hpp"
+#include "Arcade/SfmlWindow.hpp"
 
 constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
 
-void Arcade::Sfml::openWindow(const unsigned int width, const unsigned int height) {
+void Arcade::SfmlWindow::openWindow(const unsigned int width, const unsigned int height) {
     _width = width;
     _height = height;
     _window.create(sf::VideoMode(width, height), WINDOW_TITLE.data());

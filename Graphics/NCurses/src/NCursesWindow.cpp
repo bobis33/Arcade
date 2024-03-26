@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Ncurses.cpp
+** NCursesRenderer.cpp
 */
 
-#include "Arcade/Ncurses.hpp"
+#include "Arcade/NCursesWindow.hpp"
 
-void Arcade::Ncurses::openWindow(const unsigned int width, const unsigned int height)
+void Arcade::NCursesWindow::openWindow(const unsigned int width, const unsigned int height)
 {
     (void)width; (void)height;
     int size_title = 0;
@@ -17,7 +17,7 @@ void Arcade::Ncurses::openWindow(const unsigned int width, const unsigned int he
     curs_set(0);
     keypad(stdscr, TRUE);
     _window = newwin(0, 0, 0, 0);
-    for (; _title.data()[size_title]; size_title++);
+    for (; _title.data()[size_title] != 0; size_title++);
     _titlePos = (COLS - size_title) / 2;
     wrefresh(_window);
 }

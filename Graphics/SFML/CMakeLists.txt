@@ -12,7 +12,7 @@ add_library(arcade_sfml SHARED ${SOURCE})
 
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/entryPoint.cpp
-        ${SRC_DIR}/Sfml.cpp
+        ${SRC_DIR}/SfmlWindow.cpp
         ${SRC_DIR}/Event.cpp
         ${SRC_DIR}/Sprite.cpp
         ${SRC_DIR}/Text.cpp

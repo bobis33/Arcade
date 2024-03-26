@@ -5,7 +5,7 @@
 ** Event.cpp
 */
 
-#include "Arcade/Sfml.hpp"
+#include "Arcade/SfmlRenderer.hpp"
 
 /*
  * push on the top of the switch cases that will be the most used (and who's implemented too)
@@ -13,7 +13,7 @@
  * the program will do the whole switch to reach the last case.
 */
 
-Arcade::GameEvent Arcade::Sfml::keyboardEvent(sf::Event event)
+Arcade::GameEvent Arcade::SfmlRenderer::keyboardEvent(sf::Event event)
 {
     switch (event.key.code) {
         case sf::Keyboard::Left:
@@ -228,11 +228,11 @@ Arcade::GameEvent Arcade::Sfml::keyboardEvent(sf::Event event)
     }
 }
 
-Arcade::GameEvent Arcade::Sfml::getEvent()
+Arcade::GameEvent Arcade::SfmlRenderer::getEvent()
 {
     sf::Event event{};
 
-    while (_window.pollEvent(event)) {
+    while (_window.getWindow()->pollEvent(event)) {
         switch (event.type) {
             case sf::Event::KeyPressed:
                 return keyboardEvent(event);

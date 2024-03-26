@@ -5,9 +5,9 @@
 ** Event.cpp
 */
 
-#include "Arcade/Ncurses.hpp"
+#include "Arcade/NCursesRenderer.hpp"
 
-Arcade::GameEvent Arcade::Ncurses::getEvent()
+Arcade::GameEvent Arcade::NCursesRenderer::getEvent()
 {
 
     switch (getch()) {

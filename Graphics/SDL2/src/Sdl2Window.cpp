@@ -2,18 +2,14 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Sdl2.cpp
+** Sdl2Window.cpp
 */
 
-#include "Arcade/Sdl2.hpp"
+#include "Arcade/Sdl2Window.hpp"
 
-void Arcade::Sdl2::closeWindow() {
-    for (auto &font : _fonts) {
-        TTF_CloseFont(font.second);
-    }
-    for (auto &texture : _textures) {
-        SDL_DestroyTexture(texture.second);
-    }
+constexpr std::string_view WINDOW_TITLE = "Arcade - SDL2";
+
+void Arcade::Sdl2Window::closeWindow() {
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     TTF_Quit();
@@ -21,7 +17,7 @@ void Arcade::Sdl2::closeWindow() {
     SDL_Quit();
 }
 
-void Arcade::Sdl2::openWindow(unsigned int width, unsigned int height) {
+void Arcade::Sdl2Window::openWindow(unsigned int width, unsigned int height) {
     _widht = static_cast<int>(width);
     _height = static_cast<int>(height);
     TTF_Init();

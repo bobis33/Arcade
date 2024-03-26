@@ -2,46 +2,38 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Sdl2.hpp
+** Sdl2Renderer.hpp
 */
 
 /**
- * @file Sdl2.hpp
- * @brief File declaring Sdl2 class
+ * @file Sdl2Renderer.hpp
+ * @brief File declaring Sdl2Renderer class
  */
 
-#ifndef ARCADE_SDL2_HPP
-#define ARCADE_SDL2_HPP
+#ifndef ARCADE_SDL2_RENDERER_HPP
+#define ARCADE_SDL2_RENDERER_HPP
 
-#include <iostream>
 #include <map>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 
 #include "Arcade/abstractions/IRenderer.hpp"
-
-constexpr std::string_view WINDOW_TITLE = "Arcade - SDL2";
+#include "Arcade/Sdl2Window.hpp"
 
 namespace Arcade
 {
 
     /**
-    * @brief Sdl2 class
-    * @details Sdl2 class for the Arcade project
+    * @brief Sdl2Renderer class
+    * @details Sdl2Renderer class for the Arcade project
     */
-	class Sdl2 : public IRenderer
+	class Sdl2Renderer : public IRenderer
     {
         public:
-            ~Sdl2() override = default;
+            ~Sdl2Renderer() override = default;
 
             GameEvent getEvent() override;
-
-            void openWindow(unsigned int width, unsigned int height) override;
-            void displayWindow() override { SDL_RenderPresent(_renderer); };
-            void clearWindow() override { SDL_RenderClear(_renderer); };
-            void closeWindow() override;
-            void setTitle(const std::string &title) override { SDL_SetWindowTitle(_window, title.c_str()); };
 
             bool loadTexture(const std::string &filePath, const std::string &name) override;
             bool loadFont(const std::string &filepath, const std::string &name) override;
@@ -52,22 +44,49 @@ namespace Arcade
 
             bool isASCII() override { return false; };
 
+            IWindow *getWindow() override { return &_window; };
+
         private:
-            SDL_Window *_window{nullptr};
-            SDL_Renderer *_renderer{nullptr};
-            int _widht{0};
-            int _height{0};
-            std::map<std::string, SDL_Texture *> _textures;
+
+            /**
+             * @brief The Sdl2Window
+             */
+            Sdl2Window _window;
+
+            /**
+             * @brief The sprites
+             */
+            std::map<std::string, SDL_Texture *> _sprites;
+
+            /**
+             * @brief The fonts
+             */
             std::map<std::string, TTF_Font *> _fonts;
+
+            /**
+             * @brief The texts
+             */
             std::map<std::string, SDL_Texture *> _texts;
+
+            /**
+             * @brief The texts sizes
+             */
             std::map<std::string, SDL_Rect> _textsRect;
+
+            /**
+             * @brief The sprites sizes
+             */
             std::map<std::string, SDL_Rect> _spritesRect;
 
+            /**
+             * @brief Get the keyboard event
+             * @param event The SDL event
+             * @return The game event
+             */
             static GameEvent keyboardEvent(SDL_Event event);
 
+    }; // Sdl2Renderer
 
-    }; // Sdl2
+} // namespace Arcade
 
-} // Arcade
-
-#endif // ARCADE_SDL2_HPP
+#endif // ARCADE_SDL2_RENDERER_HPP

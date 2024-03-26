@@ -9,21 +9,21 @@
 #include "Arcade/Core.hpp"
 
 void Arcade::Core::displayMenu() {
-    _window->displaySprite("background");
-    _window->displayText("MENU");
+    _renderer->displaySprite("background");
+    _renderer->displayText("MENU");
     for (const auto & graphicLibrarie : _graphicLibraries) {
-        _window->displayText(graphicLibrarie);
+        _renderer->displayText(graphicLibrarie);
     }
     for (const auto & gameLibrarie : _gameLibraries) {
-        _window->displayText(gameLibrarie);
+        _renderer->displayText(gameLibrarie);
     }
 }
 
 void Arcade::Core::gameLoop()
 {
     while (_mode != CoreMode::QUIT) {
-        _window->displayWindow();
-        handleEvents(_window->getEvent());
+        _renderer->getWindow()->displayWindow();
+        handleEvents(_renderer->getEvent());
         if (_mode == CoreMode::MENU) {
             displayMenu();
         }

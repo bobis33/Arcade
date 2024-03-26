@@ -38,6 +38,6 @@ namespace Arcade {
 
     }; // IGame
 
-} // Arcade
+} // namespace Arcade
 
 #endif // ARCADE_IGAME_HPP

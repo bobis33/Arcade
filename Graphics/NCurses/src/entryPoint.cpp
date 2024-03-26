@@ -7,10 +7,10 @@
 
 #include <memory>
 
-#include "Arcade/Ncurses.hpp"
+#include "Arcade/NCursesRenderer.hpp"
 
 extern "C" {
     std::unique_ptr<Arcade::IRenderer> entryPoint() {
-        return std::make_unique<Arcade::Ncurses>();
+        return std::make_unique<Arcade::NCursesRenderer>();
     }
 }

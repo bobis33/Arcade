@@ -18,6 +18,7 @@
 
 #include "Arcade/Enum.hpp"
 #include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/abstractions/IWindow.hpp"
 
 /**
  * @namespace Arcade
@@ -42,7 +43,7 @@ namespace Arcade
             /**
              * @brief Window renderer
              */
-            std::unique_ptr<IRenderer> _window{nullptr};
+            std::unique_ptr<IRenderer> _renderer{nullptr};
 
             /**
              * @brief Graphic libraries actives
@@ -122,11 +123,6 @@ namespace Arcade
             void setMode(const CoreMode &gameMode) { _mode = gameMode; };
 
             /**
-             * @brief close the window
-             */
-            void closeWindow() { _window->closeWindow(); };
-
-            /**
              * @brief load graphic
              */
             void loadGraphic();
@@ -135,6 +131,12 @@ namespace Arcade
              * @brief display menu
              */
             void displayMenu();
+
+            /**
+             * @brief Get the renderer
+             * @return The renderer
+             */
+            IRenderer *getRenderer() { return _renderer.get(); };
 
     }; // Core
 

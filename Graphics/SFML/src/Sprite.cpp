@@ -5,21 +5,21 @@
 ** Sprite.cpp
 */
 
-#include "Arcade/Sfml.hpp"
+#include "Arcade/SfmlRenderer.hpp"
 
-bool Arcade::Sfml::loadTexture(const std::string &filePath, const std::string &name) {
+bool Arcade::SfmlRenderer::loadTexture(const std::string &filePath, const std::string &name) {
     return _textures[name].loadFromFile(filePath);
 }
 
-void Arcade::Sfml::createSprite(const std::string &textureName, float pos_x, float pos_y, float scale_x,
-                                float scale_y) {
+void Arcade::SfmlRenderer::createSprite(const std::string &textureName, float pos_x, float pos_y, float scale_x,
+                                        float scale_y) {
     _sprites[textureName].setTexture(_textures[textureName]);
     _sprites[textureName].setPosition(pos_x, pos_y);
     _sprites[textureName].setScale(scale_x, scale_y);
 }
 
-void Arcade::Sfml::displaySprite(const std::string &spriteName) {
-    _window.draw(_sprites[spriteName]);
+void Arcade::SfmlRenderer::displaySprite(const std::string &spriteName) {
+    _window.getWindow()->draw(_sprites[spriteName]);
 }
 
 /*

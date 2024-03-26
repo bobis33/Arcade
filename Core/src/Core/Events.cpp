@@ -7,6 +7,7 @@
 
 #include <map>
 #include <functional>
+
 #include "Arcade/abstractions/IRenderer.hpp"
 #include "Arcade/Core.hpp"
 
@@ -39,7 +40,7 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
                 }},
         {Arcade::GameEvent::QUIT,
                 [](Arcade::Core &core) -> void {
-                    core.closeWindow();
+                    core.getRenderer()->getWindow()->closeWindow();
                     core.setMode(Arcade::CoreMode::QUIT);
                 }},
 };
@@ -47,6 +48,7 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
 void Arcade::Core::handleEvents(const GameEvent &event)
 {
     auto map_event = MAP_EVENT.find(event);
+
     if (map_event != MAP_EVENT.end()) {
         map_event->second(*this);
     }

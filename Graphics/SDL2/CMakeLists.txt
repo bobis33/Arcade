@@ -12,7 +12,7 @@ add_library(arcade_sdl2 SHARED ${SOURCE})
 
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/entryPoint.cpp
-        ${SRC_DIR}/Sdl2.cpp
+        ${SRC_DIR}/Sdl2Window.cpp
         ${SRC_DIR}/Event.cpp
         ${SRC_DIR}/Sprite.cpp
         ${SRC_DIR}/Text.cpp

@@ -12,7 +12,7 @@ add_library(arcade_ncurses SHARED ${SOURCE})
 
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/entryPoint.cpp
-        ${SRC_DIR}/Ncurses.cpp
+        ${SRC_DIR}/NCursesWindow.cpp
         ${SRC_DIR}/Event.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_INCLUDE_DIRS})

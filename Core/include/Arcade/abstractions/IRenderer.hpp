@@ -10,13 +10,11 @@
  * @brief File declaring Graphic Interface
  */
 
-
 #ifndef ARCADE_IRENDERER_HPP
 #define ARCADE_IRENDERER_HPP
 
-#include <string>
-
 #include "Arcade/Enum.hpp"
+#include "Arcade/abstractions/IWindow.hpp"
 
 namespace Arcade {
 
@@ -29,32 +27,10 @@ namespace Arcade {
         virtual ~IRenderer() = default;
 
         /**
-         * @brief Create a window with the specified dimensions
-         * @param width The width of the window
-         * @param height The height of the window
+         * @brief Retrieve the window associated with the renderer
+         * @return The window associated with the renderer
          */
-        virtual void openWindow(unsigned int width, unsigned int height) = 0;
-
-        /**
-         * @brief Display the current window
-         */
-        virtual void displayWindow() = 0;
-
-        /**
-         * @brief Clear the contents of the current window
-         */
-        virtual void clearWindow() = 0;
-
-        /**
-         * @brief Close the current window
-         */
-        virtual void closeWindow() = 0;
-
-        /**
-         * @brief Set the title of the window
-         * @param title The new title of the window
-         */
-        virtual void setTitle(const std::string &title) = 0;
+        virtual IWindow *getWindow() = 0;
 
         /**
          * @brief Retrieve the current event from the window

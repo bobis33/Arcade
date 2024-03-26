@@ -13,7 +13,7 @@
 #ifndef ARCADE_ISPRITE_HPP
 #define ARCADE_ISPRITE_HPP
 
-#include <string>
+#include <iostream>
 #include <vector>
 
 namespace Arcade {
@@ -50,6 +50,6 @@ namespace Arcade {
 
     }; // IGame
 
-} // Arcade
+} // namespace Arcade
 
 #endif // ARCADE_ISPRITE_HPP
