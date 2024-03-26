@@ -7,6 +7,20 @@
 
 #include "Arcade/Sdl2.hpp"
 
+void Arcade::Sdl2::closeWindow() {
+    for (auto &font : _fonts) {
+        TTF_CloseFont(font.second);
+    }
+    for (auto &texture : _textures) {
+        SDL_DestroyTexture(texture.second);
+    }
+    SDL_DestroyRenderer(_renderer);
+    SDL_DestroyWindow(_window);
+    TTF_Quit();
+    IMG_Quit();
+    SDL_Quit();
+}
+
 void Arcade::Sdl2::openWindow(unsigned int width, unsigned int height) {
     _widht = static_cast<int>(width);
     _height = static_cast<int>(height);

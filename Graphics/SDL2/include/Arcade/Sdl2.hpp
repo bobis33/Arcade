@@ -17,6 +17,7 @@
 #include <map>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
 
 #include "Arcade/abstractions/IRenderer.hpp"
 
@@ -39,7 +40,7 @@ namespace Arcade
             void openWindow(unsigned int width, unsigned int height) override;
             void displayWindow() override { SDL_RenderPresent(_renderer); };
             void clearWindow() override { SDL_RenderClear(_renderer); };
-            void closeWindow() override { SDL_DestroyWindow(_window); SDL_DestroyRenderer(_renderer); SDL_Quit(); };
+            void closeWindow() override;
             void setTitle(const std::string &title) override { SDL_SetWindowTitle(_window, title.c_str()); };
 
             bool loadTexture(const std::string &filePath, const std::string &name) override;

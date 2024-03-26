@@ -5,8 +5,6 @@
 ** Sprite.cpp
 */
 
-#include <SDL2/SDL_image.h>
-
 #include "Arcade/Sdl2.hpp"
 
 bool Arcade::Sdl2::loadTexture(const std::string &filePath, const std::string &name)
