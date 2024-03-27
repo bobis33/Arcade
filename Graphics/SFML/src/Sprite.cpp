@@ -8,7 +8,7 @@
 #include "Arcade/SfmlRenderer.hpp"
 
 bool Arcade::SfmlRenderer::loadTexture(const std::string &filePath, const std::string &name) {
-    return _textures[name].loadFromFile(filePath);
+    return (_textures[name].loadFromFile(filePath));
 }
 
 void Arcade::SfmlRenderer::createSprite(const std::string &textureName, float pos_x, float pos_y, float scale_x,

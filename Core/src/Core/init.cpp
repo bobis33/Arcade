@@ -21,7 +21,6 @@ void Arcade::Core::parser(const std::string &path)
     if (getenv("DISPLAY") == nullptr) {
         throw CoreException{NO_DISPLAY};
     }
-
     void *handle = dlopen(path.c_str(), RTLD_LAZY);
     if (handle == nullptr) {
         throw CoreException(dlerror());
@@ -31,6 +30,7 @@ void Arcade::Core::parser(const std::string &path)
         throw CoreException(dlerror());
     }
     _renderer = entryPointFunc();
+    _handleGraphic = handle;
 }
 
 void Arcade::Core::loadGraphic() {
@@ -48,11 +48,11 @@ void Arcade::Core::loadGraphic() {
         }
         _renderer->createSprite("background", 0, 0, 1, 1);
         _renderer->createText("menu_i", "MENU", 50, width / 2 - 100, height / 12);
-        for (unsigned int index = 0; index < _graphicLibraries.size(); index++) {
-            _renderer->createText("menu_i", _graphicLibraries[index], 30, width * 0.6, (static_cast<float>(height / 2 - 100 + 50 * (index + 1))));
+        for (unsigned int index = 0; index < _graphicLibs.size(); index++) {
+            _renderer->createText("menu_i", _graphicLibs[index], 30, width * 0.6, (static_cast<float>(height / 2 - 100 + 50 * (index + 1))));
         }
-        for (unsigned int index = 0; index < _gameLibraries.size(); index++) {
-            _renderer->createText("menu_i", _gameLibraries[index], 30, width * 0.1, (static_cast<float>(height / 2 - 100 + 50 * (index + 1))));
+        for (unsigned int index = 0; index < _gameLibs.size(); index++) {
+            _renderer->createText("menu_i", _gameLibs[index], 30, width * 0.1, (static_cast<float>(height / 2 - 100 + 50 * (index + 1))));
         }
     }
 }

@@ -32,7 +32,6 @@ set(WARNING_FLAGS
         -Wold-style-cast
         -Wredundant-decls
         -Wswitch-default
-        -Wswitch-enum
         -Wundef
 )
 

@@ -29,6 +29,8 @@ Arcade::GameEvent Arcade::Sdl2Renderer::keyboardEvent(SDL_Event event)
             return Arcade::GameEvent::SHOOT;
         case SDLK_ESCAPE:
             return Arcade::GameEvent::PAUSE;
+        case SDLK_F1:
+            return Arcade::GameEvent::SWITCH_GRAPHIC;
 
         default:
             return Arcade::GameEvent::NONE;
