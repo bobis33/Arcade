@@ -43,6 +43,7 @@ namespace Arcade {
         SHOOT,
         PAUSE,
         QUIT,
+        SWITCH_GRAPHIC,
         NONE,
     };
 

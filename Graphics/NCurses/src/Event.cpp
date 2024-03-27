@@ -21,7 +21,8 @@ Arcade::GameEvent Arcade::NCursesRenderer::getEvent()
             return GameEvent::RIGHT;
         case 'q':
             return GameEvent::QUIT;
-
+        case KEY_F(1):
+            return GameEvent::SWITCH_GRAPHIC;
         default:
             return GameEvent::NONE;
     }

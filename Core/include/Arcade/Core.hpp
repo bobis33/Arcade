@@ -48,12 +48,23 @@ namespace Arcade
             /**
              * @brief Graphic libraries actives
              */
-            std::vector<std::string> _graphicLibraries;
+            std::vector<std::string> _graphicLibs;
 
             /**
              * @brief Game libraries actives
              */
-            std::vector<std::string> _gameLibraries;
+            std::vector<std::string> _gameLibs;
+
+            /**
+             * @brief Current graphic index
+             */
+            size_t _currentGraphicIndex;
+
+            /**
+             * @brief Handle graphic
+             * @details void *, store for dlclose
+             */
+            void *_handleGraphic;
 
         public:
             Core() = default;
@@ -103,6 +114,11 @@ namespace Arcade
              * @brief Get actives libraries
              */
             void getLibraries();
+
+            /**
+             * @brief Switch Graphic librarie
+             */
+            void switchGraphicLib();
 
             /**
              * @brief Game loop

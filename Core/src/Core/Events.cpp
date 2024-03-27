@@ -43,6 +43,10 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
                     core.getRenderer()->getWindow()->closeWindow();
                     core.setMode(Arcade::CoreMode::QUIT);
                 }},
+        {Arcade::GameEvent::SWITCH_GRAPHIC,
+                [](Arcade::Core &core) -> void {
+                    core.switchGraphicLib();
+                }},
 };
 
 void Arcade::Core::handleEvents(const GameEvent &event)

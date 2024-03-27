@@ -10,7 +10,7 @@
 
 
 bool Arcade::SfmlRenderer::loadFont(const std::string &filePath, const std::string &name) {
-    return _fonts[name].loadFromFile(filePath);
+    return (_fonts[name].loadFromFile(filePath));
 }
 
 void Arcade::SfmlRenderer::createText(const std::string &fontName, const std::string &text, int size, float pos_x, float pos_y) {

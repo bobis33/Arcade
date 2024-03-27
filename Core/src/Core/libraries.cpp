@@ -5,14 +5,29 @@
 ** libraries.cpp
 */
 
-#include <iostream>
 #include <algorithm>
 #include <dirent.h>
+#include <dlfcn.h>
 
 #include "Arcade/Core.hpp"
 
 static const std::vector<std::string> graphics_lib = {"arcade_ncurses.so", "arcade_sfml.so", "arcade_sdl2.so"};
 static const std::vector<std::string> games_lib    = {""};
+
+void Arcade::Core::switchGraphicLib() {
+    for (size_t index = 0; index < _graphicLibs.size(); index++) {
+        if (_graphicLibs[index] == _graphicLibs[_currentGraphicIndex]) {
+            _currentGraphicIndex = index;
+        }
+    }
+    _currentGraphicIndex = (_currentGraphicIndex + 1) % _graphicLibs.size();
+
+    _renderer->getWindow()->closeWindow();
+    _renderer.reset();
+    dlclose(_handleGraphic);
+    parser("lib/" + _graphicLibs[_currentGraphicIndex]);
+    loadGraphic();
+}
 
 void Arcade::Core::getLibraries() {
     struct dirent *entry{nullptr};
@@ -26,12 +41,13 @@ void Arcade::Core::getLibraries() {
         if (entry->d_name[0] != '.') {
             libname = entry->d_name;
             if (std::find(graphics_lib.begin(), graphics_lib.end(), libname) != graphics_lib.end()) {
-                _graphicLibraries.push_back(libname);
+                _graphicLibs.push_back(libname);
             } else if (std::find(games_lib.begin(), games_lib.end(), libname) != games_lib.end()) {
-                _gameLibraries.push_back(libname);
+                _gameLibs.push_back(libname);
             } else {
                 throw CoreException{"Unknown library"};
             }
         }
     }
+    closedir(dir);
 }
