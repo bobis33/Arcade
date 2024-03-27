@@ -40,6 +40,7 @@ $> ./arcade [graphical_library.so]
 
 |  Actions   |  ncurses  |   sfml    |   sdl2    |
 |:----------:|:---------:|:---------:|:---------:|
+|  Next lib  |   `F1`    |   `F1`    |   `F1`    |
 |  Move up   | `Z` / `↑` | `Z` / `↑` | `Z` / `↑` |
 | Move down  | `S` / `↓` | `S` / `↓` | `S` / `↓` |
 | Move left  | `Q` / `←` | `Q` / `←` | `Q` / `←` |
