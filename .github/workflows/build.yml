@@ -11,6 +11,7 @@ on:
 env:
   EXECUTABLE: "arcade"
   GRAPHICAL_LIBRARY: "arcade_ncurses.so,arcade_sdl2.so,arcade_sfml.so"
+  GAME_LIBRARY: "arcade_nibbler.so,arcade_snake.so"
 
 jobs:
   build:
@@ -38,6 +39,16 @@ jobs:
       - name: Check shared libraries (Graphical libraries)
         run: |
           IFS=',' read -ra ADDR <<< $GRAPHICAL_LIBRARY
+          for lib in "${ADDR[@]}"; do
+            if [[ ! -e "./lib/${lib}" ]]; then
+              echo "Error: Library $lib not found."
+              exit 1
+            fi
+          done
+
+      - name: Check shared libraries (Graphical libraries)
+        run: |
+          IFS=',' read -ra ADDR <<< $GAME_LIBRARY
           for lib in "${ADDR[@]}"; do
             if [[ ! -e "./lib/${lib}" ]]; then
               echo "Error: Library $lib not found."
