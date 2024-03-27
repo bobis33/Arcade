@@ -8,7 +8,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)
 
 set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
 
-add_library(arcade_snake SHARED ${SOURCE})
+add_library(${PROJECT_NAME} SHARED ${SOURCE})
 
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/entryPoint.cpp

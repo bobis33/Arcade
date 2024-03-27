@@ -5,6 +5,6 @@ set(COMMON_INCLUDE_DIRS
         include
 )
 
-add_subdirectory(SDL2)
 add_subdirectory(NCurses)
+add_subdirectory(SDL2)
 add_subdirectory(SFML)
