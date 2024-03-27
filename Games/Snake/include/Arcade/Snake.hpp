@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** B-OOP-400-BDX-4-1-arcade-elliot.masina
 ** File description:
-** Snake
+** Snake.hpp
 */
 
 /**
@@ -10,11 +10,12 @@
  * @brief Defines the Snake class.
 */
 
-#ifndef SNAKE_HPP_
-#define SNAKE_HPP_
+#ifndef ARCADE_SNAKE_GAME_HPP
+#define ARCADE_SNAKE_GAME_HPP
+
+#include <vector>
 
 #include "Arcade/abstractions/IGame.hpp"
-#include <vector>
 
 namespace Arcade {
     class Snake : public IGame {
@@ -40,4 +41,4 @@ namespace Arcade {
     }; 
 }
 
-#endif /* !SNAKE_HPP_ */
+#endif // ARCADE_SNAKE_GAME_HPP

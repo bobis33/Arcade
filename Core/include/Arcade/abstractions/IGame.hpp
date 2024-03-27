@@ -23,9 +23,6 @@ namespace Arcade {
     public:
         virtual ~IGame() = default;
 
-        IGame(const IGame &) = delete;
-        IGame &operator=(const IGame &) = delete;
-
         /**
          * @brief start the game
          */

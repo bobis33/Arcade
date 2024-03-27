@@ -11,8 +11,8 @@
 
 #include "Arcade/Core.hpp"
 
-static const std::vector<std::string> graphics_lib = {"arcade_ncurses.so", "arcade_sfml.so", "arcade_sdl2.so"};
-static const std::vector<std::string> games_lib    = {""};
+static const std::vector<std::string> graphics_lib = {"arcade_ncurses.so", "arcade_sdl2.so", "arcade_sfml.so"};
+static const std::vector<std::string> games_lib    = {"arcade_nibbler.so", "arcade_snake.so"};
 
 void Arcade::Core::switchGraphicLib() {
     for (size_t index = 0; index < _graphicLibs.size(); index++) {
