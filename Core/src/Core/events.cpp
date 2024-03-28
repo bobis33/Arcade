@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Events.cpp
+** events.cpp
 */
 
 #include <map>
@@ -45,7 +45,7 @@ static const std::map<const Arcade::GameEvent, std::function<void(Arcade::Core &
                 }},
         {Arcade::GameEvent::SWITCH_GRAPHIC,
                 [](Arcade::Core &core) -> void {
-                    core.switchGraphicLib();
+                    core.switchGraphicLibrary();
                 }},
 };
 

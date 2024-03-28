@@ -19,6 +19,7 @@
 #include "Arcade/Enum.hpp"
 #include "Arcade/abstractions/IRenderer.hpp"
 #include "Arcade/abstractions/IWindow.hpp"
+#include "Arcade/abstractions/IGame.hpp"
 
 /**
  * @namespace Arcade
@@ -46,6 +47,11 @@ namespace Arcade
             std::unique_ptr<IRenderer> _renderer{nullptr};
 
             /**
+             * @brief Game instance
+             */
+            std::unique_ptr<IGame> _game{nullptr};
+
+            /**
              * @brief Graphic libraries actives
              */
             std::vector<std::string> _graphicLibs;
@@ -58,13 +64,19 @@ namespace Arcade
             /**
              * @brief Current graphic index
              */
-            size_t _currentGraphicIndex;
+            size_t _currentGraphicIndex{0};
 
             /**
              * @brief Handle graphic
              * @details void *, store for dlclose
              */
-            void *_handleGraphic;
+            void *_handleGraphic{nullptr};
+
+            /**
+             * @brief Handle game
+             * @details void *, store for dlclose
+             */
+            void *_handleGame{nullptr};
 
         public:
             Core() = default;
@@ -95,13 +107,7 @@ namespace Arcade
         private:
             std::string _msg{0};
 
-        }; // Exception
-
-            /**
-             * @brief parse arguments
-             * @param path
-             */
-            void parser(const std::string &path);
+        }; // CoreException
 
             /**
              * @brief Run Arcade
@@ -113,12 +119,28 @@ namespace Arcade
             /**
              * @brief Get actives libraries
              */
-            void getLibraries();
+            void getLibraries(const std::string &libPath);
 
             /**
-             * @brief Switch Graphic librarie
+             * @brief Get next library index
+             * @param libs
+             * @param currentIndex
+             * @return size_t
              */
-            void switchGraphicLib();
+            static size_t getNextLibIndex(std::vector<std::string> &libs, size_t currentIndex);
+
+            /**
+             * @brief Switch Graphic library
+             */
+            void switchGraphicLibrary();
+
+            /**
+             * @brief Switch library
+             * @tparam T
+             * @param libPath
+             */
+            template<typename T>
+            void switchLib(const std::string &libPath);
 
             /**
              * @brief Game loop
@@ -139,9 +161,9 @@ namespace Arcade
             void setMode(const CoreMode &gameMode) { _mode = gameMode; };
 
             /**
-             * @brief load graphic
+             * @brief load Menu
              */
-            void loadGraphic();
+            void loadMenu();
 
             /**
              * @brief display menu

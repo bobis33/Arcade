@@ -35,7 +35,7 @@ set(WARNING_FLAGS
         -Wundef
 )
 
-set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core/src)
+set(SRC_DIR ${CMAKE_SOURCE_DIR}/Core/src)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 
@@ -62,10 +62,12 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/main.cpp
-        ${SRC_DIR}/Core/init.cpp
-        ${SRC_DIR}/Core/Core.cpp
-        ${SRC_DIR}/Core/Events.cpp
-        ${SRC_DIR}/Core/libraries.cpp
+        ${SRC_DIR}/Core/run.cpp
+        ${SRC_DIR}/Core/libraries/libraries.cpp
+        ${SRC_DIR}/Core/libraries/switch.cpp
+        ${SRC_DIR}/Core/gameLoop.cpp
+        ${SRC_DIR}/Core/events.cpp
+        ${SRC_DIR}/Core/menu.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include/)

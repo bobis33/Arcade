@@ -29,4 +29,16 @@ constexpr int SUCCESS = 0;
  */
 constexpr int ERROR = -1;
 
+/**
+ * @brief Width of the window
+ */
+constexpr int WIDTH = 1920;
+
+/**
+ * @brief Height of the window
+ */
+constexpr int HEIGHT = 1080;
+
+constexpr char const *LIB_PATH = "./lib/";
+
 #endif // ARCADE_CONSTANTS_HPP

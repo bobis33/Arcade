@@ -2,22 +2,10 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** Core.cpp
+** gameLoop.cpp
 */
 
-#include "Arcade/abstractions/IRenderer.hpp"
 #include "Arcade/Core.hpp"
-
-void Arcade::Core::displayMenu() {
-    _renderer->displaySprite("background");
-    _renderer->displayText("MENU");
-    for (const auto & graphicLibrarie : _graphicLibs) {
-        _renderer->displayText(graphicLibrarie);
-    }
-    for (const auto & gameLibrarie : _gameLibs) {
-        _renderer->displayText(gameLibrarie);
-    }
-}
 
 void Arcade::Core::gameLoop()
 {
