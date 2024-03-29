@@ -17,6 +17,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 
 #include "Arcade/abstractions/IRenderer.hpp"
 #include "Arcade/Sdl2Window.hpp"
@@ -47,9 +48,9 @@ namespace Arcade
 
             IWindow *getWindow() override { return &_window; };
 
-            void loadSound() override {};
-            void playSound() override {};
-            void stopSound() override {};
+            void loadSound() override;
+            void playSound() override;
+            void stopSound() override;
 
         private:
 
@@ -82,6 +83,11 @@ namespace Arcade
              * @brief The sprites sizes
              */
             std::map<std::string, SDL_Rect> _spritesRect;
+
+            /**
+             * @brief The music
+             */
+            Mix_Music *_music;
 
             /**
              * @brief Get the keyboard event

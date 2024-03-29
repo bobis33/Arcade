@@ -14,7 +14,7 @@
 static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::Core &)>> MAP_GAME_EVENT = {
         {Arcade::KeyboardEvents::ESC,
                 [](Arcade::Core &core) -> void {
-                    core.getRenderer()->stopSound();
+                    // core.getRenderer()->stopSound();
                     core.getRenderer()->getWindow()->closeWindow();
                     core.setMode(Arcade::CoreMode::QUIT);
                 }},

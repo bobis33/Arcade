@@ -14,7 +14,7 @@ void Arcade::SfmlRenderer::stopSound() {
     delete _sound;
 }
 
-void Arcade::SfmlRenderer::playSound() { }
+void Arcade::SfmlRenderer::playSound() {}
 
 void Arcade::SfmlRenderer::loadSound() {
     if (!_buffer.loadFromFile("assets/sounds/menu_sounds.ogg")) {

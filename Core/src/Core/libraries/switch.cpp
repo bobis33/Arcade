@@ -34,6 +34,7 @@ void Arcade::Core::switchLib(const std::string &libPath)
     }
     if constexpr (std::is_same_v<T, IRenderer>) {
         if (_renderer != nullptr) {
+            _renderer->stopSound();
             _renderer->getWindow()->closeWindow();
             _renderer.reset();
             dlclose(_handleGraphic);
