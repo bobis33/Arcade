@@ -14,14 +14,18 @@
 #define ARCADE_SNAKE_HPP
 
 #include <vector>
+#include <memory>
 
-#include "Arcade/abstractions/AGame.hpp"
+#include "Arcade/abstractions/IGame.hpp"
+#include "Arcade/abstractions/IRenderer.hpp"
 
 namespace Arcade {
     class Snake : public AGame {
         public:
-            void loadGame() override {};
-            void displayGame() override {};
+            ~Snake() override = default;
+
+            void start(std::reference_wrapper<IRenderer> renderer) override;
+            void displayGame() override;
             void stop() override {};
             void handleEvents(KeyboardEvents event) override;
 

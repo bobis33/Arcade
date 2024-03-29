@@ -13,11 +13,9 @@
 #ifndef ARCADE_IGAME_HPP
 #define ARCADE_IGAME_HPP
 
-#include <functional>
-
 #include "Arcade/abstractions/IRenderer.hpp"
-#include "Arcade/Constants.hpp"
-#include "Arcade/Clock/Clock.hpp"
+
+#include <functional>
 
 namespace Arcade {
 
