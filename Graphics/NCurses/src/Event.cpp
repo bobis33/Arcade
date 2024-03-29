@@ -7,23 +7,23 @@
 
 #include "Arcade/NCursesRenderer.hpp"
 
-Arcade::GameEvent Arcade::NCursesRenderer::getEvent()
+Arcade::KeyboardEvents Arcade::NCursesRenderer::getEvent()
 {
 
     switch (getch()) {
         case KEY_UP:
-            return GameEvent::UP;
+            return KeyboardEvents::UP;
         case KEY_DOWN:
-            return GameEvent::DOWN;
+            return KeyboardEvents::DOWN;
         case KEY_LEFT:
-            return GameEvent::LEFT;
+            return KeyboardEvents::LEFT;
         case KEY_RIGHT:
-            return GameEvent::RIGHT;
-        case 'q':
-            return GameEvent::QUIT;
+            return KeyboardEvents::RIGHT;
         case KEY_F(1):
-            return GameEvent::SWITCH_GRAPHIC;
+            return KeyboardEvents::F1;
+        case 27:
+            return KeyboardEvents::ESC;
         default:
-            return GameEvent::NONE;
+            return KeyboardEvents::NONE;
     }
 }

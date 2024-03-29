@@ -8,6 +8,9 @@
 
 #include "Arcade/SfmlRenderer.hpp"
 
+void Arcade::SfmlRenderer::moveText(const std::string &textName, int pos_x, int pos_y) {
+    _texts[textName].setPosition(static_cast<float>(pos_x), static_cast<float>(pos_y));
+}
 
 bool Arcade::SfmlRenderer::loadFont(const std::string &filePath, const std::string &name) {
     return (_fonts[name].loadFromFile(filePath));

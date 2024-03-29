@@ -18,6 +18,7 @@ void Arcade::Core::displayMenu() {
     for (const auto & gameLibrarie : _gameLibs) {
         _renderer->displayText(gameLibrarie);
     }
+    _renderer->displayText(">");
 }
 
 void Arcade::Core::loadMenu() {
@@ -31,11 +32,13 @@ void Arcade::Core::loadMenu() {
         }
         _renderer->createSprite("background", 0, 0, 1, 1);
         _renderer->createText("menu_i", "MENU", 50, WIDTH / 2 - 100, HEIGHT / 12);
+        _renderer->createText("menu_i", ">", 50, static_cast<float>(WIDTH * 0.07), static_cast<float>(HEIGHT / 2 - 110 + 50 * (0 + 1)));
         for (unsigned int index = 0; index < _graphicLibs.size(); index++) {
             _renderer->createText("menu_i", _graphicLibs[index], 30, WIDTH * 0.6, (static_cast<float>(HEIGHT / 2 - 100 + 50 * (index + 1))));
         }
         for (unsigned int index = 0; index < _gameLibs.size(); index++) {
             _renderer->createText("menu_i", _gameLibs[index], 30, WIDTH * 0.1, (static_cast<float>(HEIGHT / 2 - 100 + 50 * (index + 1))));
         }
+        _renderer->loadSound();
     }
 }

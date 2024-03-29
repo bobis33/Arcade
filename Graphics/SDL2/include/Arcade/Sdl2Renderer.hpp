@@ -33,7 +33,7 @@ namespace Arcade
         public:
             ~Sdl2Renderer() override = default;
 
-            GameEvent getEvent() override;
+            KeyboardEvents getEvent() override;
 
             bool loadTexture(const std::string &filePath, const std::string &name) override;
             bool loadFont(const std::string &filepath, const std::string &name) override;
@@ -41,10 +41,15 @@ namespace Arcade
             void createText(const std::string &fontName, const std::string &text, int size, float pos_x, float pos_y) override;
             void displaySprite(const std::string &spriteName) override;
             void displayText(const std::string &textName) override;
+            void moveText(const std::string &textName, int pos_x, int pos_y) override;
 
             bool isASCII() override { return false; };
 
             IWindow *getWindow() override { return &_window; };
+
+            void loadSound() override {};
+            void playSound() override {};
+            void stopSound() override {};
 
         private:
 
@@ -83,7 +88,7 @@ namespace Arcade
              * @param event The SDL event
              * @return The game event
              */
-            static GameEvent keyboardEvent(SDL_Event event);
+            static KeyboardEvents keyboardEvent(SDL_Event event);
 
     }; // Sdl2Renderer
 

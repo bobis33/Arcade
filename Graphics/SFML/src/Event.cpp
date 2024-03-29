@@ -13,31 +13,33 @@
  * the program will do the whole switch to reach the last case.
 */
 
-Arcade::GameEvent Arcade::SfmlRenderer::keyboardEvent(sf::Event event)
+Arcade::KeyboardEvents Arcade::SfmlRenderer::keyboardEvent(sf::Event event)
 {
     switch (event.key.code) {
         case sf::Keyboard::Left:
-            return Arcade::GameEvent::LEFT;
+            return Arcade::KeyboardEvents::LEFT;
         case sf::Keyboard::Right:
-            return Arcade::GameEvent::RIGHT;
+            return Arcade::KeyboardEvents::RIGHT;
         case sf::Keyboard::Up:
-            return Arcade::GameEvent::UP;
+            return Arcade::KeyboardEvents::UP;
         case sf::Keyboard::Down:
-            return Arcade::GameEvent::DOWN;
+            return Arcade::KeyboardEvents::DOWN;
         case sf::Keyboard::Escape:
-            return Arcade::GameEvent::PAUSE;
+            return Arcade::KeyboardEvents::ESC;
+        case sf::Keyboard::Enter:
+            return Arcade::KeyboardEvents::ENTER;
         case sf::Keyboard::Unknown:
-            return Arcade::GameEvent::NONE;
+            return Arcade::KeyboardEvents::NONE;
         case sf::Keyboard::F1:
-            return Arcade::GameEvent::SWITCH_GRAPHIC;
+            return Arcade::KeyboardEvents::F1;
 
 
         default:
-            return Arcade::GameEvent::NONE;
+            return Arcade::KeyboardEvents::NONE;
     }
 }
 
-Arcade::GameEvent Arcade::SfmlRenderer::getEvent()
+Arcade::KeyboardEvents Arcade::SfmlRenderer::getEvent()
 {
     sf::Event event{};
 
@@ -46,11 +48,11 @@ Arcade::GameEvent Arcade::SfmlRenderer::getEvent()
             case sf::Event::KeyPressed:
                 return keyboardEvent(event);
             case sf::Event::Closed:
-                return Arcade::GameEvent::QUIT;
+                return Arcade::KeyboardEvents::ESC;
 
             default:
-                return Arcade::GameEvent::NONE;
+                return Arcade::KeyboardEvents::NONE;
         }
     }
-    return Arcade::GameEvent::NONE;
+    return Arcade::KeyboardEvents::NONE;
 }

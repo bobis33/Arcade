@@ -25,7 +25,7 @@ int Arcade::Core::runArcade(const std::string &path)
         getLibraries(path);
         _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
         loadMenu();
-        gameLoop();
+        mainLoop();
     } catch (CoreException &e) {
         std::cerr << CORE_EXCEPT << e.what() << '\n';
         return EPITECH_ERROR;

@@ -14,6 +14,7 @@
 #define ARCADE_SFML_RENDERER_HPP
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "Arcade/abstractions/IRenderer.hpp"
 #include "Arcade/abstractions/IWindow.hpp"
@@ -31,7 +32,7 @@ namespace Arcade
         public:
             ~SfmlRenderer() override = default;
 
-            GameEvent getEvent() override;
+            KeyboardEvents getEvent() override;
 
             bool loadTexture(const std::string &texture, const std::string &name) override;
             bool loadFont(const std::string &filepath, const std::string &name) override;
@@ -39,13 +40,22 @@ namespace Arcade
             void createText(const std::string &fontName, const std::string &text, int size, float pos_x, float pos_y) override;
             void displaySprite(const std::string &spriteName) override;
             void displayText(const std::string &textName) override;
+            void moveText(const std::string &textName, int pos_x, int pos_y) override;
 
             bool isASCII() override { return false; };
 
             IWindow *getWindow() override { return &_window; };
 
+            void loadSound() override;
+
+            void playSound() override;
+
+            void stopSound() override;
+
         private:
             SfmlWindow _window;
+            sf::SoundBuffer _buffer;
+            sf::Sound* _sound;
 
             std::map<std::string, sf::Texture> _textures;
             std::map<std::string, sf::Sprite> _sprites;
@@ -55,7 +65,7 @@ namespace Arcade
             unsigned int _width{0};
             unsigned int _height{0};
 
-            static GameEvent keyboardEvent(sf::Event event);
+            static KeyboardEvents keyboardEvent(sf::Event event);
 
     }; // SfmlRenderer
 

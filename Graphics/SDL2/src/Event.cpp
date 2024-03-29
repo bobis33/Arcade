@@ -13,31 +13,33 @@
  * the program will do the whole switch to reach the last case.
 */
 
-Arcade::GameEvent Arcade::Sdl2Renderer::keyboardEvent(SDL_Event event)
+Arcade::KeyboardEvents Arcade::Sdl2Renderer::keyboardEvent(SDL_Event event)
 {
     switch(event.key.keysym.sym)
     {
         case SDLK_UP:
-            return Arcade::GameEvent::UP;
+            return Arcade::KeyboardEvents::UP;
         case SDLK_DOWN:
-            return Arcade::GameEvent::DOWN;
+            return Arcade::KeyboardEvents::DOWN;
         case SDLK_LEFT:
-            return Arcade::GameEvent::LEFT;
+            return Arcade::KeyboardEvents::LEFT;
         case SDLK_RIGHT:
-            return Arcade::GameEvent::RIGHT;
+            return Arcade::KeyboardEvents::RIGHT;
         case SDLK_SPACE:
-            return Arcade::GameEvent::SHOOT;
+            return Arcade::KeyboardEvents::CLICK;
         case SDLK_ESCAPE:
-            return Arcade::GameEvent::PAUSE;
+            return Arcade::KeyboardEvents::ESC;
+        case SDLK_RETURN:
+            return Arcade::KeyboardEvents::ENTER;
         case SDLK_F1:
-            return Arcade::GameEvent::SWITCH_GRAPHIC;
+            return Arcade::KeyboardEvents::F1;
 
         default:
-            return Arcade::GameEvent::NONE;
+            return Arcade::KeyboardEvents::NONE;
     }
 }
 
-Arcade::GameEvent Arcade::Sdl2Renderer::getEvent()
+Arcade::KeyboardEvents Arcade::Sdl2Renderer::getEvent()
 {
     SDL_Event event{};
 
@@ -46,13 +48,13 @@ Arcade::GameEvent Arcade::Sdl2Renderer::getEvent()
         switch(event.type)
         {
             case SDL_QUIT:
-                return Arcade::GameEvent::QUIT;
+                return Arcade::KeyboardEvents::ESC;
             case SDL_KEYDOWN:
                 return keyboardEvent(event);
 
             default:
-                return Arcade::GameEvent::NONE;
+                return Arcade::KeyboardEvents::NONE;
         }
     }
-    return Arcade::GameEvent::NONE;
+    return Arcade::KeyboardEvents::NONE;
 }

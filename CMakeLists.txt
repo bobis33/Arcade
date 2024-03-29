@@ -63,11 +63,14 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/main.cpp
         ${SRC_DIR}/Core/run.cpp
-        ${SRC_DIR}/Core/libraries/libraries.cpp
-        ${SRC_DIR}/Core/libraries/switch.cpp
-        ${SRC_DIR}/Core/gameLoop.cpp
+        ${SRC_DIR}/Core/mainLoop.cpp
         ${SRC_DIR}/Core/events.cpp
         ${SRC_DIR}/Core/menu.cpp
+        ${SRC_DIR}/Core/cursor.cpp
+        ${SRC_DIR}/Core/game.cpp
+        ${SRC_DIR}/Core/libraries/index.cpp
+        ${SRC_DIR}/Core/libraries/switch.cpp
+        ${SRC_DIR}/Core/libraries/libraries.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include/)

@@ -38,14 +38,15 @@ $> ./arcade [graphical_library.so]
 
 ### Key bindings
 
-|  Actions   |  ncurses  |   sfml    |   sdl2    |
-|:----------:|:---------:|:---------:|:---------:|
-|  Next lib  |   `F1`    |   `F1`    |   `F1`    |
-|  Move up   | `Z` / `↑` | `Z` / `↑` | `Z` / `↑` |
-| Move down  | `S` / `↓` | `S` / `↓` | `S` / `↓` |
-| Move left  | `Q` / `←` | `Q` / `←` | `Q` / `←` |
-| Move right | `D` / `→` | `D` / `→` | `D` / `→` |
-|    Quit    |    `Q`    | `ESCAPE`  | `ESCAPE`  |
+|     Actions      | ncurses | sfml  | sdl2  |
+|:----------------:|:-------:|:-----:|:-----:|
+| Next graphic lib |  `F1`   | `F1`  | `F1`  |
+|     Move up      |   `↑`   |  `↑`  |  `↑`  |
+|    Move down     |   `↓`   |  `↓`  |  `↓`  |
+|    Move left     |   `←`   |  `←`  |  `←`  |
+|    Move right    |   `→`   |  `→`  |  `→`  |
+|      Select      |  ENTER  | ENTER | ENTER |
+|       Quit       |   ESC   |  ESC  |  ESC  |
 
 ## Architecture
 
