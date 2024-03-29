@@ -71,6 +71,8 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Core/libraries/index.cpp
         ${SRC_DIR}/Core/libraries/switch.cpp
         ${SRC_DIR}/Core/libraries/libraries.cpp
+        ${SRC_DIR}/Clock/Clock.cpp
+        ${SRC_DIR}/Clock/Time.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include/)
