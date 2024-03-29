@@ -7,6 +7,11 @@
 
 #include "Arcade/Sdl2Renderer.hpp"
 
+void Arcade::Sdl2Renderer::moveText(const std::string &textName, int pos_x, int pos_y) {
+    _textsRect[textName].x = pos_x;
+    _textsRect[textName].y = pos_y;
+}
+
 bool Arcade::Sdl2Renderer::loadFont(const std::string &filepath, const std::string &name)
 {
     if (_fonts.find(name) != _fonts.end())

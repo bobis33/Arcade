@@ -67,6 +67,11 @@ namespace Arcade
             size_t _currentGraphicIndex{0};
 
             /**
+             * @brief Current game index
+             */
+            size_t _currentGameIndex{0};
+
+            /**
              * @brief Handle graphic
              * @details void *, store for dlclose
              */
@@ -130,6 +135,14 @@ namespace Arcade
             static size_t getNextLibIndex(std::vector<std::string> &libs, size_t currentIndex);
 
             /**
+             * @brief Get previous library index
+             * @param libs
+             * @param currentIndex
+             * @return size_t
+             */
+             static size_t getPreviousLibIndex(std::vector<std::string> &libs, size_t currentIndex);
+
+            /**
              * @brief Switch Graphic library
              */
             void switchGraphicLibrary();
@@ -146,13 +159,13 @@ namespace Arcade
              * @brief Game loop
              * @details Main game loop
              */
-            void gameLoop();
+            void mainLoop();
 
             /**
              * @brief Handle events
              * @param event
              */
-            void handleEvents(const GameEvent &event);
+            void handleEvents(const KeyboardEvents &event);
 
             /**
              * @brief Set the game mode
@@ -175,6 +188,14 @@ namespace Arcade
              * @return The renderer
              */
             IRenderer *getRenderer() { return _renderer.get(); };
+
+            void moveCursorDown();
+
+            void moveCursorUp();
+
+            void launchGame();
+
+            void setGameIndex(size_t index) { _currentGameIndex = index; };
 
     }; // Core
 

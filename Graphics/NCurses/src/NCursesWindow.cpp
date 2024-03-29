@@ -5,6 +5,8 @@
 ** NCursesRenderer.cpp
 */
 
+#include <signal.h>
+
 #include "Arcade/NCursesWindow.hpp"
 
 void Arcade::NCursesWindow::openWindow(const unsigned int width, const unsigned int height)
@@ -19,5 +21,10 @@ void Arcade::NCursesWindow::openWindow(const unsigned int width, const unsigned 
     _window = newwin(0, 0, 0, 0);
     for (; _title.data()[size_title] != 0; size_title++);
     _titlePos = (COLS - size_title) / 2;
+    signal(SIGWINCH, [](int sig) {
+        if (sig == SIGWINCH) {
+            resize_term(0, 0);
+        }
+    });
     wrefresh(_window);
 }

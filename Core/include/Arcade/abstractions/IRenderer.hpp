@@ -36,7 +36,7 @@ namespace Arcade {
          * @brief Retrieve the current event from the window
          * @return The current event
          */
-        virtual GameEvent getEvent() = 0;
+        virtual KeyboardEvents getEvent() = 0;
 
         /**
          * @brief Check if the renderer supports only ASCII characters
@@ -91,6 +91,14 @@ namespace Arcade {
          * @param textName The name of the text to display
          */
         virtual void displayText(const std::string &textName) = 0;
+
+        virtual void moveText(const std::string &textName, int pos_x, int pos_y) = 0;
+
+        virtual void loadSound() = 0;
+
+        virtual void playSound() = 0;
+
+        virtual void stopSound() = 0;
 
     }; // IRenderer
 

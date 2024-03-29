@@ -5,13 +5,21 @@
 ** switch.cpp
 */
 
+#include <filesystem>
 #include <algorithm>
 #include <dlfcn.h>
-#include <filesystem>
 
 #include "Arcade/Constants.hpp"
 #include "Arcade/Core.hpp"
 
+void Arcade::Core::switchGraphicLibrary() {
+    _currentGraphicIndex = getNextLibIndex(_graphicLibs, _currentGraphicIndex);
+
+    switchLib<IRenderer>(LIB_PATH + _graphicLibs[_currentGraphicIndex]);
+    setMode(CoreMode::MENU);
+    _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
+    loadMenu();
+}
 
 template<typename T>
 void Arcade::Core::switchLib(const std::string &libPath)
@@ -34,8 +42,8 @@ void Arcade::Core::switchLib(const std::string &libPath)
         _handleGraphic = handle;
     } else if constexpr (std::is_same_v<T, IGame>) {
         if (_game != nullptr) {
+            _game.reset();
             dlclose(_handleGame);
-            _handleGame = nullptr;
         }
         _game = std::move(entryPointFunc());
         _handleGame = handle;
@@ -43,25 +51,6 @@ void Arcade::Core::switchLib(const std::string &libPath)
         throw CoreException("Invalid library type");
     }
 }
-
-
-size_t Arcade::Core::getNextLibIndex(std::vector<std::string> &libs, size_t currentIndex) {
-    for (size_t index = 0; index < libs.size(); index++) {
-        if (libs[index] == libs[currentIndex]) {
-            currentIndex = index;
-        }
-    }
-    return (currentIndex + 1) % libs.size();
-}
-
-void Arcade::Core::switchGraphicLibrary() {
-    _currentGraphicIndex = getNextLibIndex(_graphicLibs, _currentGraphicIndex);
-
-    switchLib<IRenderer>(LIB_PATH + _graphicLibs[_currentGraphicIndex]);
-    _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
-    loadMenu();
-}
-
 
 template void Arcade::Core::switchLib<Arcade::IRenderer>(const std::string &);
 template void Arcade::Core::switchLib<Arcade::IGame>(const std::string &);

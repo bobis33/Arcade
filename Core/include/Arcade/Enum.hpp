@@ -32,18 +32,18 @@ namespace Arcade {
     };
 
     /**
-     * @brief Enum for the GameEvent
+     * @brief Enum for the KeyboardEvents
      * @details Set of enum used for the game event
      */
-    enum class GameEvent {
+    enum class KeyboardEvents {
         UP,
         DOWN,
         LEFT,
         RIGHT,
-        SHOOT,
-        PAUSE,
-        QUIT,
-        SWITCH_GRAPHIC,
+        CLICK,
+        ESC,
+        F1,
+        ENTER,
         NONE,
     };
 

@@ -16,9 +16,10 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Event.cpp
         ${SRC_DIR}/Sprite.cpp
         ${SRC_DIR}/Text.cpp
+        ${SRC_DIR}/Sound.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_INCLUDE_DIRS})
 target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS})
-target_link_libraries(${PROJECT_NAME} PRIVATE arcade_abstractions sfml-graphics sfml-window)
+target_link_libraries(${PROJECT_NAME} PRIVATE arcade_abstractions sfml-system sfml-window sfml-graphics sfml-audio)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
