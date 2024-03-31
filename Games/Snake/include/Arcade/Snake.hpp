@@ -10,35 +10,28 @@
  * @brief Defines the Snake class.
 */
 
-#ifndef ARCADE_SNAKE_GAME_HPP
-#define ARCADE_SNAKE_GAME_HPP
+#ifndef ARCADE_SNAKE_HPP
+#define ARCADE_SNAKE_HPP
 
 #include <vector>
 
-#include "Arcade/abstractions/IGame.hpp"
+#include "Arcade/abstractions/AGame.hpp"
 
 namespace Arcade {
-    class Snake : public IGame {
+    class Snake : public AGame {
         public:
-            ~Snake() override = default;
-
-            void start() override {};
+            void loadGame() override {};
+            void displayGame() override {};
             void stop() override {};
-
-            int getScore() const { return _score; };
-            int getSnakeSize() const { return _snakeSize; };
-            std::vector<std::pair<int, int>> getSnake() const { return _snake; };
-
+            void handleEvents(KeyboardEvents event) override {(void) event; };
 
         private:
-            int _score{0};
             int _snakeSize{1};
             std::vector<std::pair<int, int>> _snake;
             std::pair<int, int> _food;
             std::pair<int, int> _direction{1, 0};
             std::pair<int, int> _lastDirection{1, 0};
-            bool _gameOver{false};
     }; 
 }
 
-#endif // ARCADE_SNAKE_GAME_HPP
+#endif // ARCADE_SNAKE_HPP

@@ -10,19 +10,21 @@
  * @brief Defines the Nibbler class.
 */
 
-#ifndef ARCADE_NIBBLER_GAME_HPP
-#define ARCADE_NIBBLER_GAME_HPP
+#ifndef ARCADE_NIBBLER_HPP
+#define ARCADE_NIBBLER_HPP
 
-#include "Arcade/abstractions/IGame.hpp"
+#include "Arcade/abstractions/AGame.hpp"
 
 namespace Arcade {
-    class Nibbler : public IGame {
+    class Nibbler : public AGame {
         public:
-            ~Nibbler() override = default;
-
-            void start() override {};
+            void loadGame() override {};
+            void displayGame() override {};
             void stop() override {};
-    }; 
-}
+            void handleEvents(KeyboardEvents event) override {(void) event; };
 
-#endif // ARCADE_NIBBLER_GAME_HPP
+    }; // Nibbler
+
+} // namespace Arcade
+
+#endif // ARCADE_NIBBLER_HPP
