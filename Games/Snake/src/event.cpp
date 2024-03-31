@@ -2,33 +2,37 @@
 ** EPITECH PROJECT, 2024
 ** B-OOP-400-BDX-4-1-arcade-elliot.masina
 ** File description:
-** Snake
+** event
 */
 
-#include "Arcade/Snake.hpp"
-#include "Arcade/EventsManager.hpp"
+#include <map>
+#include <functional>
 
-static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::Snake &)>> MAP_EVENT = {
+#include "Arcade/Snake.hpp"
+
+static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::Snake &)>> MAP_GAME_EVENT = {
         {Arcade::KeyboardEvents::LEFT,
                 [](Arcade::Snake &snake) -> void {
-                    (void) snake;
+                    snake.moveSnake(-10, 0);
                 }},
         {Arcade::KeyboardEvents::RIGHT,
                 [](Arcade::Snake &snake) -> void {
-                    (void) snake;
+                    snake.moveSnake(10, 0);
                 }},
         {Arcade::KeyboardEvents::UP,
                 [](Arcade::Snake &snake) -> void {
-                    (void) snake;
+                    snake.moveSnake(0, -10);
                 }},
         {Arcade::KeyboardEvents::DOWN,
                 [](Arcade::Snake &snake) -> void {
-                    (void) snake;
+                    snake.moveSnake(0, 10);
                 }},
 };
 
-
-void Arcade::Snake::handleEvents(KeyboardEvents event)
+void Arcade::Snake::handleEvents(KeyboardEvents key)
 {
-    EventManager::handleEvent(MAP_EVENT, *this, event);
+    auto map_event = MAP_GAME_EVENT.find(key);
+        if (map_event != MAP_GAME_EVENT.end()) {
+            map_event->second(*this);
+        }
 }

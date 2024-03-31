@@ -53,6 +53,9 @@ namespace Arcade
 
             std::string updateTextBox() override;
             void setSize(float x, float y) override {_size = std::make_pair(x, y);};
+            void moveSprite(const std::string &spriteName, float pos_x, float pos_y) override;
+
+        private:
 
     private:
 

@@ -23,3 +23,7 @@ void Arcade::SfmlRenderer::displaySprite(const std::string &spriteName)
 {
     _window.getWindow()->draw(_sprites[spriteName]);
 }
+
+void Arcade::SfmlRenderer::moveSprite(const std::string &spriteName, float pos_x, float pos_y) {
+    _sprites[spriteName].setPosition(pos_x + _sprites[spriteName].getPosition().x, pos_y + _sprites[spriteName].getPosition().y);
+}

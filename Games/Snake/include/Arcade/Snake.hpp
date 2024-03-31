@@ -27,7 +27,12 @@ namespace Arcade {
             void start(std::reference_wrapper<IRenderer> renderer) override;
             void displayGame() override;
             void stop() override {};
-            void handleEvents(KeyboardEvents event) override;
+            void handleEvents(KeyboardEvents key) override;
+            void moveSnake(int x, int y);
+
+            int getScore() const { return _score; };
+            int getSnakeSize() const { return _snakeSize; };
+            std::vector<std::pair<int, int>> getSnake() const { return _snake; };
 
         private:
             int _snakeSize{1};

@@ -13,9 +13,11 @@
 #ifndef ARCADE_IGAME_HPP
 #define ARCADE_IGAME_HPP
 
-#include "Arcade/abstractions/IRenderer.hpp"
-
 #include <functional>
+
+#include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/Enum.hpp"
+
 
 namespace Arcade {
 
@@ -63,6 +65,11 @@ namespace Arcade {
             * @return The game mode
             */
             virtual GameMode getGameMode() const = 0;
+
+        /**
+         * @brief handle the game event
+        */
+        virtual void handleEvents(KeyboardEvents key) = 0;
 
     }; // IGame
 
