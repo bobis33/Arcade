@@ -19,16 +19,13 @@ namespace Arcade {
     enum class CoreMode {
         GAME,
         MENU,
-        PAUSE,
         QUIT,
     };
 
     enum class GameMode {
         GAME,
         GAME_OVER,
-        MENU,
         PAUSE,
-        QUIT,
     };
 
     /**

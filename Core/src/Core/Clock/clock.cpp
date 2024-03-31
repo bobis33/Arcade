@@ -5,7 +5,7 @@
 ** Clock.cpp
 */
 
-#include "Arcade/clock/Clock.hpp"
+#include "Arcade/Clock/Clock.hpp"
 
 
 Arcade::Clock::Clock()

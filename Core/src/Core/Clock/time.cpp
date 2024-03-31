@@ -5,7 +5,7 @@
 ** Time.cpp
 */
 
-#include "Arcade/clock/Clock.hpp"
+#include "Arcade/Clock/Clock.hpp"
 
 Arcade::Time::Time(float seconds)
     : m_seconds(seconds){}

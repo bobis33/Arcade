@@ -2,15 +2,15 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** clock.hpp
+** Clock.hpp
 */
 
-#ifndef ARCADE_SDL2_CLOCK_HPP
-#define ARCADE_SDL2_CLOCK_HPP
+#ifndef ARCADE_CLOCK_HPP
+#define ARCADE_CLOCK_HPP
 
 #include <chrono>
 
-#include "Time.hpp"
+#include "Arcade/Clock/Time.hpp"
 
 namespace Arcade
 {
@@ -45,4 +45,4 @@ namespace Arcade
     };
 }
 
-#endif // ARCADE_SDL2_CLOCK_HPP
+#endif // ARCADE_CLOCK_HPP

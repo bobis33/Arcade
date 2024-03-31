@@ -5,8 +5,8 @@
 ** time.hpp
 */
 
-#ifndef ARCADE_SDL2_TIME_HPP
-#define ARCADE_SDL2_TIME_HPP
+#ifndef ARCADE_TIME_HPP
+#define ARCADE_TIME_HPP
 
 
 namespace Arcade
@@ -39,4 +39,4 @@ namespace Arcade
     };
 }
 
-#endif // ARCADE_SDL2_TIME_HPP
+#endif // ARCADE_TIME_HPP

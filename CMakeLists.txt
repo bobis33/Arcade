@@ -65,14 +65,14 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Core/run.cpp
         ${SRC_DIR}/Core/mainLoop.cpp
         ${SRC_DIR}/Core/events.cpp
-        ${SRC_DIR}/Core/menu.cpp
-        ${SRC_DIR}/Core/cursor.cpp
         ${SRC_DIR}/Core/game.cpp
-        ${SRC_DIR}/Core/libraries/index.cpp
-        ${SRC_DIR}/Core/libraries/switch.cpp
-        ${SRC_DIR}/Core/libraries/libraries.cpp
-        ${SRC_DIR}/Clock/Clock.cpp
-        ${SRC_DIR}/Clock/Time.cpp
+        ${SRC_DIR}/Core/Menu/menu.cpp
+        ${SRC_DIR}/Core/Menu/cursor.cpp
+        ${SRC_DIR}/Core/Clock/clock.cpp
+        ${SRC_DIR}/Core/Clock/time.cpp
+        ${SRC_DIR}/Core/Libraries/index.cpp
+        ${SRC_DIR}/Core/Libraries/switch.cpp
+        ${SRC_DIR}/Core/Libraries/libraries.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include/)
