@@ -13,26 +13,19 @@
 #ifndef ARCADE_SNAKE_HPP
 #define ARCADE_SNAKE_HPP
 
-#include <vector>
-#include <memory>
-
-#include "Arcade/abstractions/IGame.hpp"
-#include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/abstractions/AGame.hpp"
 
 namespace Arcade {
     class Snake : public AGame {
         public:
-            ~Snake() override = default;
-
-            void start(std::reference_wrapper<IRenderer> renderer) override;
+            void loadGame() override;
             void displayGame() override;
             void stop() override {};
-            void handleEvents(KeyboardEvents key) override;
-            void moveSnake(int x, int y);
+            void handleEvents(KeyboardEvents event) override;
 
-            int getScore() const { return _score; };
-            int getSnakeSize() const { return _snakeSize; };
-            std::vector<std::pair<int, int>> getSnake() const { return _snake; };
+            void moveSnake(float pos_x, float pos_y);
+            [[nodiscard]] int getSnakeSize() const { return _snakeSize; };
+            [[nodiscard]] std::vector<std::pair<int, int>> getSnake() const { return _snake; };
 
         private:
             int _snakeSize{1};

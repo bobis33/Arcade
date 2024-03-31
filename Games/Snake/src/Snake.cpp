@@ -6,18 +6,17 @@
 */
 
 #include "Arcade/Snake.hpp"
-#include "Arcade/Enum.hpp"
 
-void Arcade::Snake::start(std::reference_wrapper<IRenderer> renderer)
+static constexpr float SNAKE_BODY_SIZE = 100;
+
+void Arcade::Snake::loadGame()
 {
-    _renderer = &renderer.get();
-
     if (!_renderer->loadTexture("assets/textures/background_snake.png", "background_snake"))
         throw std::runtime_error("Could not load texture background_snake");
     _renderer->createSprite("background_snake", 0, 0, 1, 1);
     if (!_renderer->loadTexture("assets/textures/snake/head_right.png", "head_right"))
         throw std::runtime_error("Could not load texture head_right");
-    _renderer->createSprite("head_right", 100, 100, 1, 1);
+    _renderer->createSprite("head_right", SNAKE_BODY_SIZE, SNAKE_BODY_SIZE, 1, 1);
 }
 
 void Arcade::Snake::displayGame()
@@ -26,7 +25,7 @@ void Arcade::Snake::displayGame()
     _renderer->displaySprite("head_right");
 }
 
-void Arcade::Snake::moveSnake(int x, int y)
+void Arcade::Snake::moveSnake(float pos_x, float pos_y)
 {
-    _renderer->moveSprite("head_right", static_cast<float> (x), static_cast<float> (y));
+    _renderer->moveSprite("head_right", pos_x, pos_y);
 }

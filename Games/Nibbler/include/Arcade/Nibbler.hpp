@@ -13,18 +13,12 @@
 #ifndef ARCADE_NIBBLER_HPP
 #define ARCADE_NIBBLER_HPP
 
-#include <vector>
-#include <memory>
-
-#include "Arcade/abstractions/IGame.hpp"
-#include "Arcade/abstractions/IRenderer.hpp"
+#include "Arcade/abstractions/AGame.hpp"
 
 namespace Arcade {
     class Nibbler : public AGame {
         public:
-            ~Nibbler() override = default;
-
-            void start(std::reference_wrapper<IRenderer> renderer) override {(void)renderer;};
+            void loadGame() override {};
             void displayGame() override {};
             void stop() override {};
             void handleEvents(KeyboardEvents event) override;

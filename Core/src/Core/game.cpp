@@ -7,13 +7,11 @@
 
 #include "Arcade/Core.hpp"
 
-#include <functional>
-
 void Arcade::Core::launchGame()
 {
     Clock clock{};
 
     switchLib<IGame>(LIB_PATH + _gameLibs[_currentGameIndex]);
     _renderer->getWindow()->clearWindow();
-    _game->start(std::reference_wrapper<IRenderer>(*_renderer));
+    _game->start(std::reference_wrapper<IRenderer>(*_renderer), clock);
 }

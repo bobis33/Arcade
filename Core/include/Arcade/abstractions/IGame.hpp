@@ -16,8 +16,8 @@
 #include <functional>
 
 #include "Arcade/abstractions/IRenderer.hpp"
-#include "Arcade/Enum.hpp"
-
+#include "Arcade/Constants.hpp"
+#include "Arcade/Clock/Clock.hpp"
 
 namespace Arcade {
 
@@ -65,11 +65,6 @@ namespace Arcade {
             * @return The game mode
             */
             virtual GameMode getGameMode() const = 0;
-
-        /**
-         * @brief handle the game event
-        */
-        virtual void handleEvents(KeyboardEvents key) = 0;
 
     }; // IGame
 
