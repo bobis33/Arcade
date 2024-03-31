@@ -32,6 +32,8 @@ Arcade::KeyboardEvents Arcade::SfmlRenderer::keyboardEvent(sf::Event event)
             return Arcade::KeyboardEvents::NONE;
         case sf::Keyboard::F1:
             return Arcade::KeyboardEvents::F1;
+        case sf::Keyboard::F2:
+            return Arcade::KeyboardEvents::F2;
 
 
         default:

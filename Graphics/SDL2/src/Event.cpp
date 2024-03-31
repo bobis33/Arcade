@@ -33,6 +33,8 @@ Arcade::KeyboardEvents Arcade::Sdl2Renderer::keyboardEvent(SDL_Event event)
             return Arcade::KeyboardEvents::ENTER;
         case SDLK_F1:
             return Arcade::KeyboardEvents::F1;
+        case SDLK_F2:
+            return Arcade::KeyboardEvents::F2;
 
         default:
             return Arcade::KeyboardEvents::NONE;

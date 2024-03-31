@@ -67,6 +67,7 @@ namespace Arcade {
         CLICK,
         ESC,
         F1,
+        F2,
         ENTER,
         NONE,
     };
