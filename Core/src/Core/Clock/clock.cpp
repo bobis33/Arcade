@@ -20,8 +20,8 @@ void Arcade::Clock::restart()
 
 Arcade::Time Arcade::Clock::getElapsedTime() const
 {
-    auto now = std::chrono::high_resolution_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::duration<double>>(now - m_start);
+    const auto end{std::chrono::high_resolution_clock::now()};
+    const std::chrono::duration<double> elapsed{end - m_start};
     
-    return Time(static_cast<float>(elapsed.count()));
+    return Time(elapsed.count());
 }

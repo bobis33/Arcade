@@ -22,7 +22,6 @@ namespace Arcade
      * @brief RuntimeException class
      * @details RuntimeException class for the Arcade project
      */
-
     class RuntimeException : public std::exception
     {
         public:

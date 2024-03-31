@@ -8,7 +8,6 @@
 #ifndef ARCADE_TIME_HPP
 #define ARCADE_TIME_HPP
 
-
 namespace Arcade
 {
     class Time
@@ -17,26 +16,28 @@ namespace Arcade
             /**
              * @brief Construct a new Time object
              */
-            explicit Time(float seconds);
+            explicit Time(double seconds);
 
             /**
              * @brief Transform the time to seconds
              */
-            int asSeconds() const;
+            [[nodiscard]] int asSeconds() const;
 
             /**
              * @brief Transform the time to milliseconds
              */
-            int asMilliseconds() const;
+            [[nodiscard]] int asMilliseconds() const;
             
             /**
              * @brief Transform the time to microseconds
              */
-            int asMicroseconds() const;
+            [[nodiscard]] int asMicroseconds() const;
 
         private:
-            float m_seconds;
-    };
-}
+            double m_seconds;
+
+    }; // Time
+
+} // namespace Arcade
 
 #endif // ARCADE_TIME_HPP

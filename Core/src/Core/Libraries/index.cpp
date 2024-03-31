@@ -5,9 +5,6 @@
 ** index.cpp
 */
 
-#include <algorithm>
-#include <filesystem>
-
 #include "Arcade/Core.hpp"
 
 size_t Arcade::Core::getPreviousLibIndex(std::vector<std::string> &libs, size_t index)

@@ -5,11 +5,8 @@
 ** switch.cpp
 */
 
-#include <filesystem>
-#include <algorithm>
 #include <dlfcn.h>
 
-#include "Arcade/Constants.hpp"
 #include "Arcade/Core.hpp"
 
 void Arcade::Core::switchGraphicLibrary() {

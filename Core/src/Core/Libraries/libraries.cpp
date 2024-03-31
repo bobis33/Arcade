@@ -6,10 +6,8 @@
 */
 
 #include <algorithm>
-#include <dlfcn.h>
 #include <filesystem>
 
-#include "Arcade/Constants.hpp"
 #include "Arcade/Core.hpp"
 
 static const std::vector<std::string> GRAPHIC_LIBS = {"arcade_ncurses.so", "arcade_sdl2.so", "arcade_sfml.so"};

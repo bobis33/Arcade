@@ -6,7 +6,6 @@
 */
 
 #include "Arcade/Core.hpp"
-#include "Arcade/Constants.hpp"
 
 void Arcade::Core::moveCursorUp() {
     _currentGameIndex = getPreviousLibIndex(_gameLibs, _currentGameIndex);

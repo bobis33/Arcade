@@ -7,8 +7,7 @@
 
 #include "Arcade/Clock/Clock.hpp"
 
-Arcade::Time::Time(float seconds)
-    : m_seconds(seconds){}
+Arcade::Time::Time(double seconds) : m_seconds(seconds) {}
 
 int Arcade::Time::asSeconds() const
 {

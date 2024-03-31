@@ -33,7 +33,7 @@ namespace Arcade
              * 
              * @return Time The elapsed time
              */
-            Time getElapsedTime() const;
+            [[nodiscard]] Time getElapsedTime() const;
 
             /**
              * @brief TimePoint is a type alias for a time point which is a very long and complicated type in the standard library
@@ -42,7 +42,9 @@ namespace Arcade
         
         private:
             TimePoint m_start;
-    };
-}
+
+    }; // Clock
+
+} // namespace Arcade
 
 #endif // ARCADE_CLOCK_HPP

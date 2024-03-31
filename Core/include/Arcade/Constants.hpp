@@ -41,4 +41,35 @@ constexpr int HEIGHT = 1080;
 
 constexpr char const *LIB_PATH = "./lib/";
 
+namespace Arcade {
+
+    enum class CoreMode {
+        GAME,
+        MENU,
+        QUIT,
+    };
+
+    enum class GameMode {
+        GAME,
+        GAME_OVER,
+        PAUSE,
+    };
+
+    /**
+     * @brief Enum for the KeyboardEvents
+     * @details Set of enum used for the game event
+     */
+    enum class KeyboardEvents {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        CLICK,
+        ESC,
+        F1,
+        ENTER,
+        NONE,
+    };
+}
+
 #endif // ARCADE_CONSTANTS_HPP

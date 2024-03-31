@@ -13,7 +13,7 @@
 #ifndef ARCADE_IRENDERER_HPP
 #define ARCADE_IRENDERER_HPP
 
-#include "Arcade/Enum.hpp"
+#include "Arcade/Constants.hpp"
 #include "Arcade/abstractions/IWindow.hpp"
 
 namespace Arcade {

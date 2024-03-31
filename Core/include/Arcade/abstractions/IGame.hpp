@@ -16,7 +16,7 @@
 #include <functional>
 
 #include "Arcade/abstractions/IRenderer.hpp"
-#include "Arcade/Enum.hpp"
+#include "Arcade/Constants.hpp"
 #include "Arcade/Clock/Clock.hpp"
 
 namespace Arcade {

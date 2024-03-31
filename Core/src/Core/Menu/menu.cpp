@@ -6,7 +6,6 @@
 */
 
 #include "Arcade/RuntimeException.hpp"
-#include "Arcade/Constants.hpp"
 #include "Arcade/Core.hpp"
 
 void Arcade::Core::displayMenu() {

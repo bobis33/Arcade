@@ -17,7 +17,7 @@
 #include <functional>
 
 #include "Arcade/Core.hpp"
-#include "Arcade/Enum.hpp"
+#include "Arcade/Constants.hpp"
 
 /**
  * @namespace Arcade
