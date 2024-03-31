@@ -5,7 +5,6 @@
 ** game.cpp
 */
 
-
 #include "Arcade/Core.hpp"
 #include "Arcade/Constants.hpp"
 

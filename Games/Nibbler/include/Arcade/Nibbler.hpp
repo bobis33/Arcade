@@ -21,7 +21,7 @@ namespace Arcade {
             void loadGame() override {};
             void displayGame() override {};
             void stop() override {};
-            void handleEvents(KeyboardEvents event) override {(void) event; };
+            void handleEvents(KeyboardEvents event) override;
 
     }; // Nibbler
 

@@ -16,7 +16,6 @@
 #include <memory>
 #include <vector>
 
-#include "Arcade/Enum.hpp"
 #include "Arcade/abstractions/IRenderer.hpp"
 #include "Arcade/abstractions/IWindow.hpp"
 #include "Arcade/abstractions/IGame.hpp"
@@ -162,12 +161,6 @@ namespace Arcade
             void mainLoop();
 
             /**
-             * @brief Handle events
-             * @param event
-             */
-            void handleEvents(const KeyboardEvents &event);
-
-            /**
              * @brief Set the game mode
              * @param gameMode
              */
@@ -196,6 +189,8 @@ namespace Arcade
             void launchGame();
 
             void setGameIndex(size_t index) { _currentGameIndex = index; };
+
+            CoreMode getMode() { return _mode; };
 
     }; // Core
 

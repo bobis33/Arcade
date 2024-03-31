@@ -23,7 +23,7 @@ namespace Arcade {
             void loadGame() override {};
             void displayGame() override {};
             void stop() override {};
-            void handleEvents(KeyboardEvents event) override {(void) event; };
+            void handleEvents(KeyboardEvents event) override;
 
         private:
             int _snakeSize{1};
@@ -31,7 +31,9 @@ namespace Arcade {
             std::pair<int, int> _food;
             std::pair<int, int> _direction{1, 0};
             std::pair<int, int> _lastDirection{1, 0};
-    }; 
-}
+
+    }; // Snake
+
+} // namespace Arcade
 
 #endif // ARCADE_SNAKE_HPP
