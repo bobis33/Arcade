@@ -10,11 +10,13 @@
 #include "Arcade/SfmlRenderer.hpp"
 
 void Arcade::SfmlRenderer::stopSound() {
+    if (_sound == nullptr)
+        return;
+
     _sound->stop();
     delete _sound;
+    _sound = nullptr;
 }
-
-void Arcade::SfmlRenderer::playSound() {}
 
 void Arcade::SfmlRenderer::loadSound() {
     if (!_buffer.loadFromFile("assets/sounds/menu_sounds.ogg")) {

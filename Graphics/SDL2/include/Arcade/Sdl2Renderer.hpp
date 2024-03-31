@@ -49,7 +49,6 @@ namespace Arcade
             IWindow *getWindow() override { return &_window; };
 
             void loadSound() override;
-            void playSound() override;
             void stopSound() override;
 
         private:

@@ -9,12 +9,14 @@
 
 void Arcade::Sdl2Renderer::stopSound()
 {
+    if (_music == nullptr)
+        return;
+
     Mix_FreeMusic(_music);
     Mix_CloseAudio();
     Mix_Quit();
+    _music = nullptr;
 }
-
-void Arcade::Sdl2Renderer::playSound() {}
 
 void Arcade::Sdl2Renderer::loadSound()
 {

@@ -48,8 +48,6 @@ namespace Arcade
 
             void loadSound() override;
 
-            void playSound() override;
-
             void stopSound() override;
 
         private:

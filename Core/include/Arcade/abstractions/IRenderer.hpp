@@ -96,8 +96,6 @@ namespace Arcade {
 
         virtual void loadSound() = 0;
 
-        virtual void playSound() = 0;
-
         virtual void stopSound() = 0;
 
     }; // IRenderer
