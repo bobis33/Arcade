@@ -24,6 +24,26 @@ bool Arcade::Sdl2Renderer::loadFont(const std::string &filepath, const std::stri
     return true;
 }
 
+std::string Arcade::Sdl2Renderer::updateTextBox()
+{
+    int width, height;
+
+    TTF_Font *font = TTF_OpenFont("./assets/fonts/menu_i.ttf", 30);
+    SDL_Surface *surface = TTF_RenderText_Solid(font, _input, {255, 255, 255, 255});
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(_window.getRenderer(), surface);
+    _texts[" "] = texture;
+
+    TTF_SizeText(font, _input, &width, &height);
+    SDL_Rect rect = {0, 0, width, height};
+    rect.x = _textsRect[" "].x;
+    rect.y = _textsRect[" "].y;
+    _textsRect[" "] = rect;
+
+    SDL_FreeSurface(surface);
+    return _input;
+}
+
+
 void Arcade::Sdl2Renderer::createText(const std::string &fontName, const std::string &text, const int size, const float pos_x, const float pos_y)
 {
     SDL_Color color{255, 255, 255, 255};

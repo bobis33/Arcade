@@ -45,9 +45,6 @@ namespace Arcade
         private:
             sf::RenderWindow _window;
 
-            unsigned int _width{0};
-            unsigned int _height{0};
-
     }; // SfmlWindow
 
 } // namespace Arcade

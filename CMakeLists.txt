@@ -65,6 +65,7 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Core/run.cpp
         ${SRC_DIR}/Core/mainLoop.cpp
         ${SRC_DIR}/Core/game.cpp
+        ${SRC_DIR}/Core/login.cpp
         ${SRC_DIR}/Core/Menu/menu.cpp
         ${SRC_DIR}/Core/Menu/cursor.cpp
         ${SRC_DIR}/Core/Clock/clock.cpp

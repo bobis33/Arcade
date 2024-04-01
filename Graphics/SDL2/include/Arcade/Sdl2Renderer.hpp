@@ -51,12 +51,17 @@ namespace Arcade
             void loadSound() override;
             void stopSound() override;
 
-        private:
+            std::string updateTextBox() override;
+            void setSize(float x, float y) override {_size = std::make_pair(x, y);};
+
+    private:
 
             /**
              * @brief The Sdl2Window
              */
             Sdl2Window _window;
+
+            std::pair<float, float> _size;
 
             /**
              * @brief The sprites
@@ -88,12 +93,14 @@ namespace Arcade
              */
             Mix_Music *_music;
 
+            char _input[1024];
+
             /**
              * @brief Get the keyboard event
              * @param event The SDL event
              * @return The game event
              */
-            static KeyboardEvents keyboardEvent(SDL_Event event);
+            KeyboardEvents keyboardEvent(SDL_Event event);
 
     }; // Sdl2Renderer
 

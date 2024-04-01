@@ -47,12 +47,17 @@ namespace Arcade
             void loadSound() override {};
             void stopSound() override {};
 
+            std::string updateTextBox() override {return "";};
+            void setSize(float x, float y) override {_size = std::make_pair(x, y);};
+
         private:
 
             /**
              * @brief The NCursesWindow
              */
             NCursesWindow _window;
+
+            std::pair<float, float> _size;
 
 	}; // NCursesRenderer
 

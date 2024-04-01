@@ -45,6 +45,7 @@ namespace Arcade {
 
     enum class CoreMode {
         GAME,
+        LOGIN,
         MENU,
         QUIT,
     };
@@ -52,6 +53,8 @@ namespace Arcade {
     enum class GameMode {
         GAME,
         GAME_OVER,
+        LOGIN,
+        MENU,
         PAUSE,
     };
 
@@ -60,14 +63,15 @@ namespace Arcade {
      * @details Set of enum used for the game event
      */
     enum class KeyboardEvents {
-        UP,
         DOWN,
-        LEFT,
-        RIGHT,
+        ENTER,
         ESC,
         F1,
         F2,
-        ENTER,
+        LEFT,
+        RIGHT,
+        TEXTENTERED,
+        UP,
         NONE,
     };
 }
