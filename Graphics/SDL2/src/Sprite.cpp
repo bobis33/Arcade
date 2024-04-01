@@ -32,10 +32,3 @@ void Arcade::Sdl2Renderer::displaySprite(const std::string &spriteName)
 {
     SDL_RenderCopy(_window.getRenderer(), _sprites[spriteName], nullptr, &_spritesRect[spriteName]);
 }
-
-/*
-std::unique_ptr<Arcade::ISprite> Arcade::Sdl2Window::createSprite(const std::string &textureName, const float pos_x, const float pos_y, const float scale_x, const float scale_y)
-{
-    return std::make_unique<Arcade::Sdl2Sprite>(textureName, pos_x, pos_y, scale_x, scale_y);
-}
-*/

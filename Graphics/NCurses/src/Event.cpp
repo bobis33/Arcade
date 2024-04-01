@@ -9,7 +9,6 @@
 
 Arcade::KeyboardEvents Arcade::NCursesRenderer::getEvent()
 {
-
     switch (getch()) {
         case KEY_UP:
             return KeyboardEvents::UP;

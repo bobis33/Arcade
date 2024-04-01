@@ -41,7 +41,7 @@ namespace Arcade
             using TimePoint = std::chrono::time_point<std::chrono::high_resolution_clock>;
         
         private:
-            TimePoint m_start;
+            TimePoint m_start{};
 
     }; // Clock
 

@@ -7,7 +7,7 @@
 
 #include "Arcade/SfmlWindow.hpp"
 
-constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
+static constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
 
 void Arcade::SfmlWindow::openWindow(const unsigned int width, const unsigned int height) {
     _width = width;

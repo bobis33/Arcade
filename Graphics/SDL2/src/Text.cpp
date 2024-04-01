@@ -7,7 +7,8 @@
 
 #include "Arcade/Sdl2Renderer.hpp"
 
-void Arcade::Sdl2Renderer::moveText(const std::string &textName, int pos_x, int pos_y) {
+void Arcade::Sdl2Renderer::moveText(const std::string &textName, int pos_x, int pos_y)
+{
     _textsRect[textName].x = pos_x;
     _textsRect[textName].y = pos_y;
 }
@@ -25,11 +26,11 @@ bool Arcade::Sdl2Renderer::loadFont(const std::string &filepath, const std::stri
 
 void Arcade::Sdl2Renderer::createText(const std::string &fontName, const std::string &text, const int size, const float pos_x, const float pos_y)
 {
-    SDL_Color color = {255, 255, 255, 255};
-    SDL_Surface *surface = nullptr;
+    SDL_Color color{255, 255, 255, 255};
+    SDL_Surface *surface{nullptr};
 
     if (size != 50) {
-        TTF_Font *font = nullptr;
+        TTF_Font *font{nullptr};
         std::string path = "./assets/fonts/" + fontName + ".ttf";
         font = TTF_OpenFont(path.c_str(), size);
         surface = TTF_RenderText_Solid(font, text.c_str(), color);

@@ -7,12 +7,6 @@
 
 #include "Arcade/Sdl2Renderer.hpp"
 
-/*
- * push on the top of the switch cases that will be the most used (and who's implemented too)
- * for optimisation. For example if u put an event at the end of the switch, in every case
- * the program will do the whole switch to reach the last case.
-*/
-
 Arcade::KeyboardEvents Arcade::Sdl2Renderer::keyboardEvent(SDL_Event event)
 {
     switch(event.key.keysym.sym)
@@ -25,8 +19,6 @@ Arcade::KeyboardEvents Arcade::Sdl2Renderer::keyboardEvent(SDL_Event event)
             return Arcade::KeyboardEvents::LEFT;
         case SDLK_RIGHT:
             return Arcade::KeyboardEvents::RIGHT;
-        case SDLK_SPACE:
-            return Arcade::KeyboardEvents::CLICK;
         case SDLK_ESCAPE:
             return Arcade::KeyboardEvents::ESC;
         case SDLK_RETURN:

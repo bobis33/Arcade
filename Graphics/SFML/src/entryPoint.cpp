@@ -10,7 +10,8 @@
 #include "Arcade/SfmlRenderer.hpp"
 
 extern "C" {
-    std::unique_ptr<Arcade::IRenderer> entryPoint() {
+    std::unique_ptr<Arcade::IRenderer> entryPoint()
+    {
         return std::make_unique<Arcade::SfmlRenderer>();
     }
 }

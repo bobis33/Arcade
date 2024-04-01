@@ -17,29 +17,29 @@
 /**
  * @brief Exit code for Epitech errors
  */
-constexpr int EPITECH_ERROR = 84;
+static constexpr int EPITECH_ERROR = 84;
 
 /**
  * @brief Exit code indicating that the program has executed successfully
  */
-constexpr int SUCCESS = 0;
+static constexpr int SUCCESS = 0;
 
 /**
  * @brief Exit code indicating that an error has occurred
  */
-constexpr int ERROR = -1;
+static constexpr int ERROR = -1;
 
 /**
  * @brief Width of the window
  */
-constexpr int WIDTH = 1920;
+static constexpr int WIDTH = 1920;
 
 /**
  * @brief Height of the window
  */
-constexpr int HEIGHT = 1080;
+static constexpr int HEIGHT = 1080;
 
-constexpr char const *LIB_PATH = "./lib/";
+static constexpr char const *LIB_PATH = "./lib/";
 
 namespace Arcade {
 
@@ -64,7 +64,6 @@ namespace Arcade {
         DOWN,
         LEFT,
         RIGHT,
-        CLICK,
         ESC,
         F1,
         F2,

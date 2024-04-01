@@ -7,9 +7,10 @@
 
 #include "Arcade/Sdl2Window.hpp"
 
-constexpr std::string_view WINDOW_TITLE = "Arcade - SDL2";
+static constexpr std::string_view WINDOW_TITLE = "Arcade - SDL2";
 
-void Arcade::Sdl2Window::closeWindow() {
+void Arcade::Sdl2Window::closeWindow()
+{
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     TTF_Quit();
@@ -17,7 +18,8 @@ void Arcade::Sdl2Window::closeWindow() {
     SDL_Quit();
 }
 
-void Arcade::Sdl2Window::openWindow(unsigned int width, unsigned int height) {
+void Arcade::Sdl2Window::openWindow(unsigned int width, unsigned int height)
+{
     _widht = static_cast<int>(width);
     _height = static_cast<int>(height);
     TTF_Init();

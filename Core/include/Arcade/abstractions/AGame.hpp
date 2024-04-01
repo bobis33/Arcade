@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2024
 ** Arcade
 ** File description:
-** IGame.hpp
+** AGame.hpp
 */
 
 /**
- * @file IGame.hpp
- * @brief File declaring Game Interface
+ * @file AGame.hpp
+ * @brief File declaring Game Abstract Class
  */
 
 #ifndef ARCADE_AGAME_HPP
@@ -18,7 +18,7 @@
 namespace Arcade {
 
     /**
-    * @brief Game Interface
+    * @brief Game Abstract Class
     * @details Set of method to implement for the business logic of the Arcade project
     */
     class AGame : IGame {

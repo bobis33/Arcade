@@ -5,13 +5,14 @@
 ** NCursesRenderer.cpp
 */
 
-#include <signal.h>
+#include <csignal>
 
 #include "Arcade/NCursesWindow.hpp"
 
 void Arcade::NCursesWindow::openWindow(const unsigned int width, const unsigned int height)
 {
     (void)width; (void)height;
+
     int size_title = 0;
     initscr();
     raw();

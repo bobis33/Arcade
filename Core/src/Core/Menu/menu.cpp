@@ -8,7 +8,8 @@
 #include "Arcade/RuntimeException.hpp"
 #include "Arcade/Core.hpp"
 
-void Arcade::Core::displayMenu() {
+void Arcade::Core::displayMenu()
+{
     _renderer->displaySprite("background");
     _renderer->displayText("MENU");
     for (const auto & graphicLibrarie : _graphicLibs) {
@@ -20,7 +21,8 @@ void Arcade::Core::displayMenu() {
     _renderer->displayText(">");
 }
 
-void Arcade::Core::loadMenu() {
+void Arcade::Core::loadMenu()
+{
     if (_renderer->isASCII()) {
         //loadTextures(someasciiartonlyformenu, "ascii art name");
     } else {

@@ -7,7 +7,8 @@
 
 #include "Arcade/Core.hpp"
 
-void Arcade::Core::moveCursorUp() {
+void Arcade::Core::moveCursorUp()
+{
     _currentGameIndex = getPreviousLibIndex(_gameLibs, _currentGameIndex);
     _renderer->moveText(">", static_cast<int>(WIDTH * 0.07), static_cast<int>(HEIGHT / 2 - 110 + 50 * (_currentGameIndex + 1)));
 }

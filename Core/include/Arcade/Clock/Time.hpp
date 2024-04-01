@@ -34,7 +34,7 @@ namespace Arcade
             [[nodiscard]] int asMicroseconds() const;
 
         private:
-            double m_seconds;
+            double m_seconds{0.0F};
 
     }; // Time
 

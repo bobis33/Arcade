@@ -9,7 +9,8 @@
 
 #include "Arcade/Core.hpp"
 
-void Arcade::Core::switchGraphicLibrary() {
+void Arcade::Core::switchGraphicLibrary()
+{
     _currentGraphicIndex = getNextLibIndex(_graphicLibs, _currentGraphicIndex);
     switchLib<IRenderer>(LIB_PATH + _graphicLibs[_currentGraphicIndex]);
     setMode(CoreMode::MENU);

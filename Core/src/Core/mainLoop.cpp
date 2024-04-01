@@ -45,7 +45,7 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::C
 
 void Arcade::Core::mainLoop()
 {
-    KeyboardEvents event = KeyboardEvents::NONE;
+    KeyboardEvents event{KeyboardEvents::NONE};
 
     while (_mode != CoreMode::QUIT) {
         event = _renderer->getEvent();
