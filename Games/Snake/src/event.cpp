@@ -5,27 +5,30 @@
 ** event
 */
 
+#include <map>
+
 #include "Arcade/Snake.hpp"
 #include "Arcade/EventsManager.hpp"
+
 
 static constexpr float MOVE_SPEED = 10;
 
 static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::Snake &)>> MAP_GAME_EVENT = {
         {Arcade::KeyboardEvents::LEFT,
                 [](Arcade::Snake &snake) -> void {
-                    snake.moveSnake(-MOVE_SPEED, 0);
+                    snake.setDirection(Arcade::Direction::LEFT);
                 }},
         {Arcade::KeyboardEvents::RIGHT,
                 [](Arcade::Snake &snake) -> void {
-                    snake.moveSnake(MOVE_SPEED, 0);
+                    snake.setDirection(Arcade::Direction::RIGHT);
                 }},
         {Arcade::KeyboardEvents::UP,
                 [](Arcade::Snake &snake) -> void {
-                    snake.moveSnake(0, -MOVE_SPEED);
+                    snake.setDirection(Arcade::Direction::UP);
                 }},
         {Arcade::KeyboardEvents::DOWN,
                 [](Arcade::Snake &snake) -> void {
-                    snake.moveSnake(0, MOVE_SPEED);
+                    snake.setDirection(Arcade::Direction::DOWN);
                 }},
 };
 

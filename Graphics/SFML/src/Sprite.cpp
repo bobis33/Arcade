@@ -25,5 +25,9 @@ void Arcade::SfmlRenderer::displaySprite(const std::string &spriteName)
 }
 
 void Arcade::SfmlRenderer::moveSprite(const std::string &spriteName, float pos_x, float pos_y) {
-    _sprites[spriteName].setPosition(pos_x + _sprites[spriteName].getPosition().x, pos_y + _sprites[spriteName].getPosition().y);
+    _sprites[spriteName].setPosition(pos_x, pos_y);
+}
+
+void Arcade::SfmlRenderer::rotateSprite(const std::string &spriteName, float angle) {
+    _sprites[spriteName].setRotation(angle);
 }

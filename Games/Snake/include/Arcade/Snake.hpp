@@ -10,8 +10,8 @@
  * @brief Defines the Snake class.
 */
 
-#ifndef ARCADE_SNAKE_HPP
-#define ARCADE_SNAKE_HPP
+#ifndef ARCADE_SNAKE_GAME_HPP
+#define ARCADE_SNAKE_GAME_HPP
 
 #include "Arcade/abstractions/AGame.hpp"
 
@@ -23,19 +23,21 @@ namespace Arcade {
             void stop() override {};
             void handleEvents(KeyboardEvents event) override;
 
-            void moveSnake(float pos_x, float pos_y);
-            [[nodiscard]] int getSnakeSize() const { return _snakeSize; };
+            void moveSnake();
+            int getSnakeSize() const { return _snakeSize; };
             [[nodiscard]] std::vector<std::pair<int, int>> getSnake() const { return _snake; };
+            void createMap();
+            void replace_apple();
 
         private:
+            std::pair<float, float> **_map;
             int _snakeSize{1};
             std::vector<std::pair<int, int>> _snake;
             std::pair<int, int> _food;
-            std::pair<int, int> _direction{1, 0};
             std::pair<int, int> _lastDirection{1, 0};
+            std::pair<int, int> _mapPosition{0, 0};
+            std::pair<int, int> _mapPositionApple{4, 4};
+    };
+}
 
-    }; // Snake
-
-} // namespace Arcade
-
-#endif // ARCADE_SNAKE_HPP
+#endif // ARCADE_SNAKE_GAME_HPP

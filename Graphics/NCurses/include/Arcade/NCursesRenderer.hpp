@@ -48,6 +48,7 @@ namespace Arcade
             void stopSound() override {};
 
             void moveSprite(const std::string &spriteName, float pos_x, float pos_y) override {(void)spriteName; (void)pos_x; (void)pos_y;};
+            void rotateSprite(const std::string &spriteName, float angle) override {(void)spriteName; (void)angle;};
 
             std::string updateTextBox() override {return "";};
             void setSize(float x, float y) override {_size = std::make_pair(x, y);};

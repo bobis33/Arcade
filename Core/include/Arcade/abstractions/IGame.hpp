@@ -55,16 +55,28 @@ namespace Arcade {
             virtual void handleEvents(KeyboardEvents event) = 0;
 
             /**
-            * @brief Get the score
-            * @return The score
-            */
+             * @brief Get the score
+             * @return The score
+             */
             virtual int getScore() const = 0;
 
             /**
-            * @brief Get the game mode
-            * @return The game mode
-            */
+             * @brief Get the game mode
+             * @return The game mode
+             */
             virtual GameMode getGameMode() const = 0;
+
+            /**
+             * @brief Get the direction
+             * @return The direction
+             */
+            virtual Direction getDirection() const = 0;
+
+            /**
+             * @brief Set the direction
+             * @param direction The direction
+             */
+            virtual void setDirection(Direction direction) = 0;
 
     }; // IGame
 

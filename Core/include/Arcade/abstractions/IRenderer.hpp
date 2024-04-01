@@ -112,6 +112,7 @@ namespace Arcade {
 
         virtual void moveSprite(const std::string &spriteName, float pos_x, float pos_y) = 0;
 
+        virtual void rotateSprite(const std::string &spriteName, float angle) = 0;
         /**
          * @brief Update the text box for username input
          */

@@ -6,10 +6,11 @@
 */
 
 #include "Arcade/Core.hpp"
+#include "Arcade/Constants.hpp"
 
 void Arcade::Core::launchGame()
 {
-    Clock clock{};
+    Clock clock;
 
     switchLib<IGame>(LIB_PATH + _gameLibs[_currentGameIndex]);
     _renderer->getWindow()->clearWindow();
