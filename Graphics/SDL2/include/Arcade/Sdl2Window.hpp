@@ -49,18 +49,6 @@ namespace Arcade
              */
             SDL_Renderer *getRenderer() { return _renderer; };
 
-            /**
-             * @brief Get the width of the window
-             * @return The width of the window
-             */
-            [[nodiscard]] int getWidth() const { return _widht; };
-
-            /**
-             * @brief Get the height of the window
-             * @return The height of the window
-             */
-            [[nodiscard]] int getHeight() const { return _height; };
-
         private:
 
             /**
@@ -72,16 +60,6 @@ namespace Arcade
              * @brief The SDL renderer
              */
             SDL_Renderer *_renderer{nullptr};
-
-            /**
-             * @brief The width of the window
-             */
-            int _widht{0};
-
-            /**
-             * @brief The height of the window
-             */
-            int _height{0};
 
     }; // Sdl2Window
 

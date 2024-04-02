@@ -7,13 +7,7 @@
 
 #include "Arcade/SfmlRenderer.hpp"
 
-/*
- * push on the top of the switch cases that will be the most used (and who's implemented too)
- * for optimisation. For example if u put an event at the end of the switch, in every case
- * the program will do the whole switch to reach the last case.
-*/
-
-Arcade::KeyboardEvents Arcade::SfmlRenderer::keyboardEvent(sf::Event event)
+Arcade::KeyboardEvents Arcade::SfmlRenderer::keyboardEvent(const sf::Event &event)
 {
     switch (event.key.code) {
         case sf::Keyboard::Left:
@@ -40,6 +34,16 @@ Arcade::KeyboardEvents Arcade::SfmlRenderer::keyboardEvent(sf::Event event)
     }
 }
 
+void Arcade::SfmlRenderer::setInput(const sf::Event &event) {
+    if (event.text.unicode < 128) {
+        if (event.text.unicode == 8 && _input.size() > 0) {
+            _input.pop_back();
+        } else if (event.text.unicode != 8) {
+            _input += static_cast<char>(event.text.unicode);
+        }
+    }
+}
+
 Arcade::KeyboardEvents Arcade::SfmlRenderer::getEvent()
 {
     sf::Event event{};
@@ -50,6 +54,9 @@ Arcade::KeyboardEvents Arcade::SfmlRenderer::getEvent()
                 return keyboardEvent(event);
             case sf::Event::Closed:
                 return Arcade::KeyboardEvents::ESC;
+            case sf::Event::TextEntered:
+                    setInput(event);
+                return Arcade::KeyboardEvents::TEXTENTERED;
 
             default:
                 return Arcade::KeyboardEvents::NONE;

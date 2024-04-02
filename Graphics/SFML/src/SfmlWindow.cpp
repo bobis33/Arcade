@@ -9,9 +9,8 @@
 
 static constexpr std::string_view WINDOW_TITLE = "Arcade - SFML";
 
-void Arcade::SfmlWindow::openWindow(const unsigned int width, const unsigned int height) {
-    _width = width;
-    _height = height;
+void Arcade::SfmlWindow::openWindow(const unsigned int width, const unsigned int height)
+{
     _window.create(sf::VideoMode(width, height), WINDOW_TITLE.data());
     _window.setFramerateLimit(200);
 }

@@ -8,14 +8,25 @@
 #include <dlfcn.h>
 
 #include "Arcade/Core.hpp"
+#include "Arcade/RuntimeException.hpp"
 
 void Arcade::Core::switchGraphicLibrary()
 {
+    _renderer->stopSound();
     _currentGraphicIndex = getNextLibIndex(_graphicLibs, _currentGraphicIndex);
     switchLib<IRenderer>(LIB_PATH + _graphicLibs[_currentGraphicIndex]);
-    setMode(CoreMode::MENU);
+    if (_mode == CoreMode::GAME)
+        setMode(CoreMode::MENU);
     _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
-    loadMenu();
+    _renderer->setSize(WIDTH, HEIGHT);
+    if (!_renderer->loadFont("assets/fonts/menu_i.ttf", "menu_i"))
+        throw RuntimeException("Cannot load fonts");
+    if (_mode == CoreMode::MENU) {
+        loadMenu();
+        _renderer->loadSound();
+    } else {
+        loadLogin();
+    }
 }
 
 template<typename T>

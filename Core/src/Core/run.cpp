@@ -15,15 +15,24 @@ static constexpr std::string_view UNKNOW_ERROR = "Unknown error";
 static constexpr std::string_view CORE_EXCEPT = "Core exception: ";
 static constexpr std::string_view RUNTIME_EXCEPT = "Runtime exception: ";
 
+void Arcade::Core::loadRenderer(const std::string &path)
+{
+    switchLib<IRenderer>(path);
+    getLibraries(path);
+    _renderer->setSize(WIDTH, HEIGHT);
+    _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
+    if (!_renderer->loadFont("assets/fonts/menu_i.ttf", "menu_i"))
+        throw RuntimeException("Cannot load fonts");
+    loadMenu();
+    loadLogin();
+}
+
 int Arcade::Core::runArcade(const std::string &path)
 {
     try {
         if (getenv("DISPLAY") == nullptr)
             throw CoreException{NO_DISPLAY.data()};
-        switchLib<IRenderer>(path);
-        getLibraries(path);
-        _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
-        loadMenu();
+        loadRenderer(path);
         mainLoop();
     } catch (const CoreException &e) {
         std::cerr << CORE_EXCEPT << e.what() << '\n';

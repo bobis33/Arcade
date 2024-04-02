@@ -20,16 +20,14 @@ void Arcade::Sdl2Window::closeWindow()
 
 void Arcade::Sdl2Window::openWindow(unsigned int width, unsigned int height)
 {
-    _widht = static_cast<int>(width);
-    _height = static_cast<int>(height);
     TTF_Init();
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         throw std::runtime_error("SDL_Init Error: " + std::string(SDL_GetError()));
     }
 
     _window = SDL_CreateWindow(WINDOW_TITLE.data(),
-                               SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,
-                               _widht, _height,
+                               SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                               static_cast<int>(width), static_cast<int>(height),
                                SDL_WINDOW_RESIZABLE);
     if (_window == nullptr) {
         throw std::runtime_error("SDL_CreateWindow Error: " + std::string(SDL_GetError()));

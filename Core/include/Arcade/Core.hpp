@@ -38,7 +38,7 @@ namespace Arcade
             /**
             * @brief Core mode
             */
-            CoreMode _mode{CoreMode::MENU};
+            CoreMode _mode{CoreMode::LOGIN};
 
             /**
              * @brief Window renderer
@@ -81,6 +81,8 @@ namespace Arcade
              * @details void *, store for dlclose
              */
             void *_handleGame{nullptr};
+
+            std::string _userName;
 
         public:
             Core() = default;
@@ -167,6 +169,12 @@ namespace Arcade
             void setMode(const CoreMode &gameMode) { _mode = gameMode; };
 
             /**
+             * @brief Load renderer
+             * @param path
+             */
+            void loadRenderer(const std::string &path);
+
+            /**
              * @brief load Menu
              */
             void loadMenu();
@@ -191,6 +199,12 @@ namespace Arcade
             void setGameIndex(size_t index) { _currentGameIndex = index; };
 
             CoreMode getMode() { return _mode; };
+
+            void setUserName(const std::string &userName) { _userName = userName; };
+
+            void loadLogin();
+
+            void displayLoginScreen();
 
     }; // Core
 

@@ -24,8 +24,8 @@ void Arcade::Sdl2Renderer::createSprite(const std::string &textureName, const fl
     (void)scale_y;
     _spritesRect[textureName].x = static_cast<int>(pos_x);
     _spritesRect[textureName].y = static_cast<int>(pos_y);
-    _spritesRect[textureName].w = _window.getWidth();
-    _spritesRect[textureName].h = _window.getHeight();
+    _spritesRect[textureName].w = static_cast<int>(_size.first);
+    _spritesRect[textureName].h = static_cast<int>(_size.second);
 }
 
 void Arcade::Sdl2Renderer::displaySprite(const std::string &spriteName)

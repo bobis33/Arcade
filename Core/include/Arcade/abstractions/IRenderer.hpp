@@ -92,11 +92,30 @@ namespace Arcade {
          */
         virtual void displayText(const std::string &textName) = 0;
 
+        /**
+         * @brief Move a text object to the specified position
+         * @param textName The name of the text to move
+         * @param pos_x The x-coordinate of the new position
+         * @param pos_y The y-coordinate of the new position
+         */
         virtual void moveText(const std::string &textName, int pos_x, int pos_y) = 0;
 
+        /**
+         * @brief Load a sound for menu
+         */
         virtual void loadSound() = 0;
 
+        /**
+         * @brief Stop the sound for menu
+         */
         virtual void stopSound() = 0;
+
+        /**
+         * @brief Update the text box for username input
+         */
+        virtual std::string updateTextBox() = 0;
+
+        virtual void setSize(float x, float y) = 0;
 
     }; // IRenderer
 

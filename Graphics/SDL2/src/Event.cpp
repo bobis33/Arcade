@@ -9,6 +9,14 @@
 
 Arcade::KeyboardEvents Arcade::Sdl2Renderer::keyboardEvent(SDL_Event event)
 {
+    const char *scancodeName = SDL_GetScancodeName(event.key.keysym.scancode);
+
+    if (scancodeName != nullptr && strlen(scancodeName) == 1 && isprint(scancodeName[0])) {
+        const char str[2] = {scancodeName[0], '\0'};
+        strcat(_input, str);
+        return Arcade::KeyboardEvents::TEXTENTERED;
+    }
+
     switch(event.key.keysym.sym)
     {
         case SDLK_UP:
