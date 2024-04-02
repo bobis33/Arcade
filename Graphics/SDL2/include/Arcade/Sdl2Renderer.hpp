@@ -93,6 +93,11 @@ namespace Arcade
             std::map<std::string, SDL_Rect> _spritesRect;
 
             /**
+             * @brief The sprites angles
+             */
+            std::map<std::string, double> _spritesAngle;
+
+            /**
              * @brief The music
              */
             Mix_Music *_music;

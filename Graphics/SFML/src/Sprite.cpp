@@ -29,5 +29,23 @@ void Arcade::SfmlRenderer::moveSprite(const std::string &spriteName, float pos_x
 }
 
 void Arcade::SfmlRenderer::rotateSprite(const std::string &spriteName, float angle) {
+    float sizeX = 0;
+    float sizeY = 0;
+
     _sprites[spriteName].setRotation(angle);
+    if (angle == 90) {
+        sizeX = static_cast<float>(_textures[spriteName].getSize().x);
+        sizeY = 0;
+    } else if (angle == 180) {
+        sizeX = static_cast<float>(_textures[spriteName].getSize().x);
+        sizeY = static_cast<float>(_textures[spriteName].getSize().y);
+    } else if (angle == 270) {
+        sizeX = 0;
+        sizeY = static_cast<float>(_textures[spriteName].getSize().y);
+    } else {
+        sizeX = 0;
+        sizeY = 0;
+    }
+    moveSprite(spriteName, _sprites[spriteName].getPosition().x + sizeX, _sprites[spriteName].getPosition().y + sizeY);
+
 }

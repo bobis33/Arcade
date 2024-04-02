@@ -63,6 +63,7 @@ namespace Arcade {
         DOWN,
         LEFT,
         RIGHT,
+        NONE,
     };
 
     /**

@@ -16,19 +16,23 @@ static constexpr float MOVE_SPEED = 10;
 static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::Snake &)>> MAP_GAME_EVENT = {
         {Arcade::KeyboardEvents::LEFT,
                 [](Arcade::Snake &snake) -> void {
-                    snake.setDirection(Arcade::Direction::LEFT);
+                    if (snake.getDirection() != Arcade::Direction::RIGHT) 
+                        snake.setDirection(Arcade::Direction::LEFT);
                 }},
         {Arcade::KeyboardEvents::RIGHT,
                 [](Arcade::Snake &snake) -> void {
-                    snake.setDirection(Arcade::Direction::RIGHT);
+                    if (snake.getDirection() != Arcade::Direction::LEFT)
+                        snake.setDirection(Arcade::Direction::RIGHT);
                 }},
         {Arcade::KeyboardEvents::UP,
                 [](Arcade::Snake &snake) -> void {
-                    snake.setDirection(Arcade::Direction::UP);
+                    if (snake.getDirection() != Arcade::Direction::DOWN)
+                        snake.setDirection(Arcade::Direction::UP);
                 }},
         {Arcade::KeyboardEvents::DOWN,
                 [](Arcade::Snake &snake) -> void {
-                    snake.setDirection(Arcade::Direction::DOWN);
+                    if (snake.getDirection() != Arcade::Direction::UP)
+                        snake.setDirection(Arcade::Direction::DOWN);
                 }},
 };
 

@@ -38,6 +38,8 @@ namespace Arcade {
             IRenderer *_renderer{nullptr};
             GameMode _gameMode{GameMode::GAME};
             Direction _direction{Direction::RIGHT};
+            Direction *_prevDirection{nullptr};
+            int _nbMoves{0};
 
     }; // AGame
 
