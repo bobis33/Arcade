@@ -58,8 +58,6 @@ namespace Arcade
 
         private:
 
-    private:
-
             /**
              * @brief The Sdl2Window
              */

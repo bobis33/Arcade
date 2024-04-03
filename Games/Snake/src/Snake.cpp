@@ -5,21 +5,26 @@
 ** Snake
 */
 
+#include <random>
 #include "Arcade/Snake.hpp"
 
-static constexpr float SNAKE_BODY_SIZE = 100;
+static constexpr int MAP_WIDTH = 12;
+static constexpr int MAP_HEIGHT = 10;
+static constexpr int NB_MOVES = 120;
+
+static constexpr int MOVE_SPEED = 600;
 
 void Arcade::Snake::createMap()
 {
-    _map = new std::pair<float, float>*[10];
-    for (int i = 0; i < 10; i++) {
-        _map[i] = new std::pair<float, float>[12];
-        for (int j = 0; j < 12; j++) {
+    _map = new std::pair<float, float>*[MAP_HEIGHT];
+    for (int i = 0; i < MAP_HEIGHT; i++) {
+        _map[i] = new std::pair<float, float>[MAP_WIDTH];
+        for (int j = 0; j < MAP_WIDTH; j++) {
             _map[i][j] = {0, 0};
         }
     }
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 12; ++j) {
+    for (int i = 0; i < MAP_HEIGHT; ++i) {
+        for (int j = 0; j < MAP_WIDTH; ++j) {
             _map[i][j] = {(90 * j) + 90, (90 * i) + 90};
         }
     }
@@ -32,51 +37,38 @@ void Arcade::Snake::loadGame()
     if (!_renderer->loadTexture("assets/textures/background_snake.png", "background_snake"))
         throw std::runtime_error("Could not load texture background_snake");
     _renderer->createSprite("background_snake", 0, 0, 1, 1);
-    if (!_renderer->loadTexture("assets/textures/snake/head.png", "head_right"))
-        throw std::runtime_error("Could not load texture head_right");
-    _renderer->createSprite("head_right", _map[0][0].first, _map[0][0].second, 1, 1);
-    if (!_renderer->loadTexture("assets/textures/snake/sucre.png", "Apple"))
-        throw std::runtime_error("Could not load texture Apple");
-    _renderer->createSprite("Apple", _map[2][2].first, _map[2][2].second, 1, 1);
+    if (!_renderer->loadTexture("assets/textures/snake/head.png", "head"))
+        throw std::runtime_error("Could not load texture head");
+    _renderer->createSprite("head", _map[0][0].first, _map[0][0].second, 1, 1);
+    if (!_renderer->loadTexture("assets/textures/snake/sugar.png", "Sugar"))
+        throw std::runtime_error("Could not load texture Sugar");
+    _renderer->createSprite("Sugar", _map[2][2].first, _map[2][2].second, 1, 1);
 
-    _prevDirection = new Direction[120];
-    for (int i = 0; i < 120; i++) {
+    _prevDirection = new Direction[NB_MOVES];
+    _mapPositionBody = new std::pair<int, int>[NB_MOVES];
+    for (int i = 0; i < NB_MOVES; i++) {
         _prevDirection[i] = Direction::NONE;
-    }
-    _mapPositionBody = new std::pair<int, int>[120];
-    for (int i = 0; i < 120; i++) {
         _mapPositionBody[i] = {0, 0};
     }
 }
 
-void Arcade::Snake::replace_apple()
+void Arcade::Snake::replaceFood()
 {
-    _mapPositionApple.first = rand() % 10;
-    _mapPositionApple.second = rand() % 12;
-    _renderer->moveSprite("Apple", _map[_mapPositionApple.first][_mapPositionApple.second].first, _map[_mapPositionApple.first][_mapPositionApple.second].second);
+    std::random_device rd{};
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> x(0, 9);
+    std::uniform_int_distribution<> y(0, 11);
+
+    _mapPositionFood.first = x(gen);
+    _mapPositionFood.second = y(gen);
+    _renderer->moveSprite("Sugar", _map[_mapPositionFood.first][_mapPositionFood.second].first, _map[_mapPositionFood.first][_mapPositionFood.second].second);
 }
 
-std::string directionToString(Arcade::Direction dir) {
-    switch (dir) {
-        case Arcade::Direction::UP:
-            return "UP";
-        case Arcade::Direction::DOWN:
-            return "DOWN";
-        case Arcade::Direction::LEFT:
-            return "LEFT";
-        case Arcade::Direction::RIGHT:
-            return "RIGHT";
-        default:
-            return "UNKNOWN";
-    }
-}
-
-std::pair<int, int> Arcade::Snake::findWherePlaceBody()
+std::pair<int, int> Arcade::Snake::getBodyPosition()
 {
     std::pair<int, int> bodyPosition = _mapPosition;
-    int snakeSize = getSnakeSize();
 
-    for (int i = 0; i < snakeSize - 1; i++) {
+    for (int i = 0; i < _snakeSize - 1; i++) {
         switch (_prevDirection[i]) {
             case Direction::UP:
                 if (bodyPosition.first == 9)
@@ -109,24 +101,11 @@ std::pair<int, int> Arcade::Snake::findWherePlaceBody()
     return bodyPosition;
 }
 
-int Arcade::Snake::checkIfCorner(Direction direction, Direction lastDirection)
-{
-    if (direction == Direction::UP && lastDirection == Direction::RIGHT)
-        return 1;
-    if (direction == Direction::UP && lastDirection == Direction::LEFT)
-        return 2;
-    if (direction == Direction::DOWN && lastDirection == Direction::RIGHT)
-        return 3;
-    if (direction == Direction::DOWN && lastDirection == Direction::LEFT)
-        return 4;
-    return -1;
-}
-
 void Arcade::Snake::displayGame()
 {
     _renderer->displaySprite("background_snake");
-    _renderer->displaySprite("head_right");
-    _renderer->displaySprite("Apple");
+    _renderer->displaySprite("head");
+    _renderer->displaySprite("Sugar");
     if (_snakeSize > 1)
         for (int i = 1; i <= _snakeSize; i++) {
             std::string bodystring = "body";
@@ -134,34 +113,34 @@ void Arcade::Snake::displayGame()
             _renderer->displaySprite(bodystring);
         }
 
-    if (_clock.getElapsedTime().asMilliseconds() > _lastSecond) {
-        _lastSecond += 600;
-        moveSnake("head_right");
-        moveBody();
-        _nbMoves++;
-        for (int i = 120; i > 0; i--) {
-            _prevDirection[i] = _prevDirection[i - 1];
-        }
-        _prevDirection[0] = _direction;
-        if (_mapPosition.first == _mapPositionApple.first && _mapPosition.second == _mapPositionApple.second) {
-            _snakeSize++;
-            std::string bodystring = "body";
-            bodystring += std::to_string(_snakeSize);
-            if (!_renderer->loadTexture("assets/textures/snake/body.png", bodystring))
-                throw std::runtime_error("Could not load texture body");
-            std::pair<int, int> bodyPosition = findWherePlaceBody();
-            _mapPositionBody[_snakeSize] = bodyPosition;
-            _renderer->createSprite(bodystring, _map[bodyPosition.first][bodyPosition.second].first, _map[bodyPosition.first][bodyPosition.second].second, 1, 1);
-            replace_apple();
-        }
+    if (_clock.getElapsedTime().asMilliseconds() < _lastMilliseconds)
+        return;
+
+    _lastMilliseconds += MOVE_SPEED;
+    moveSnake("head");
+    moveBody();
+    _nbMoves++;
+    for (int i = NB_MOVES; i > 0; i--) {
+        _prevDirection[i] = _prevDirection[i - 1];
+    }
+    _prevDirection[0] = _direction;
+    if (_mapPosition.first == _mapPositionFood.first && _mapPosition.second == _mapPositionFood.second) {
+        _snakeSize++;
+        std::string bodystring{"body"};
+        bodystring += std::to_string(_snakeSize);
+        if (!_renderer->loadTexture("assets/textures/snake/body.png", bodystring))
+            throw std::runtime_error("Could not load texture body");
+        std::pair<int, int> bodyPosition = getBodyPosition();
+        _mapPositionBody[_snakeSize] = bodyPosition;
+        _renderer->createSprite(bodystring, _map[bodyPosition.first][bodyPosition.second].first, _map[bodyPosition.first][bodyPosition.second].second, 1, 1);
+        replaceFood();
     }
 }
 
 void Arcade::Snake::moveBody()
 {
     for (int i = 1; i <= _snakeSize; i++) {
-        //int corner = checkIfCorner(_prevDirection[i-2], _prevDirection[i-3]);
-        std::string bodystring = "body";
+        std::string bodystring{"body"};
         bodystring += std::to_string(i);
         switch (_prevDirection[i - 2]) {
             case Direction::UP:
@@ -202,7 +181,7 @@ void Arcade::Snake::moveBody()
     }
 }
 
-void Arcade::Snake::moveSnake(std::string snakePart)
+void Arcade::Snake::moveSnake(const std::string &snakePart)
 {
     switch (_direction) {
         case Direction::UP:

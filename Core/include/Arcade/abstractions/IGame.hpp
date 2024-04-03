@@ -32,7 +32,7 @@ namespace Arcade {
             /**
             * @brief start the game
             */
-            virtual void start(std::reference_wrapper<IRenderer> renderer, Clock &clock) = 0;
+            virtual void start(std::reference_wrapper<IRenderer> renderer, const Clock &clock) = 0;
 
             /**
             * @brief load the game
@@ -52,7 +52,7 @@ namespace Arcade {
             /**
             * @brief handle the game event
             */
-            virtual void handleEvents(KeyboardEvents event) = 0;
+            virtual void handleEvents(const KeyboardEvents &event) = 0;
 
             /**
              * @brief Get the score
@@ -76,7 +76,7 @@ namespace Arcade {
              * @brief Set the direction
              * @param direction The direction
              */
-            virtual void setDirection(Direction direction) = 0;
+            virtual void setDirection(const Direction &direction) = 0;
 
     }; // IGame
 

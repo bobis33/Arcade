@@ -10,11 +10,8 @@
  * @brief Defines the Nibbler class.
 */
 
-#ifndef ARCADE_NIBBLER_GAME_HPP
-#define ARCADE_NIBBLER_GAME_HPP
-
-#include <vector>
-#include <memory>
+#ifndef ARCADE_NIBBLER_HPP
+#define ARCADE_NIBBLER_HPP
 
 #include "Arcade/abstractions/AGame.hpp"
 
@@ -24,10 +21,10 @@ namespace Arcade {
             void loadGame() override {};
             void displayGame() override {};
             void stop() override {};
-            void handleEvents(KeyboardEvents key) override {(void)key;};
+            void handleEvents(const KeyboardEvents &event) override;
 
     }; // Nibbler
 
 } // namespace Arcade
 
-#endif // ARCADE_NIBBLER_GAME_HPP
+#endif // ARCADE_NIBBLER_HPP

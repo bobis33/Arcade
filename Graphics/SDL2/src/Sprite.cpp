@@ -20,13 +20,13 @@ bool Arcade::Sdl2Renderer::loadTexture(const std::string &filePath, const std::s
 
 void Arcade::Sdl2Renderer::createSprite(const std::string &textureName, const float pos_x, const float pos_y, const float scale_x, const float scale_y)
 {
-    (void)scale_x;
-    (void)scale_y;
+    (void)scale_x; (void)scale_y;
+
     _spritesRect[textureName].x = static_cast<int>(pos_x);
     _spritesRect[textureName].y = static_cast<int>(pos_y);
-    _spritesAngle[textureName] = 0;
     _spritesRect[textureName].w = static_cast<int>(_size.first);
     _spritesRect[textureName].h = static_cast<int>(_size.second);
+    _spritesAngle[textureName] = 0;
     SDL_QueryTexture(_sprites[textureName], nullptr, nullptr, &_spritesRect[textureName].w, &_spritesRect[textureName].h);
 }
 
@@ -44,11 +44,3 @@ void Arcade::Sdl2Renderer::moveSprite(const std::string &spriteName, const float
 void Arcade::Sdl2Renderer::rotateSprite(const std::string &spriteName, float angle) {
     _spritesAngle[spriteName] = angle;
 }
-
-
-/*
-std::unique_ptr<Arcade::ISprite> Arcade::Sdl2Window::createSprite(const std::string &textureName, const float pos_x, const float pos_y, const float scale_x, const float scale_y)
-{
-    return std::make_unique<Arcade::Sdl2Sprite>(textureName, pos_x, pos_y, scale_x, scale_y);
-}
-*/

@@ -10,8 +10,8 @@
  * @brief Defines the Snake class.
 */
 
-#ifndef ARCADE_SNAKE_GAME_HPP
-#define ARCADE_SNAKE_GAME_HPP
+#ifndef ARCADE_SNAKE_HPP
+#define ARCADE_SNAKE_HPP
 
 #include "Arcade/abstractions/AGame.hpp"
 
@@ -21,26 +21,24 @@ namespace Arcade {
             void loadGame() override;
             void displayGame() override;
             void stop() override {};
-            void handleEvents(KeyboardEvents event) override;
+            void handleEvents(const KeyboardEvents &event) override;
 
-            void moveSnake(std::string snakePart);
+            void moveSnake(const std::string &snakePart);
             void moveBody();
-            int getSnakeSize() const { return _snakeSize; };
-            [[nodiscard]] std::vector<std::pair<int, int>> getSnake() const { return _snake; };
             void createMap();
-            void replace_apple();
-            std::pair<int, int> findWherePlaceBody();
-            int checkIfCorner(Direction direction, Direction lastDirection);
+            void replaceFood();
+            std::pair<int, int> getBodyPosition();
 
         private:
             std::pair<float, float> **_map;
             int _snakeSize{1};
             std::vector<std::pair<int, int>> _snake;
-            std::pair<int, int> _lastDirection{1, 0};
             std::pair<int, int> _mapPosition{0, 0};
             std::pair<int, int> *_mapPositionBody{nullptr};
-            std::pair<int, int> _mapPositionApple{2, 2};
-    };
-}
+            std::pair<int, int> _mapPositionFood{2, 2};
 
-#endif // ARCADE_SNAKE_GAME_HPP
+    }; // Snake
+
+} // namespace Arcade
+
+#endif // ARCADE_SNAKE_HPP
