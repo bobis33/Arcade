@@ -33,5 +33,5 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::S
 
 void Arcade::Snake::handleEvents(const KeyboardEvents &event)
 {
-    EventManager::handleEvent(MAP_EVENT, *this, event);
+    EventManager::handleEvent<Snake>(MAP_EVENT, *this, event);
 }

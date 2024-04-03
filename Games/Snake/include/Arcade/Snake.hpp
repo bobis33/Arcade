@@ -23,19 +23,20 @@ namespace Arcade {
             void stop() override {};
             void handleEvents(const KeyboardEvents &event) override;
 
-            void moveSnake(const std::string &snakePart);
+            void moveSnake();
             void moveBody();
             void createMap();
             void replaceFood();
-            std::pair<int, int> getBodyPosition();
             void checkLose();
+            void displaySnake();
+            void isEating();
+            std::pair<size_t, size_t> getBodyPosition();
+
         private:
-            std::pair<float, float> **_map;
-            int _snakeSize{1};
-            std::vector<std::pair<int, int>> _snake;
-            std::pair<int, int> _mapPosition{0, 0};
-            std::pair<int, int> *_mapPositionBody{nullptr};
-            std::pair<int, int> _mapPositionFood{2, 2};
+            size_t _snakeSize{1};
+            std::pair<size_t, size_t> _mapPosition{5, 6};
+            std::vector<std::pair<size_t, size_t>> _mapPositionBody;
+            std::pair<size_t, size_t> _mapPositionFood{2, 2};
 
     }; // Snake
 

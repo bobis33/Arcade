@@ -78,6 +78,14 @@ namespace Arcade {
              */
             virtual void setDirection(const Direction &direction) = 0;
 
+            /**
+             * @brief Randomize a number
+             * @param min The minimum value
+             * @param max The maximum value
+             * @return The random number
+             */
+            virtual int randomize(int min, int max) = 0;
+
     }; // IGame
 
 } // namespace Arcade
