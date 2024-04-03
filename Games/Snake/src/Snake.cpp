@@ -73,32 +73,38 @@ std::string directionToString(Arcade::Direction dir) {
 
 std::pair<int, int> Arcade::Snake::findWherePlaceBody()
 {
-    std::pair<int, int> headPosition = _mapPosition;
-    std::pair<int, int> bodyPosition = {0, 0};
+    std::pair<int, int> bodyPosition = _mapPosition;
     int snakeSize = getSnakeSize();
 
     for (int i = 0; i < snakeSize - 1; i++) {
         switch (_prevDirection[i]) {
             case Direction::UP:
-                bodyPosition.first = headPosition.first + 1;
-                bodyPosition.second = headPosition.second;
+                if (bodyPosition.first == 9)
+                    bodyPosition.first = 0;
+                else
+                    bodyPosition.first++;
                 break;
             case Direction::DOWN:
-                bodyPosition.first = headPosition.first - 1;
-                bodyPosition.second = headPosition.second;
+                if (bodyPosition.first == 0)
+                    bodyPosition.first = 9;
+                else
+                    bodyPosition.first--;
                 break;
             case Direction::LEFT:
-                bodyPosition.first = headPosition.first;
-                bodyPosition.second = headPosition.second + 1;
+                if (bodyPosition.second == 11)
+                    bodyPosition.second = 0;
+                else
+                    bodyPosition.second++;
                 break;
             case Direction::RIGHT:
-                bodyPosition.first = headPosition.first;
-                bodyPosition.second = headPosition.second - 1;
+                if (bodyPosition.second == 0)
+                    bodyPosition.second = 11;
+                else
+                    bodyPosition.second--;
                 break;
             default:
                 break;
         }
-        headPosition = bodyPosition;
     }
     return bodyPosition;
 }
@@ -116,8 +122,8 @@ void Arcade::Snake::displayGame()
             _renderer->displaySprite(bodystring);
         }
 
-    if (_clock.getElapsedTime().asSeconds() > _lastSecond) {
-        _lastSecond++;
+    if (_clock.getElapsedTime().asMilliseconds() > _lastSecond) {
+        _lastSecond += 600;
         moveSnake("head_right");
         moveBody();
         _nbMoves++;
