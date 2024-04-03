@@ -30,6 +30,7 @@ namespace Arcade {
             void createMap();
             void replace_apple();
             std::pair<int, int> findWherePlaceBody();
+            int checkIfCorner(Direction direction, Direction lastDirection);
 
         private:
             std::pair<float, float> **_map;

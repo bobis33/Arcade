@@ -32,7 +32,7 @@ void Arcade::Snake::loadGame()
     if (!_renderer->loadTexture("assets/textures/background_snake.png", "background_snake"))
         throw std::runtime_error("Could not load texture background_snake");
     _renderer->createSprite("background_snake", 0, 0, 1, 1);
-    if (!_renderer->loadTexture("assets/textures/snake/head_right.png", "head_right"))
+    if (!_renderer->loadTexture("assets/textures/snake/head.png", "head_right"))
         throw std::runtime_error("Could not load texture head_right");
     _renderer->createSprite("head_right", _map[0][0].first, _map[0][0].second, 1, 1);
     if (!_renderer->loadTexture("assets/textures/snake/sucre.png", "Apple"))
@@ -109,6 +109,18 @@ std::pair<int, int> Arcade::Snake::findWherePlaceBody()
     return bodyPosition;
 }
 
+int Arcade::Snake::checkIfCorner(Direction direction, Direction lastDirection)
+{
+    if (direction == Direction::UP && lastDirection == Direction::RIGHT)
+        return 1;
+    if (direction == Direction::UP && lastDirection == Direction::LEFT)
+        return 2;
+    if (direction == Direction::DOWN && lastDirection == Direction::RIGHT)
+        return 3;
+    if (direction == Direction::DOWN && lastDirection == Direction::LEFT)
+        return 4;
+    return -1;
+}
 
 void Arcade::Snake::displayGame()
 {
@@ -135,8 +147,8 @@ void Arcade::Snake::displayGame()
             _snakeSize++;
             std::string bodystring = "body";
             bodystring += std::to_string(_snakeSize);
-            if (!_renderer->loadTexture("assets/textures/snake/body_horizontal.png", bodystring))
-                throw std::runtime_error("Could not load texture body2");
+            if (!_renderer->loadTexture("assets/textures/snake/body.png", bodystring))
+                throw std::runtime_error("Could not load texture body");
             std::pair<int, int> bodyPosition = findWherePlaceBody();
             _mapPositionBody[_snakeSize] = bodyPosition;
             _renderer->createSprite(bodystring, _map[bodyPosition.first][bodyPosition.second].first, _map[bodyPosition.first][bodyPosition.second].second, 1, 1);
@@ -148,6 +160,7 @@ void Arcade::Snake::displayGame()
 void Arcade::Snake::moveBody()
 {
     for (int i = 1; i <= _snakeSize; i++) {
+        //int corner = checkIfCorner(_prevDirection[i-2], _prevDirection[i-3]);
         std::string bodystring = "body";
         bodystring += std::to_string(i);
         switch (_prevDirection[i - 2]) {
@@ -157,6 +170,7 @@ void Arcade::Snake::moveBody()
                 else
                     _mapPositionBody[i].first--;
                 _renderer->moveSprite(bodystring, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].first, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].second);
+                _renderer->rotateSprite(bodystring, 180);
                 break;
             case Direction::DOWN:
                 if (_mapPositionBody[i].first == 9)
@@ -164,6 +178,7 @@ void Arcade::Snake::moveBody()
                 else
                     _mapPositionBody[i].first++;
                 _renderer->moveSprite(bodystring, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].first, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].second);
+                _renderer->rotateSprite(bodystring, 0);
                 break;
             case Direction::LEFT:
                 if (_mapPositionBody[i].second == 0)
@@ -171,6 +186,7 @@ void Arcade::Snake::moveBody()
                 else
                     _mapPositionBody[i].second--;
                 _renderer->moveSprite(bodystring, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].first, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].second);
+                _renderer->rotateSprite(bodystring, 90);
                 break;
             case Direction::RIGHT:
                 if (_mapPositionBody[i].second == 11)
@@ -178,6 +194,7 @@ void Arcade::Snake::moveBody()
                 else
                     _mapPositionBody[i].second++;
                 _renderer->moveSprite(bodystring, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].first, _map[_mapPositionBody[i].first][_mapPositionBody[i].second].second);
+                _renderer->rotateSprite(bodystring, 270);
                 break;
             default:
                 break;
