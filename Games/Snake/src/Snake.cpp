@@ -16,7 +16,7 @@ static constexpr int MOVE_SPEED = 600;
 
 void Arcade::Snake::checkLose()
 {
-    for (int i = 1; i <= _snakeSize + 2; i++) {
+    for (int i = 1; i <= _snakeSize; i++) {
         if (_mapPosition.first == _mapPositionBody[i].first && _mapPosition.second == _mapPositionBody[i].second) {
             _clock.pause();
         }
@@ -26,13 +26,8 @@ void Arcade::Snake::checkLose()
 void Arcade::Snake::createMap()
 {
     _map = new std::pair<float, float>*[MAP_HEIGHT];
-    for (int i = 0; i < MAP_HEIGHT; i++) {
-        _map[i] = new std::pair<float, float>[MAP_WIDTH];
-        for (int j = 0; j < MAP_WIDTH; j++) {
-            _map[i][j] = {0, 0};
-        }
-    }
     for (int i = 0; i < MAP_HEIGHT; ++i) {
+        _map[i] = new std::pair<float, float>[MAP_WIDTH];
         for (int j = 0; j < MAP_WIDTH; ++j) {
             _map[i][j] = {(90 * j) + 90, (90 * i) + 90};
         }
@@ -42,7 +37,7 @@ void Arcade::Snake::createMap()
 void Arcade::Snake::loadGame()
 {
     createMap();
-
+    _renderer->createText("menu_i", "Score: ", 40, 1500, 100);
     if (!_renderer->loadTexture("assets/textures/background_snake.png", "background_snake"))
         throw std::runtime_error("Could not load texture background_snake");
     _renderer->createSprite("background_snake", 0, 0, 1, 1);
@@ -124,6 +119,7 @@ void Arcade::Snake::displayGame()
     _renderer->displaySprite("background_snake");
     _renderer->displaySprite("head");
     _renderer->displaySprite("Sugar");
+    _renderer->displayText("Score: ");
     if (_snakeSize > 1)
         for (int i = 1; i <= _snakeSize; i++) {
             std::string bodystring = "body";
