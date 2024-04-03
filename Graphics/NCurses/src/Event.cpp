@@ -24,7 +24,11 @@ Arcade::KeyboardEvents Arcade::NCursesRenderer::getEvent()
             return KeyboardEvents::F2;
         case 27:
             return KeyboardEvents::ESC;
+        case ERR:
+            return KeyboardEvents::NONE;
+
         default:
             return KeyboardEvents::NONE;
     }
+    return KeyboardEvents::NONE;
 }
