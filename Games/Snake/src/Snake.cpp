@@ -6,6 +6,7 @@
 */
 
 #include <random>
+
 #include "Arcade/Snake.hpp"
 
 static constexpr int MAP_WIDTH = 12;
@@ -37,7 +38,11 @@ void Arcade::Snake::createMap()
 void Arcade::Snake::loadGame()
 {
     createMap();
-    _renderer->createText("menu_i", "Score: ", 40, 1500, 100);
+    _userName = _renderer->getUserName();
+    _renderer->createText("menu_i", "Player:", 40, 1350, 90);
+    _renderer->createText("menu_i", _userName, 30, 1350, 150);
+    _renderer->createText("menu_i", "Score: ", 40, 1350, 300);
+    _renderer->createText("menu_i", std::to_string(_score), 30, 1350, 350);
     if (!_renderer->loadTexture("assets/textures/background_snake.png", "background_snake"))
         throw std::runtime_error("Could not load texture background_snake");
     _renderer->createSprite("background_snake", 0, 0, 1, 1);
@@ -119,7 +124,10 @@ void Arcade::Snake::displayGame()
     _renderer->displaySprite("background_snake");
     _renderer->displaySprite("head");
     _renderer->displaySprite("Sugar");
+    _renderer->displayText("Player:");
+    _renderer->displayText(_userName);
     _renderer->displayText("Score: ");
+    _renderer->displayText(std::to_string(_score));
     if (_snakeSize > 1)
         for (int i = 1; i <= _snakeSize; i++) {
             std::string bodystring = "body";
@@ -132,8 +140,8 @@ void Arcade::Snake::displayGame()
 
     _lastMilliseconds += MOVE_SPEED;
     moveSnake("head");
-    moveBody();
     checkLose();
+    moveBody();
     _nbMoves++;
     for (int i = NB_MOVES; i > 0; i--) {
         _prevDirection[i] = _prevDirection[i - 1];

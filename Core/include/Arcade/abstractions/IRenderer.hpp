@@ -120,6 +120,8 @@ namespace Arcade {
 
         virtual void setSize(float x, float y) = 0;
 
+        virtual std::string getUserName() = 0;
+
     }; // IRenderer
 
 } // namespace Arcade

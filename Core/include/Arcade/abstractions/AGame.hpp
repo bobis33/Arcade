@@ -35,6 +35,7 @@ namespace Arcade {
             int _score{0};
             Clock _clock{};
             int _lastMilliseconds{0};
+            std::string _userName{""};
             IRenderer *_renderer{nullptr};
             GameMode _gameMode{GameMode::GAME};
             Direction _direction{Direction::RIGHT};
