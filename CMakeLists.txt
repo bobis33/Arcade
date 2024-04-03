@@ -69,7 +69,6 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Core/Menu/menu.cpp
         ${SRC_DIR}/Core/Menu/cursor.cpp
         ${SRC_DIR}/Core/Clock/clock.cpp
-        ${SRC_DIR}/Core/Clock/time.cpp
         ${SRC_DIR}/Core/Libraries/index.cpp
         ${SRC_DIR}/Core/Libraries/switch.cpp
         ${SRC_DIR}/Core/Libraries/libraries.cpp

@@ -18,7 +18,7 @@ void Arcade::Snake::checkLose()
 {
     for (int i = 1; i <= _snakeSize + 2; i++) {
         if (_mapPosition.first == _mapPositionBody[i].first && _mapPosition.second == _mapPositionBody[i].second) {
-            _renderer->getWindow()->closeWindow();
+            _clock.pause();
         }
     }
 }
