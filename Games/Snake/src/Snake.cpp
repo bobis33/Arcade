@@ -14,6 +14,15 @@ static constexpr int NB_MOVES = 120;
 
 static constexpr int MOVE_SPEED = 600;
 
+void Arcade::Snake::checkLose()
+{
+    for (int i = 1; i <= _snakeSize + 2; i++) {
+        if (_mapPosition.first == _mapPositionBody[i].first && _mapPosition.second == _mapPositionBody[i].second) {
+            _renderer->getWindow()->closeWindow();
+        }
+    }
+}
+
 void Arcade::Snake::createMap()
 {
     _map = new std::pair<float, float>*[MAP_HEIGHT];
@@ -54,13 +63,22 @@ void Arcade::Snake::loadGame()
 
 void Arcade::Snake::replaceFood()
 {
+    bool isOnSnake = true;
     std::random_device rd{};
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> x(0, 9);
     std::uniform_int_distribution<> y(0, 11);
 
-    _mapPositionFood.first = x(gen);
-    _mapPositionFood.second = y(gen);
+    while (isOnSnake) {
+        isOnSnake = false;
+        _mapPositionFood = {x(gen), y(gen)};
+        for (int i = 0; i < _snakeSize + 2; i++) {
+            if (_mapPositionFood.first == _mapPositionBody[i].first && _mapPositionFood.second == _mapPositionBody[i].second) {
+                isOnSnake = true;
+                break;
+            }
+        }
+    }
     _renderer->moveSprite("Sugar", _map[_mapPositionFood.first][_mapPositionFood.second].first, _map[_mapPositionFood.first][_mapPositionFood.second].second);
 }
 
@@ -119,6 +137,7 @@ void Arcade::Snake::displayGame()
     _lastMilliseconds += MOVE_SPEED;
     moveSnake("head");
     moveBody();
+    checkLose();
     _nbMoves++;
     for (int i = NB_MOVES; i > 0; i--) {
         _prevDirection[i] = _prevDirection[i - 1];

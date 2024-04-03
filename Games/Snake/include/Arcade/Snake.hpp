@@ -28,7 +28,7 @@ namespace Arcade {
             void createMap();
             void replaceFood();
             std::pair<int, int> getBodyPosition();
-
+            void checkLose();
         private:
             std::pair<float, float> **_map;
             int _snakeSize{1};
