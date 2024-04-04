@@ -7,6 +7,4 @@
 
 
 #include "Arcade/NCurses.hpp"
-#include "Arcade/NCursesSprite.hpp"
-
 

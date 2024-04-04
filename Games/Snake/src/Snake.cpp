@@ -19,7 +19,6 @@ void Arcade::Snake::checkLose()
 
 void Arcade::Snake::createMap()
 {
-    _map.clear();
     _map.resize(MAP_HEIGHT);
     for (size_t i = 0; i < MAP_HEIGHT; ++i) {
         _map[i].resize(MAP_WIDTH);

@@ -9,7 +9,9 @@
 
 Arcade::KeyboardEvents Arcade::NCursesRenderer::getEvent()
 {
-    switch (getch()) {
+    int ch = getch();
+
+    switch (ch) {
         case KEY_UP:
             return KeyboardEvents::UP;
         case KEY_DOWN:
@@ -26,9 +28,23 @@ Arcade::KeyboardEvents Arcade::NCursesRenderer::getEvent()
             return KeyboardEvents::ESC;
         case ERR:
             return KeyboardEvents::NONE;
+        case 10:
+            _isLogged = true;
+            return KeyboardEvents::ENTER;
 
         default:
-            return KeyboardEvents::NONE;
+            if(_isLogged)
+                return KeyboardEvents::NONE;
+            if(ch >= 32 && ch <= 126) {
+                _userName += static_cast<char>(ch);
+                return KeyboardEvents::TEXTENTERED;
+            } else if(ch == 263) {
+                if (_userName.size() > 0)
+                    _userName.pop_back();
+                return KeyboardEvents::TEXTENTERED;
+            } else {
+                return KeyboardEvents::NONE;
+            }
     }
     return KeyboardEvents::NONE;
 }

@@ -17,6 +17,11 @@ void Arcade::Core::displayLoginScreen()
 
 void Arcade::Core::loadLogin()
 {
-    _renderer->createText("menu_i", "Enter your username:", 30, WIDTH / 4, (HEIGHT / 3) - 50);
-    _renderer->createText("menu_i", " ", 30, WIDTH / 4, HEIGHT / 3);
+    if (_renderer->isASCII()) {
+        _renderer->createText("menu_i", "Enter your username:", 0, 2, 2);
+        _renderer->createText("menu_i", " ", 0, 3, 2);
+    } else {
+        _renderer->createText("menu_i", "Enter your username:", 30, WIDTH / 4, (HEIGHT / 3) - 50);
+        _renderer->createText("menu_i", " ", 30, WIDTH / 4, HEIGHT / 3);
+    }
 }

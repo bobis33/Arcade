@@ -9,16 +9,15 @@
 
 void Arcade::NCursesWindow::openWindow(const unsigned int width, const unsigned int height)
 {
-    (void)width; (void)height;
-
     int size_title = 0;
+    _size = std::make_pair(static_cast<int>(width), static_cast<int>(height));
     initscr();
     noecho();
     curs_set(0);
     keypad(stdscr, TRUE);
     halfdelay(1);
-    _window = newwin(0, 0, 0, 0);
+    _window = newwin(_size.second, _size.first, 0, 0);
     refresh();
     for (; _title.data()[size_title] != 0; size_title++);
-    _titlePos = (COLS - size_title) / 2;
+    _titlePos = (_size.first - size_title) / 2;
 }
