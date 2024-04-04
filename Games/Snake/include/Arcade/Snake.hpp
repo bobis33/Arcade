@@ -41,9 +41,12 @@ namespace Arcade {
 
         private:
             size_t _snakeSize{1};
-            std::pair<size_t, size_t> _mapPosition{5, 6};
+            std::pair<size_t, size_t> _mapPosition{5, 5};
             std::vector<std::pair<size_t, size_t>> _mapPositionBody;
             std::pair<size_t, size_t> _mapPositionFood{2, 2};
+            int _moveSpeed{MOVE_SPEED};
+            int _increaseSpeed{0};
+            std::pair<size_t, size_t> _bodyPosition;
 
     }; // Snake
 

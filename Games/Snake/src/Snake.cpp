@@ -9,7 +9,7 @@
 
 void Arcade::Snake::checkLose()
 {
-    for (size_t i = 1; i <= _snakeSize; i++) {
+    for (size_t i = 4; i <= _snakeSize; i++) {
         if (_mapPosition.first == _mapPositionBody[i].first && _mapPosition.second == _mapPositionBody[i].second) {
             _clock.pause();
             _gameMode = GameMode::GAME_OVER;
@@ -92,7 +92,19 @@ void Arcade::Snake::loadGame()
     createMap();
     _mapPositionBody.resize(NB_MOVES);
     _prevDirection.resize(NB_MOVES);
-
+    std::pair<size_t, size_t> bodyPosition = {5, 4};
+    std::string bodyString{};
+    for (size_t i = 0; i < 3; i++) {
+        _prevDirection[i] = Direction::RIGHT;
+        _snakeSize++;
+        bodyString = "body";
+        bodyString += std::to_string(_snakeSize);
+        if (!_renderer->loadTexture("assets/textures/snake/body.png", bodyString))
+            throw std::runtime_error("Could not load texture body");
+        bodyPosition.second = 4 - i;
+        _mapPositionBody[_snakeSize] = bodyPosition;
+        _renderer->createSprite(bodyString, _map[bodyPosition.first][bodyPosition.second].first, _map[bodyPosition.first][bodyPosition.second].second, 1, 1);
+    }
     if (!_renderer->loadTexture("assets/textures/background_snake.png", "background_snake")) {
         throw std::runtime_error("Could not load texture background_snake");
     } if (!_renderer->loadTexture("assets/textures/snake/head.png", "head")) {

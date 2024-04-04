@@ -25,7 +25,7 @@ void Arcade::Snake::gameLoop()
     if (_clock.getElapsedTime().asMilliseconds() < _lastMilliseconds)
         return;
 
-    _lastMilliseconds += MOVE_SPEED;
+    _lastMilliseconds += _moveSpeed;
     moveSnake();
     moveBody();
     checkLose();

@@ -36,9 +36,14 @@ void Arcade::Snake::isEating()
         bodystring += std::to_string(_snakeSize);
         if (!_renderer->loadTexture("assets/textures/snake/body.png", bodystring))
             throw std::runtime_error("Could not load texture body");
-        std::pair<size_t, size_t> bodyPosition = getBodyPosition();
-        _mapPositionBody[_snakeSize] = bodyPosition;
-        _renderer->createSprite(bodystring, _map[bodyPosition.first][bodyPosition.second].first, _map[bodyPosition.first][bodyPosition.second].second, 1, 1);
+        _bodyPosition = getBodyPosition();
+        _mapPositionBody[_snakeSize] = _bodyPosition;
+        _renderer->createSprite(bodystring, _map[_bodyPosition.first][_bodyPosition.second].first, _map[_bodyPosition.first][_bodyPosition.second].second, 1, 1);
         replaceFood();
+        _increaseSpeed++;
+        if (_increaseSpeed >= 5 && _moveSpeed > 100) {
+            _increaseSpeed = 0;
+            _moveSpeed -= 50;
+        }
     }
 }
