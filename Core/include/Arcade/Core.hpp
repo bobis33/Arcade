@@ -143,6 +143,11 @@ namespace Arcade
              */
              static size_t getPreviousLibIndex(std::vector<std::string> &libs, size_t currentIndex);
 
+             /**
+              * @brief Close game library
+              */
+            void closeGameLibrary();
+
             /**
              * @brief Switch Graphic library
              */

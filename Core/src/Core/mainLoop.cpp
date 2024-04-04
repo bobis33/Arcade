@@ -37,7 +37,7 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::C
         {Arcade::KeyboardEvents::F2,
                 [](Arcade::Core &core) -> void {
                 if (core.getMode() != Arcade::CoreMode::MENU && core.getMode() != Arcade::CoreMode::LOGIN) {
-                    core.loadMenu();
+                    core.closeGameLibrary();
                     core.getRenderer()->loadSound();
                     core.setMode(Arcade::CoreMode::MENU);
                 }
@@ -67,17 +67,29 @@ void Arcade::Core::mainLoop()
 
     while (_mode != CoreMode::QUIT) {
         event = _renderer->getEvent();
-        if (_mode == CoreMode::LOGIN) {
-            EventManager::handleEvent<Core>(MAP_LOGIN_EVENT, *this, event);
-            displayLoginScreen();
-        } else if (_mode == CoreMode::MENU) {
-            displayMenu();
-            EventManager::handleEvent<Core>(MAP_MENU_EVENT, *this, event);
-        } else if (_mode == CoreMode::GAME) {
-            _game->displayGame();
-            _game->handleEvents(event);
+
+        switch (_mode) {
+            case CoreMode::LOGIN:
+                displayLoginScreen();
+                EventManager::handleEvent<Core>(MAP_LOGIN_EVENT, *this, event);
+                break;
+            case CoreMode::MENU:
+                displayMenu();
+                EventManager::handleEvent<Core>(MAP_MENU_EVENT, *this, event);
+                break;
+            case CoreMode::GAME:
+                _game->displayGame();
+                _game->handleEvents(event);
+                break;
+            case CoreMode::QUIT:
+                _renderer->stopSound();
+                _renderer->getWindow()->closeWindow();
+                return;
+
+            default:
+                break;
         }
-        EventManager::handleEvent<Core>(MAP_COMMON_EVENT, *this, event);
         _renderer->getWindow()->displayWindow();
+        EventManager::handleEvent<Core>(MAP_COMMON_EVENT, *this, event);
     }
 }

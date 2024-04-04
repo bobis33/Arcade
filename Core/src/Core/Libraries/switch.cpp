@@ -10,6 +10,12 @@
 #include "Arcade/Core.hpp"
 #include "Arcade/RuntimeException.hpp"
 
+void Arcade::Core::closeGameLibrary()
+{
+    _game.reset();
+    dlclose(_handleGame);
+}
+
 void Arcade::Core::switchGraphicLibrary()
 {
     _renderer->stopSound();
