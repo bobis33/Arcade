@@ -16,10 +16,17 @@
 #include "Arcade/abstractions/AGame.hpp"
 
 namespace Arcade {
+
+    static constexpr int MAP_WIDTH = 12;
+    static constexpr int MAP_HEIGHT = 10;
+
+    static constexpr int SIZE_BOX = 90;
+    static constexpr int NB_MOVES = 120;
+
     class Snake : public AGame {
         public:
             void loadGame() override;
-            void displayGame() override;
+            void gameLoop() override;
             void stop() override {};
             void handleEvents(const KeyboardEvents &event) override;
 

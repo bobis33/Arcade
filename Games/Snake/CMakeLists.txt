@@ -13,6 +13,7 @@ add_library(${PROJECT_NAME} SHARED ${SOURCE})
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/entryPoint.cpp
         ${SRC_DIR}/Snake.cpp
+        ${SRC_DIR}/gameLoop.cpp
         ${SRC_DIR}/event.cpp
         ${SRC_DIR}/move.cpp
         ${SRC_DIR}/food.cpp

@@ -7,17 +7,6 @@
 
 #include "Arcade/Snake.hpp"
 
-static constexpr int MAP_WIDTH = 12;
-static constexpr int MAP_HEIGHT = 10;
-
-static constexpr int SIZE_BOX = 90;
-static constexpr int NB_MOVES = 120;
-static constexpr int MOVE_SPEED = 600;
-
-static constexpr int BILLBOARD_POSITION = 1350;
-static constexpr int SIZE_TITLE = 40;
-static constexpr int SIZE_TEXT = 30;
-
 void Arcade::Snake::checkLose()
 {
     for (size_t i = 1; i <= _snakeSize; i++) {
@@ -95,34 +84,6 @@ void Arcade::Snake::displaySnake()
     _renderer->displaySprite("head");
 }
 
-void Arcade::Snake::displayGame()
-{
-    _renderer->displaySprite("background_snake");
-    _renderer->displaySprite("Sugar");
-    _renderer->displaySprite("head");
-    _renderer->displayText("Player:");
-    _renderer->displayText(_userName);
-    _renderer->displayText("Score:");
-    _renderer->displayText(std::to_string(_score));
-    _renderer->displayText("Press F2 to go back to the menu");
-    displaySnake();
-    if (_gameMode == GameMode::GAME_OVER) {
-        _renderer->displayText("Game Over");
-    }
-
-    if (_clock.getElapsedTime().asMilliseconds() < _lastMilliseconds)
-        return;
-
-    _lastMilliseconds += MOVE_SPEED;
-    moveSnake();
-    moveBody();
-    checkLose();
-    for (size_t i = NB_MOVES; i > 0; i--)
-        _prevDirection[i] = _prevDirection[i - 1];
-
-    _prevDirection[0] = _direction;
-    isEating();
-}
 
 void Arcade::Snake::loadGame()
 {

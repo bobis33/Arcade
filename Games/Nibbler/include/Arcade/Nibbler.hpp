@@ -19,7 +19,7 @@ namespace Arcade {
     class Nibbler : public AGame {
         public:
             void loadGame() override;
-            void displayGame() override {};
+            void gameLoop() override;
             void stop() override {};
             void handleEvents(const KeyboardEvents &event) override;
 

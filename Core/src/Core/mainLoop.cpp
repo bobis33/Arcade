@@ -78,7 +78,7 @@ void Arcade::Core::mainLoop()
                 EventManager::handleEvent<Core>(MAP_MENU_EVENT, *this, event);
                 break;
             case CoreMode::GAME:
-                _game->displayGame();
+                _game->gameLoop();
                 _game->handleEvents(event);
                 break;
             case CoreMode::QUIT:

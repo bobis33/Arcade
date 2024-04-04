@@ -42,7 +42,7 @@ namespace Arcade {
             /**
             * @brief display the game
             */
-            virtual void displayGame() = 0;
+            virtual void gameLoop() = 0;
 
             /**
             * @brief stop the game

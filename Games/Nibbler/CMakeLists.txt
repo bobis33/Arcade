@@ -13,6 +13,7 @@ add_library(${PROJECT_NAME} SHARED ${SOURCE})
 target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/entryPoint.cpp
         ${SRC_DIR}/Nibbler.cpp
+        ${SRC_DIR}/gameLoop.cpp
         ${SRC_DIR}/event.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_INCLUDE_DIRS})
