@@ -8,7 +8,5 @@
 #include "Arcade/Nibbler.hpp"
 
 void Arcade::Nibbler::loadGame()
-{
-    _userName = _renderer->getUserName();
-}
+{}
 

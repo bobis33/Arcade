@@ -23,6 +23,7 @@ void Arcade::Snake::checkLose()
     for (size_t i = 1; i <= _snakeSize; i++) {
         if (_mapPosition.first == _mapPositionBody[i].first && _mapPosition.second == _mapPositionBody[i].second) {
             _clock.pause();
+            _gameMode = GameMode::GAME_OVER;
         }
     }
 }
@@ -103,7 +104,11 @@ void Arcade::Snake::displayGame()
     _renderer->displayText(_userName);
     _renderer->displayText("Score:");
     _renderer->displayText(std::to_string(_score));
+    _renderer->displayText("Press F2 to go back to the menu");
     displaySnake();
+    if (_gameMode == GameMode::GAME_OVER) {
+        _renderer->displayText("Game Over");
+    }
 
     if (_clock.getElapsedTime().asMilliseconds() < _lastMilliseconds)
         return;
@@ -121,8 +126,11 @@ void Arcade::Snake::displayGame()
 
 void Arcade::Snake::loadGame()
 {
-    _userName = _renderer->getUserName();
+    if (_userName.empty())
+        _userName = "error";
     createMap();
+    _mapPositionBody.resize(NB_MOVES);
+    _prevDirection.resize(NB_MOVES);
 
     if (!_renderer->loadTexture("assets/textures/background_snake.png", "background_snake")) {
         throw std::runtime_error("Could not load texture background_snake");
@@ -140,7 +148,6 @@ void Arcade::Snake::loadGame()
     _renderer->createText("menu_i", _userName, SIZE_TEXT, BILLBOARD_POSITION, 150);
     _renderer->createText("menu_i", "Score:", SIZE_TITLE, BILLBOARD_POSITION, 300);
     _renderer->createText("menu_i", std::to_string(_score), SIZE_TEXT, BILLBOARD_POSITION, 350);
-
-    _mapPositionBody.resize(NB_MOVES);
-    _prevDirection.resize(NB_MOVES);
+    _renderer->createText("menu_i", "Press F2 to go back to the menu", 15, BILLBOARD_POSITION, 970);
+    _renderer->createText("menu_i", "Game Over", 80, 600, 400);
 }

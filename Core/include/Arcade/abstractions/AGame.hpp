@@ -32,6 +32,7 @@ namespace Arcade {
             [[nodiscard]] GameMode getGameMode() const override { return _gameMode; };
             [[nodiscard]] Direction getDirection() const override { return _direction; };
             void setDirection(const Direction &direction) override { _direction = direction; };
+            void getUserName(const std::string &userName) override { _userName = userName; };
 
             int randomize(int min, int max) override {
                 std::random_device random_number{};
@@ -45,7 +46,7 @@ namespace Arcade {
             int _score{0};
             Clock _clock{};
             int _lastMilliseconds{0};
-            std::string _userName{""};
+            std::string _userName{" "};
             IRenderer *_renderer{nullptr};
             GameMode _gameMode{GameMode::GAME};
             Direction _direction{Direction::RIGHT};

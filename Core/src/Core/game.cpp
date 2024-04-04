@@ -14,5 +14,6 @@ void Arcade::Core::launchGame()
 
     switchLib<IGame>(LIB_PATH + _gameLibs[_currentGameIndex]);
     _renderer->getWindow()->clearWindow();
+    _game->getUserName(_userName);
     _game->start(std::reference_wrapper<IRenderer>(*_renderer), clock);
 }

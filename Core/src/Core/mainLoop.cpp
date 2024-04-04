@@ -55,9 +55,9 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::C
                 }},
         {Arcade::KeyboardEvents::ENTER,
                 [](Arcade::Core &core) -> void {
-                    core.setMode(Arcade::CoreMode::GAME);
                     core.getRenderer()->stopSound();
                     core.launchGame();
+                    core.setMode(Arcade::CoreMode::GAME);
                 }},
 };
 

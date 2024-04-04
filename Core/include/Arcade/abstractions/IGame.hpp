@@ -86,6 +86,8 @@ namespace Arcade {
              */
             virtual int randomize(int min, int max) = 0;
 
+            virtual void getUserName(const std::string &name) = 0;
+
     }; // IGame
 
 } // namespace Arcade
