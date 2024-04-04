@@ -20,13 +20,24 @@ namespace Arcade
             /**
              * @brief Construct a new Clock object
              */
-            Clock();
+            Clock() { restart(); };
+
             ~Clock() = default;
 
             /**
              * @brief Restart the clock
              */
-            void restart();
+            void restart() { m_start = std::chrono::high_resolution_clock::now(); };
+
+            /**
+             * @brief Pause the clock
+             */
+            void pause();
+
+            /**
+             * @brief Resume the clock
+             */
+            void resume();
             
             /**
              * @brief Get the elapsed time since the last restart
@@ -42,6 +53,8 @@ namespace Arcade
         
         private:
             TimePoint m_start{};
+            TimePoint m_pause{};
+            bool m_paused{false};
 
     }; // Clock
 

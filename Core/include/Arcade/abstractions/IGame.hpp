@@ -32,7 +32,7 @@ namespace Arcade {
             /**
             * @brief start the game
             */
-            virtual void start(std::reference_wrapper<IRenderer> renderer, Clock &clock) = 0;
+            virtual void start(std::reference_wrapper<IRenderer> renderer, const Clock &clock) = 0;
 
             /**
             * @brief load the game
@@ -52,19 +52,39 @@ namespace Arcade {
             /**
             * @brief handle the game event
             */
-            virtual void handleEvents(KeyboardEvents event) = 0;
+            virtual void handleEvents(const KeyboardEvents &event) = 0;
 
             /**
-            * @brief Get the score
-            * @return The score
-            */
+             * @brief Get the score
+             * @return The score
+             */
             virtual int getScore() const = 0;
 
             /**
-            * @brief Get the game mode
-            * @return The game mode
-            */
+             * @brief Get the game mode
+             * @return The game mode
+             */
             virtual GameMode getGameMode() const = 0;
+
+            /**
+             * @brief Get the direction
+             * @return The direction
+             */
+            virtual Direction getDirection() const = 0;
+
+            /**
+             * @brief Set the direction
+             * @param direction The direction
+             */
+            virtual void setDirection(const Direction &direction) = 0;
+
+            /**
+             * @brief Randomize a number
+             * @param min The minimum value
+             * @param max The maximum value
+             * @return The random number
+             */
+            virtual int randomize(int min, int max) = 0;
 
     }; // IGame
 

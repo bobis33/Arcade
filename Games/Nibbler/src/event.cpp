@@ -27,7 +27,7 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::N
                 }},
 };
 
-void Arcade::Nibbler::handleEvents(KeyboardEvents event)
+void Arcade::Nibbler::handleEvents(const KeyboardEvents &event)
 {
-    EventManager::handleEvent(MAP_EVENT, *this, event);
+    EventManager::handleEvent<Nibbler>(MAP_EVENT, *this, event);
 }

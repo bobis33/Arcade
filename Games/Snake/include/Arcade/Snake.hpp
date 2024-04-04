@@ -13,24 +13,30 @@
 #ifndef ARCADE_SNAKE_HPP
 #define ARCADE_SNAKE_HPP
 
-#include <vector>
-
 #include "Arcade/abstractions/AGame.hpp"
 
 namespace Arcade {
     class Snake : public AGame {
         public:
-            void loadGame() override {};
-            void displayGame() override {};
+            void loadGame() override;
+            void displayGame() override;
             void stop() override {};
-            void handleEvents(KeyboardEvents event) override;
+            void handleEvents(const KeyboardEvents &event) override;
+
+            void moveSnake();
+            void moveBody();
+            void createMap();
+            void replaceFood();
+            void checkLose();
+            void displaySnake();
+            void isEating();
+            std::pair<size_t, size_t> getBodyPosition();
 
         private:
-            int _snakeSize{1};
-            std::vector<std::pair<int, int>> _snake;
-            std::pair<int, int> _food;
-            std::pair<int, int> _direction{1, 0};
-            std::pair<int, int> _lastDirection{1, 0};
+            size_t _snakeSize{1};
+            std::pair<size_t, size_t> _mapPosition{5, 6};
+            std::vector<std::pair<size_t, size_t>> _mapPositionBody;
+            std::pair<size_t, size_t> _mapPositionFood{2, 2};
 
     }; // Snake
 

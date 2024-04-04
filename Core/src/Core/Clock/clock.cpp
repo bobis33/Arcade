@@ -7,21 +7,30 @@
 
 #include "Arcade/Clock/Clock.hpp"
 
-
-Arcade::Clock::Clock()
+void Arcade::Clock::pause()
 {
-    restart();
+    if (!m_paused) {
+        m_pause = std::chrono::high_resolution_clock::now();
+        m_paused = true;
+    }
 }
 
-void Arcade::Clock::restart()
+void Arcade::Clock::resume()
 {
-    m_start = std::chrono::high_resolution_clock::now();
+    if (m_paused) {
+        m_start += std::chrono::high_resolution_clock::now() - m_pause;
+        m_paused = false;
+    }
 }
 
 Arcade::Time Arcade::Clock::getElapsedTime() const
 {
-    const auto end{std::chrono::high_resolution_clock::now()};
-    const std::chrono::duration<double> elapsed{end - m_start};
-    
-    return Time(elapsed.count());
+    TimePoint now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<float> elapsed_time{};
+    if (m_paused) {
+        elapsed_time = m_pause - m_start;
+    } else {
+        elapsed_time = now - m_start;
+    }
+    return Time(elapsed_time.count());
 }

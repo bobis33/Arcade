@@ -60,6 +60,9 @@ namespace Arcade
              */
             void setInput(const sf::Event &event);
 
+            void moveSprite(const std::string &spriteName, float pos_x, float pos_y) override;
+            void rotateSprite(const std::string &spriteName, float angle) override;
+            std::string getUserName() override { return _input; };
 
         private:
             SfmlWindow _window;

@@ -6,6 +6,7 @@
 */
 
 #include "Arcade/Core.hpp"
+#include "Arcade/Constants.hpp"
 
 void Arcade::Core::launchGame()
 {

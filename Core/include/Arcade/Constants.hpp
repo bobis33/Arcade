@@ -58,6 +58,14 @@ namespace Arcade {
         PAUSE,
     };
 
+    enum class Direction {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        NONE,
+    };
+
     /**
      * @brief Enum for the KeyboardEvents
      * @details Set of enum used for the game event

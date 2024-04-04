@@ -53,8 +53,12 @@ namespace Arcade
 
             std::string updateTextBox() override;
             void setSize(float x, float y) override {_size = std::make_pair(x, y);};
+            void moveSprite(const std::string &spriteName, float pos_x, float pos_y) override;
+            void rotateSprite(const std::string &spriteName, float angle) override;
 
-    private:
+            std::string getUserName() override { return static_cast<std::string>(_input); };
+
+        private:
 
             /**
              * @brief The Sdl2Window
@@ -87,6 +91,11 @@ namespace Arcade
              * @brief The sprites sizes
              */
             std::map<std::string, SDL_Rect> _spritesRect;
+
+            /**
+             * @brief The sprites angles
+             */
+            std::map<std::string, double> _spritesAngle;
 
             /**
              * @brief The music

@@ -110,12 +110,17 @@ namespace Arcade {
          */
         virtual void stopSound() = 0;
 
+        virtual void moveSprite(const std::string &spriteName, float pos_x, float pos_y) = 0;
+
+        virtual void rotateSprite(const std::string &spriteName, float angle) = 0;
         /**
          * @brief Update the text box for username input
          */
         virtual std::string updateTextBox() = 0;
 
         virtual void setSize(float x, float y) = 0;
+
+        virtual std::string getUserName() = 0;
 
     }; // IRenderer
 

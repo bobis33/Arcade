@@ -73,7 +73,10 @@ void Arcade::Core::mainLoop()
         } else if (_mode == CoreMode::MENU) {
             displayMenu();
             EventManager::handleEvent<Core>(MAP_MENU_EVENT, *this, event);
-        } else if (_mode == CoreMode::GAME) {}
+        } else if (_mode == CoreMode::GAME) {
+            _game->displayGame();
+            _game->handleEvents(event);
+        }
         EventManager::handleEvent<Core>(MAP_COMMON_EVENT, *this, event);
         _renderer->getWindow()->displayWindow();
     }
