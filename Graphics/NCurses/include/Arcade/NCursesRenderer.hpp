@@ -45,7 +45,7 @@ namespace Arcade
             bool isASCII() override { return true; };
             IWindow *getWindow() override { return &_window; };
 
-            void loadSound() override {};
+            void loadSound(const std::string &filePath) override { (void) filePath; };
             void stopSound() override {};
 
             void moveSprite(const std::string &spriteName, float pos_x, float pos_y) override {(void)spriteName; (void)pos_x; (void)pos_y;};

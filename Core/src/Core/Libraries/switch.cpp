@@ -30,7 +30,7 @@ void Arcade::Core::switchGraphicLibrary()
         throw RuntimeException("Cannot load fonts");
     if (_mode == CoreMode::MENU) {
         loadMenu();
-        _renderer->loadSound();
+        _renderer->loadSound("assets/sounds/menu.ogg");
     } else {
         loadLogin();
     }

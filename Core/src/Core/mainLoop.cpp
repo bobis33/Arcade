@@ -17,7 +17,7 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::C
         {Arcade::KeyboardEvents::ENTER,
                 [](Arcade::Core &core) -> void {
                     core.loadMenu();
-                    core.getRenderer()->loadSound();
+                    core.getRenderer()->loadSound("assets/sounds/menu.ogg");
                     core.setMode(Arcade::CoreMode::MENU);
                 }},
 };
@@ -38,8 +38,9 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::C
                 [](Arcade::Core &core) -> void {
                 if (core.getMode() != Arcade::CoreMode::MENU && core.getMode() != Arcade::CoreMode::LOGIN) {
                     core.closeGameLibrary();
+                    core.getRenderer()->stopSound();
+                    core.getRenderer()->loadSound("assets/sounds/menu.ogg");
                     core.loadMenu();
-                    core.getRenderer()->loadSound();
                     core.setMode(Arcade::CoreMode::MENU);
                 }
                 }},

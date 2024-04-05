@@ -18,9 +18,11 @@ void Arcade::SfmlRenderer::stopSound() {
     _sound = nullptr;
 }
 
-void Arcade::SfmlRenderer::loadSound() {
-    if (!_buffer.loadFromFile("assets/sounds/menu_sounds.ogg")) {
-        std::cerr << "Cannot load sound" << '\n';
+
+
+void Arcade::SfmlRenderer::loadSound(const std::string &filePath) {
+    if (!_buffer.loadFromFile(filePath)) {
+        throw std::runtime_error("Error: Could not load sound file");
     }
     _sound = new sf::Sound();
     _sound->setBuffer(_buffer);

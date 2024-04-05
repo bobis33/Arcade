@@ -7,6 +7,16 @@
 
 #include "Arcade/Sdl2Renderer.hpp"
 
+void Arcade::Sdl2Renderer::loadSound(const std::string &filePath)
+{
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+        throw std::runtime_error("Error initializing SDL_mixer: " + std::string(Mix_GetError()));
+    _music = Mix_LoadMUS(filePath.c_str());
+    if (_music == nullptr)
+        throw std::runtime_error("Error: " + std::string(Mix_GetError()));
+    Mix_PlayMusic(_music, -1);
+}
+
 void Arcade::Sdl2Renderer::stopSound()
 {
     if (_music == nullptr)
@@ -16,14 +26,4 @@ void Arcade::Sdl2Renderer::stopSound()
     Mix_CloseAudio();
     Mix_Quit();
     _music = nullptr;
-}
-
-void Arcade::Sdl2Renderer::loadSound()
-{
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
-        throw std::runtime_error("Error initializing SDL_mixer: " + std::string(Mix_GetError()));
-    _music = Mix_LoadMUS("assets/sounds/menu_sounds.ogg");
-    if (_music == nullptr)
-        throw std::runtime_error("Error: " + std::string(Mix_GetError()));
-    Mix_PlayMusic(_music, -1);
 }

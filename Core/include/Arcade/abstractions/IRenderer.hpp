@@ -103,7 +103,7 @@ namespace Arcade {
         /**
          * @brief Load a sound for menu
          */
-        virtual void loadSound() = 0;
+        virtual void loadSound(const std::string &filePath) = 0;
 
         /**
          * @brief Stop the sound for menu

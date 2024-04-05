@@ -48,7 +48,7 @@ namespace Arcade
 
             IWindow *getWindow() override { return &_window; };
 
-            void loadSound() override;
+            void loadSound(const std::string &filePath) override;
             void stopSound() override;
 
             std::string updateTextBox() override;

@@ -43,7 +43,7 @@ namespace Arcade
 
             std::string updateTextBox() override;
 
-            void loadSound() override;
+            void loadSound(const std::string &filePath) override;
             void stopSound() override;
 
             IWindow *getWindow() override { return &_window; };
