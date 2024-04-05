@@ -19,11 +19,6 @@
 
 namespace Arcade {
 
-    static constexpr int BILLBOARD_POSITION = 1350;
-    static constexpr int SIZE_TITLE = 40;
-    static constexpr int SIZE_TEXT = 30;
-    static constexpr int MOVE_SPEED = 600;
-
     /**
     * @brief Game Abstract Class
     * @details Set of method to implement for the business logic of the Arcade project

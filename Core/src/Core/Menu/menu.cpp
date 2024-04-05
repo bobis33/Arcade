@@ -24,6 +24,7 @@ void Arcade::Core::displayMenu()
 
 void Arcade::Core::loadMenu()
 {
+    _currentGameIndex = 0;
     if (_renderer->isASCII()) {
         //loadTextures(someasciiartonlyformenu, "ascii art name");
     } else {

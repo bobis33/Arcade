@@ -31,7 +31,7 @@ void Arcade::Snake::isEating()
         _score += randomize(10, 50);
         if (_score % 2 == 0)
             _score =  _score + (_score / 5);
-        _renderer->createText("menu_i", std::to_string(_score), 30, 1350, 350);
+        _renderer->createText("menu_i", std::to_string(_score), 30, BILLBOARD_POSITION, 350);
         std::string bodystring{"body"};
         bodystring += std::to_string(_snakeSize);
         if (!_renderer->loadTexture("assets/textures/snake/body.png", bodystring))

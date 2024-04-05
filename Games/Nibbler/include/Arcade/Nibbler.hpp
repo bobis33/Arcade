@@ -23,6 +23,11 @@ namespace Arcade {
     static constexpr int SIZE_BOX = 57;
     static constexpr int NB_MOVES = 289;
 
+    static constexpr int BILLBOARD_POSITION = 1180;
+    static constexpr int SIZE_TITLE = 40;
+    static constexpr int SIZE_TEXT = 30;
+    static constexpr int MOVE_SPEED = 600;
+
     class Nibbler : public AGame {
         public:
             void loadGame() override;

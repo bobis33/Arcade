@@ -103,10 +103,10 @@ void Arcade::Nibbler::loadGame()
     _renderer->createSprite("map1", 0, 0, 1, 1);
     _renderer->createSprite("head", _map[0][0].first, _map[0][0].second, 1, 1);
 
-    _renderer->createText("menu_i", "Player:", SIZE_TITLE, BILLBOARD_POSITION, SIZE_BOX);
-    _renderer->createText("menu_i", _userName, SIZE_TEXT, BILLBOARD_POSITION, 150);
+    _renderer->createText("menu_i", "Player:", SIZE_TITLE, BILLBOARD_POSITION, 110);
+    _renderer->createText("menu_i", _userName, SIZE_TEXT, BILLBOARD_POSITION, 160);
     _renderer->createText("menu_i", "Score:", SIZE_TITLE, BILLBOARD_POSITION, 300);
     _renderer->createText("menu_i", std::to_string(_score), SIZE_TEXT, BILLBOARD_POSITION, 350);
-    _renderer->createText("menu_i", "Press F2 to go back to the menu", 15, BILLBOARD_POSITION, 970);
+    _renderer->createText("menu_i", "Press F2 to go back to the menu", 15, 1270, 970);
     _renderer->createText("menu_i", "Game Over", 80, 600, 400);
 }

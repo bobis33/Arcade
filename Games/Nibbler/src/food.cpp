@@ -14,7 +14,7 @@ void Arcade::Nibbler::isEating()
             _mapPositionFood[i].second = false;
             _snakeSize++;
             _score += 100;
-            _renderer->createText("menu_i", std::to_string(_score), 30, 1350, 350);
+            _renderer->createText("menu_i", std::to_string(_score), 30, BILLBOARD_POSITION, 350);
             std::string bodystring{"body"};
             bodystring += std::to_string(_snakeSize);
             if (!_renderer->loadTexture("assets/textures/nibbler/body.png", bodystring))
