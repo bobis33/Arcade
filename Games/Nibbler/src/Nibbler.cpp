@@ -136,16 +136,16 @@ void Arcade::Nibbler::loadGame()
     placeFood();
     _mapPositionBody.resize(NB_MOVES);
     _prevDirection.resize(NB_MOVES);
-    std::pair<size_t, size_t> bodyPosition = {5, 4};
+    std::pair<size_t, size_t> bodyPosition = {16, 8};
     std::string bodyString{};
     for (size_t i = 0; i < 3; i++) {
         _prevDirection[i] = Direction::RIGHT;
         _snakeSize++;
         bodyString = "body";
         bodyString += std::to_string(_snakeSize);
-        if (!_renderer->loadTexture("assets/textures/snake/body.png", bodyString))
+        if (!_renderer->loadTexture("assets/textures/nibbler/body.png", bodyString))
             throw std::runtime_error("Could not load texture body");
-        bodyPosition.second = 4 - i;
+        bodyPosition.second = 8 - i;
         _mapPositionBody[_snakeSize] = bodyPosition;
         _renderer->createSprite(bodyString, _map[bodyPosition.first][bodyPosition.second].first, _map[bodyPosition.first][bodyPosition.second].second, 1, 1);
     }
