@@ -63,6 +63,8 @@ namespace Arcade
             void moveSprite(const std::string &spriteName, float pos_x, float pos_y) override;
             void rotateSprite(const std::string &spriteName, float angle) override;
 
+            void deleteRessources() override;
+
         private:
             SfmlWindow _window;
             sf::SoundBuffer _buffer;

@@ -17,97 +17,40 @@ void Arcade::Nibbler::checkLose()
     }
 }
 
-void Arcade::Nibbler::createMap()
-{
-    _map.clear();
-    _map.resize(MAP_HEIGHT);
-    for (size_t i = 0; i < MAP_HEIGHT; ++i) {
-        _map[i].resize(MAP_WIDTH);
-        for (size_t j = 0; j < MAP_WIDTH; ++j) {
-            _map[i][j] = {(SIZE_BOX * j) + SIZE_BOX, (SIZE_BOX * i) + SIZE_BOX};
-        }
-    }
-}
-
-void Arcade::Nibbler::placeFood()
-{
-    size_t indexFood = 0;
-    for (size_t i = 0; i < MAP_HEIGHT; i++) {
-        for (size_t j = 0; j < MAP_WIDTH; j++) {
-            if (_mapPositionWall[i][j] == 'o') {
-                _mapPositionFood.push_back({{i, j}, true});
-                indexFood++;
-            }
-        }
-    }
-    _nbFood = indexFood;
-    std::string FoodString;
-    for (size_t i = 0; i <= _nbFood; i++) {
-        FoodString = "Sugar";
-        FoodString += std::to_string(i);
-        if (!_renderer->loadTexture("assets/textures/nibbler/sugar.png", FoodString))
-            throw std::runtime_error("Could not load texture sugar");
-        _renderer->createSprite(FoodString, _map[_mapPositionFood[i].first.first][_mapPositionFood[i].first.second].first, _map[_mapPositionFood[i].first.first][_mapPositionFood[i].first.second].second, 1, 1);
-    }
-}
-
-void Arcade::Nibbler::createWall()
-{
-    _mapPositionWall.clear();
-    _mapPositionWall = {
-        {' ', ' ', 'o', ' ', ' ', ' ', 'o', ' ', ' ', ' ', 'o', ' ', ' ', ' ', 'o', ' ', ' '},
-        {' ', 'X', 'X', 'X', ' ', 'X', ' ', 'X', 'X', 'X', ' ', 'X', ' ', 'X', 'X', 'X', ' '},
-        {'o', 'X', ' ', 'X', 'o', 'X', ' ', ' ', ' ', ' ', ' ', 'X', 'o', 'X', ' ', 'X', 'o'},
-        {' ', 'X', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X', ' '},
-        {' ', ' ', ' ', ' ', ' ', 'X', 'o', 'X', ' ', 'X', 'o', 'X', ' ', ' ', ' ', ' ', ' '},
-        {' ', 'X', 'X', 'X', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X', 'X', 'X', ' '},
-        {'o', 'X', ' ', 'o', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'o', ' ', 'X', 'o'},
-        {' ', 'X', ' ', 'X', 'X', 'X', 'X', 'X', 'o', 'X', 'X', 'X', 'X', 'X', ' ', 'X', ' '},
-        {' ', ' ', ' ', 'o', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'o', ' ', ' ', ' '},
-        {' ', 'X', 'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', 'X', ' '},
-        {' ', ' ', 'o', ' ', ' ', ' ', ' ', 'X', ' ', 'X', ' ', ' ', ' ', ' ', 'o', ' ', ' '},
-        {' ', 'X', 'X', 'X', ' ', 'X', ' ', 'X', 'X', 'X', ' ', 'X', ' ', 'X', 'X', 'X', ' '},
-        {' ', 'X', ' ', 'X', ' ', 'X', ' ', ' ', 'o', ' ', ' ', 'X', ' ', 'X', ' ', 'X', ' '},
-        {'o', 'X', 'X', 'X', 'o', 'X', 'o', 'X', 'X', 'X', 'o', 'X', 'o', 'X', 'X', 'X', 'o'},
-        {'o', ' ', ' ', ' ', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', ' ', ' ', ' ', 'o'},
-        {' ', 'X', 'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', 'X', ' '},
-        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
-    };
-}
-
 std::pair<size_t, size_t> Arcade::Nibbler::getBodyPosition()
 {
-    std::pair<unsigned long, unsigned long> bodyPosition = _mapPosition;
+    std::pair<unsigned long, unsigned long> body_position = _mapPosition;
 
     for (size_t i = 0; i < _snakeSize - 1; i++) {
         switch (_prevDirection[i]) {
             case Direction::UP:
-                bodyPosition.first++;
+                body_position.first++;
                 break;
             case Direction::DOWN:
-                bodyPosition.first--;
+                body_position.first--;
                 break;
             case Direction::LEFT:
-                bodyPosition.second++;
+                body_position.second++;
                 break;
             case Direction::RIGHT:
-                bodyPosition.second--;
+                body_position.second--;
                 break;
             default:
                 break;
         }
     }
-    return bodyPosition;
+    return body_position;
 }
 
 void Arcade::Nibbler::displayFood()
 {
-    std::string FoodString;
+    std::string food_string{"Sugar"};
+
     for (size_t i = 0; i <= _nbFood; i++) {
         if (_mapPositionFood[i].second == true) {
-            FoodString = "Sugar";
-            FoodString += std::to_string(i);
-            _renderer->displaySprite(FoodString);
+            food_string = "Sugar";
+            food_string += std::to_string(i);
+            _renderer->displaySprite(food_string);
         }
     }
 }
@@ -129,25 +72,24 @@ void Arcade::Nibbler::displaySnake()
 
 void Arcade::Nibbler::loadGame()
 {
-    if (_userName.empty())
-        _userName = "error";
-    createMap();
-    createWall();
-    placeFood();
+    std::pair<size_t, size_t> body_position = {16, 8};
+    std::string body_string{"body"};
     _mapPositionBody.resize(NB_MOVES);
     _prevDirection.resize(NB_MOVES);
-    std::pair<size_t, size_t> bodyPosition = {16, 8};
-    std::string bodyString{};
+    if (_userName.empty())
+        _userName = "error";
+
+    createMap();
     for (size_t i = 0; i < 3; i++) {
         _prevDirection[i] = Direction::RIGHT;
         _snakeSize++;
-        bodyString = "body";
-        bodyString += std::to_string(_snakeSize);
-        if (!_renderer->loadTexture("assets/textures/nibbler/body.png", bodyString))
+        body_string = "body";
+        body_string += std::to_string(_snakeSize);
+        if (!_renderer->loadTexture("assets/textures/nibbler/body.png", body_string))
             throw std::runtime_error("Could not load texture body");
-        bodyPosition.second = 8 - i;
-        _mapPositionBody[_snakeSize] = bodyPosition;
-        _renderer->createSprite(bodyString, _map[bodyPosition.first][bodyPosition.second].first, _map[bodyPosition.first][bodyPosition.second].second, 1, 1);
+        body_position.second = 8 - i;
+        _mapPositionBody[_snakeSize] = body_position;
+        _renderer->createSprite(body_string, _map[body_position.first][body_position.second].first, _map[body_position.first][body_position.second].second, 1, 1);
     }
     if (!_renderer->loadTexture("assets/textures/background_nibbler.png", "background_snake")) {
         throw std::runtime_error("Could not load texture background_snake");

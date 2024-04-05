@@ -7,6 +7,12 @@
 
 #include "Arcade/SfmlRenderer.hpp"
 
+void Arcade::SfmlRenderer::deleteRessources()
+{
+    _textures.clear();
+    _sprites.clear();
+}
+
 bool Arcade::SfmlRenderer::loadTexture(const std::string &filePath, const std::string &name)
 {
     return (_textures[name].loadFromFile(filePath));

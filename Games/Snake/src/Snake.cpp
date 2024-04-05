@@ -2,14 +2,14 @@
 ** EPITECH PROJECT, 2024
 ** B-OOP-400-BDX-4-1-arcade-elliot.masina
 ** File description:
-** Snake
+** Snake.cpp
 */
 
 #include "Arcade/Snake.hpp"
 
 void Arcade::Snake::checkLose()
 {
-    for (size_t i = 4; i <= _snakeSize; i++) {
+    for (size_t i = 3; i <= _snakeSize; i++) {
         if (_mapPosition.first == _mapPositionBody[i].first && _mapPosition.second == _mapPositionBody[i].second) {
             _clock.pause();
             _gameMode = GameMode::GAME_OVER;

@@ -12,6 +12,7 @@
 
 void Arcade::Core::closeGameLibrary()
 {
+    _game->stop();
     _game.reset();
     dlclose(_handleGame);
 }

@@ -33,10 +33,11 @@ namespace Arcade {
             ~AGame() override = default;
 
             void start(std::reference_wrapper<IRenderer> renderer, const Clock &clock) override { _renderer = &renderer.get(); _clock = clock; loadGame(); };
+            void stop() override { _renderer->deleteRessources(); };
             [[nodiscard]] int getScore() const override { return _score; };
             [[nodiscard]] GameMode getGameMode() const override { return _gameMode; };
             [[nodiscard]] Direction getDirection() const override { return _direction; };
-            virtual void setDirection(const Direction &direction) override { _direction = direction; };
+            void setDirection(const Direction &direction) override { _direction = direction; };
             void getUserName(const std::string &userName) override { _userName = userName; };
 
             int randomize(int min, int max) override {
@@ -51,7 +52,7 @@ namespace Arcade {
             int _score{0};
             Clock _clock{};
             int _lastMilliseconds{0};
-            std::string _userName;
+            std::string _userName{};
             IRenderer *_renderer{nullptr};
             GameMode _gameMode{GameMode::GAME};
             Direction _direction{Direction::RIGHT};

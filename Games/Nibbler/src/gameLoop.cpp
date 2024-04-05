@@ -2,80 +2,78 @@
 ** EPITECH PROJECT, 2024
 ** B-OOP-400-BDX-4-1-arcade-elliot.masina
 ** File description:
-** Nibbler
+** gameLoop.cpp
 */
 
 #include "Arcade/Nibbler.hpp"
 
-bool Arcade::Nibbler::findDirection(const Direction &dir)
+bool Arcade::Nibbler::findDirection(const Direction &direction)
 {
     int count = 0;
-    Arcade::Direction newDir = dir;
-    if (dir == Direction::UP) {
-        if (_mapPosition.second != 0 && _mapPositionWall[_mapPosition.first][_mapPosition.second - 1] != 'X') {
-            newDir = Direction::LEFT;
-            count++;
-        }
-        if (_mapPosition.second != 16 && _mapPositionWall[_mapPosition.first][_mapPosition.second + 1] != 'X') {
-            newDir = Direction::RIGHT;
-            count++;
-        }
-        if (count == 1) {
-            setDirection(newDir);
-            return true;
-        } else {
+    Direction newDirection{};
+
+    switch (direction) {
+        case Direction::UP:
+            if (_mapPosition.second != 0 && _mapPositionWall[_mapPosition.first][_mapPosition.second - 1] != 'X') {
+                newDirection = Direction::LEFT;
+                count++;
+            }
+            if (_mapPosition.second != 16 && _mapPositionWall[_mapPosition.first][_mapPosition.second + 1] != 'X') {
+                newDirection = Direction::RIGHT;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
             return false;
-        }
-    } else if (dir == Direction::DOWN) {
-        if (_mapPosition.second != 0 && _mapPositionWall[_mapPosition.first][_mapPosition.second - 1] != 'X') {
-            newDir = Direction::LEFT;
-            count++;
-        }
-        if (_mapPosition.second != 16 && _mapPositionWall[_mapPosition.first][_mapPosition.second + 1] != 'X') {
-            newDir = Direction::RIGHT;
-            count++;
-        }
-        if (count == 1) {
-            setDirection(newDir);
-            return true;
-        } else {
+        case Direction::DOWN:
+            if (_mapPosition.second != 0 && _mapPositionWall[_mapPosition.first][_mapPosition.second - 1] != 'X') {
+                newDirection = Direction::LEFT;
+                count++;
+            }
+            if (_mapPosition.second != 16 && _mapPositionWall[_mapPosition.first][_mapPosition.second + 1] != 'X') {
+                newDirection = Direction::RIGHT;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
             return false;
-        }
-    } else if (dir == Direction::LEFT) {
-        if (_mapPosition.first != 0 && _mapPositionWall[_mapPosition.first - 1][_mapPosition.second] != 'X') {
-            newDir = Direction::UP;
-            count++;
-        }
-        if (_mapPosition.first != 16 && _mapPositionWall[_mapPosition.first + 1][_mapPosition.second] != 'X') {
-            newDir = Direction::DOWN;
-            count++;
-        }
-        if (count == 1) {
-            setDirection(newDir);
-            return true;
-        } else {
+        case Direction::LEFT:
+            if (_mapPosition.first != 0 && _mapPositionWall[_mapPosition.first - 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::UP;
+                count++;
+            }
+            if (_mapPosition.first != 16 && _mapPositionWall[_mapPosition.first + 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::DOWN;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
             return false;
-        }
-    } else if (dir == Direction::RIGHT) {
-        if (_mapPosition.first != 0 && _mapPositionWall[_mapPosition.first - 1][_mapPosition.second] != 'X') {
-            newDir = Direction::UP;
-            count++;
-        }
-        if (_mapPosition.first != 16 && _mapPositionWall[_mapPosition.first + 1][_mapPosition.second] != 'X') {
-            newDir = Direction::DOWN;
-            count++;
-        }
-        if (count == 1) {
-            setDirection(newDir);
-            return true;
-        } else {
+        case Direction::RIGHT:
+            if (_mapPosition.first != 0 && _mapPositionWall[_mapPosition.first - 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::UP;
+                count++;
+            }
+            if (_mapPosition.first != 16 && _mapPositionWall[_mapPosition.first + 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::DOWN;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
             return false;
-        }
+
+        default:
+            return false;
     }
-    return false;
 }
-
-
 
 void Arcade::Nibbler::gameLoop()
 {
@@ -89,17 +87,16 @@ void Arcade::Nibbler::gameLoop()
     _renderer->displayText("Press F2 to go back to the menu");
     displaySnake();
     displayFood();
-    if (_gameMode == GameMode::GAME_OVER) {
+    if (_gameMode == GameMode::GAME_OVER)
         _renderer->displayText("Game Over");
-    }
 
     if (_clock.getElapsedTime().asMilliseconds() < _lastMilliseconds)
         return;
 
     _lastMilliseconds += _moveSpeed;
     checkIfCanMove(_mapPosition, _direction);
-    if (_canMove == false) {
-        if (findDirection(_direction) == false)
+    if (!_canMove) {
+        if (!findDirection(_direction))
             return;
     }
     moveSnake();

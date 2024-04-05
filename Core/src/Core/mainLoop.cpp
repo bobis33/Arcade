@@ -38,6 +38,7 @@ static const std::map<const Arcade::KeyboardEvents, std::function<void(Arcade::C
                 [](Arcade::Core &core) -> void {
                 if (core.getMode() != Arcade::CoreMode::MENU && core.getMode() != Arcade::CoreMode::LOGIN) {
                     core.closeGameLibrary();
+                    core.loadMenu();
                     core.getRenderer()->loadSound();
                     core.setMode(Arcade::CoreMode::MENU);
                 }

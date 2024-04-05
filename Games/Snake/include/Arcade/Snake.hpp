@@ -27,7 +27,6 @@ namespace Arcade {
         public:
             void loadGame() override;
             void gameLoop() override;
-            void stop() override {};
             void handleEvents(const KeyboardEvents &event) override;
 
             void moveSnake();

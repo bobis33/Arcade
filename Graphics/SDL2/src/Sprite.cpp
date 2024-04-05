@@ -7,6 +7,11 @@
 
 #include "Arcade/Sdl2Renderer.hpp"
 
+void Arcade::Sdl2Renderer::deleteRessources()
+{
+    _sprites.clear();
+}
+
 bool Arcade::Sdl2Renderer::loadTexture(const std::string &filePath, const std::string &name)
 {
     if (_sprites.find(name) != _sprites.end())

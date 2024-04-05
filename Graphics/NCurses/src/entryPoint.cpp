@@ -9,7 +9,8 @@
 
 #include "Arcade/NCursesRenderer.hpp"
 
-extern "C" {
+extern "C"
+{
     std::unique_ptr<Arcade::IRenderer> entryPoint()
     {
         return std::make_unique<Arcade::NCursesRenderer>();

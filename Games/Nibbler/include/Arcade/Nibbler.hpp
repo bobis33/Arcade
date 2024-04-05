@@ -27,22 +27,20 @@ namespace Arcade {
         public:
             void loadGame() override;
             void gameLoop() override;
-            void stop() override {};
             void handleEvents(const KeyboardEvents &event) override;
+            void setDirection(const Direction &direction) override;
 
             void moveSnake();
             void moveBody();
             void createMap();
             void createWall();
-            void replaceFood();
             void checkLose();
             void displaySnake();
             void isEating();
-            void checkIfCanMove(std::pair<size_t, size_t> pos, Direction dir);
+            void checkIfCanMove(std::pair<size_t, size_t> pos, const Direction &direction);
             std::pair<size_t, size_t> getBodyPosition();
-            virtual void setDirection(const Direction &direction);
-            bool findDirection(const Direction &dir);
-            void placeFood();
+            bool findDirection(const Direction &direction);
+            void createFood();
             void displayFood();
 
         private:
@@ -57,8 +55,8 @@ namespace Arcade {
             std::vector<std::vector<char>> _mapPositionWall;
             size_t _nbFood{0};
 
-    }; // Snake
+    }; // Nibbler
 
 } // namespace Arcade
 
-#endif // ARCADE_SNAKE_HPP
+#endif // ARCADE_NIBBLER_HPP

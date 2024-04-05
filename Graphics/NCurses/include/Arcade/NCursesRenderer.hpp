@@ -53,6 +53,8 @@ namespace Arcade
             std::string updateTextBox() override {return "";};
             void setSize(float x, float y) override {_size = std::make_pair(x, y);};
 
+            void deleteRessources() override {};
+
         private:
 
             /**

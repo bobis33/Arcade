@@ -9,7 +9,8 @@
 
 #include "Arcade/Nibbler.hpp"
 
-extern "C" {
+extern "C"
+{
     std::unique_ptr<Arcade::AGame> entryPoint()
     {
         return std::make_unique<Arcade::Nibbler>();
