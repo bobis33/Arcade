@@ -30,9 +30,9 @@ namespace Arcade
             ~NCursesWindow() override = default;
 
             void openWindow(unsigned int width, unsigned int height) override;
-            void displayWindow() override { refresh(); mvprintw(0, _titlePos, "%s", _title.data()); };
-            void clearWindow() override { clear(); };
-            void closeWindow() override { curs_set(1); clear(); refresh(); delwin(_window); };
+            void displayWindow() override { box(_window, 0, 0); mvprintw(0, _titlePos, "%s", _title.data()); clearWindow(); };
+            void clearWindow() override { wrefresh(_window); wclear(_window); };
+            void closeWindow() override { curs_set(1); reset_shell_mode(); endwin(); delwin(_window); };
             void setTitle(const std::string &title) override { _title = title; };
 
             /**
@@ -42,9 +42,11 @@ namespace Arcade
             WINDOW *getWindow() { return _window; };
 
         private:
-            WINDOW *_window{nullptr};
-            std::string _title{"Arcade - NCurses\n"};
+            WINDOW *_window;
+            std::string _title{" Arcade - NCurses "};
             int _titlePos{0};
+
+            std::pair<int, int> _size;
 
 	}; // NCursesWindow
 

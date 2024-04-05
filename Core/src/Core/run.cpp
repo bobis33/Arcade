@@ -19,8 +19,13 @@ void Arcade::Core::loadRenderer(const std::string &path)
 {
     switchLib<IRenderer>(path);
     getLibraries(path);
-    _renderer->setSize(WIDTH, HEIGHT);
-    _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
+    if (_renderer->isASCII()) {
+        _renderer->setSize(80, 40);
+        _renderer->getWindow()->openWindow(80, 40);
+    } else {
+        _renderer->setSize(WIDTH, HEIGHT);
+        _renderer->getWindow()->openWindow(WIDTH, HEIGHT);
+    }
     if (!_renderer->loadFont("assets/fonts/menu_i.ttf", "menu_i"))
         throw RuntimeException("Cannot load fonts");
     loadMenu();
