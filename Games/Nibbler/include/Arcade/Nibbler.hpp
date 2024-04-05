@@ -16,6 +16,13 @@
 #include "Arcade/abstractions/AGame.hpp"
 
 namespace Arcade {
+
+    static constexpr int MAP_WIDTH = 17;
+    static constexpr int MAP_HEIGHT = 17;
+
+    static constexpr int SIZE_BOX = 57;
+    static constexpr int NB_MOVES = 289;
+
     class Nibbler : public AGame {
         public:
             void loadGame() override;
@@ -23,8 +30,35 @@ namespace Arcade {
             void stop() override {};
             void handleEvents(const KeyboardEvents &event) override;
 
-    }; // Nibbler
+            void moveSnake();
+            void moveBody();
+            void createMap();
+            void createWall();
+            void replaceFood();
+            void checkLose();
+            void displaySnake();
+            void isEating();
+            void checkIfCanMove(std::pair<size_t, size_t> pos, Direction dir);
+            std::pair<size_t, size_t> getBodyPosition();
+            virtual void setDirection(const Direction &direction);
+            bool findDirection(const Direction &dir);
+            void placeFood();
+            void displayFood();
+
+        private:
+            size_t _snakeSize{1};
+            std::pair<size_t, size_t> _mapPosition{5, 5};
+            std::vector<std::pair<size_t, size_t>> _mapPositionBody;
+            std::vector<std::pair<std::pair<size_t, size_t>, bool>> _mapPositionFood{{std::make_pair(0, 0), false}};
+            int _moveSpeed{MOVE_SPEED};
+            int _increaseSpeed{0};
+            std::pair<size_t, size_t> _bodyPosition;
+            bool _canMove{true};
+            std::vector<std::vector<char>> _mapPositionWall;
+            size_t _nbFood{0};
+
+    }; // Snake
 
 } // namespace Arcade
 
-#endif // ARCADE_NIBBLER_HPP
+#endif // ARCADE_SNAKE_HPP

@@ -36,7 +36,7 @@ namespace Arcade {
             [[nodiscard]] int getScore() const override { return _score; };
             [[nodiscard]] GameMode getGameMode() const override { return _gameMode; };
             [[nodiscard]] Direction getDirection() const override { return _direction; };
-            void setDirection(const Direction &direction) override { _direction = direction; };
+            virtual void setDirection(const Direction &direction) override { _direction = direction; };
             void getUserName(const std::string &userName) override { _userName = userName; };
 
             int randomize(int min, int max) override {

@@ -15,6 +15,8 @@ target_sources(${PROJECT_NAME} PRIVATE
         ${SRC_DIR}/Nibbler.cpp
         ${SRC_DIR}/gameLoop.cpp
         ${SRC_DIR}/event.cpp
+        ${SRC_DIR}/move.cpp
+        ${SRC_DIR}/food.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_INCLUDE_DIRS})
 target_compile_options(${PROJECT_NAME} PRIVATE ${WARNING_FLAGS})
