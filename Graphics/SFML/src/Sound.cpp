@@ -26,6 +26,7 @@ void Arcade::SfmlRenderer::loadSound(const std::string &filePath) {
     }
     _sound = new sf::Sound();
     _sound->setBuffer(_buffer);
+    _sound->setLoop(true);
     _sound->play();
     _sound->setVolume(100);
 }

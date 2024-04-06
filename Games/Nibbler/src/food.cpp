@@ -7,6 +7,29 @@
 
 #include "Arcade/Nibbler.hpp"
 
+void Arcade::Nibbler::createFood()
+{
+    size_t food_index = 0;
+    std::string food_string{"Sugar"};
+
+    for (size_t i = 0; i < MAP_HEIGHT; i++) {
+        for (size_t j = 0; j < MAP_WIDTH; j++) {
+            if (_mapPositionWall[i][j] == 'o') {
+                _mapPositionFood.push_back({{i, j}, true});
+                food_index++;
+            }
+        }
+    }
+    _nbFood = food_index;
+    for (size_t i = 0; i <= _nbFood; i++) {
+        food_string = "Sugar";
+        food_string += std::to_string(i);
+        if (!_renderer->loadTexture("assets/textures/nibbler/sugar.png", food_string))
+            throw std::runtime_error("Could not load texture sugar");
+        _renderer->createSprite(food_string, _map[_mapPositionFood[i].first.first][_mapPositionFood[i].first.second].first, _map[_mapPositionFood[i].first.first][_mapPositionFood[i].first.second].second, 1, 1);
+    }
+}
+
 void Arcade::Nibbler::isEating()
 {
     for (size_t i = 0; i <= _nbFood; i++) {
@@ -14,7 +37,6 @@ void Arcade::Nibbler::isEating()
             _mapPositionFood[i].second = false;
             _snakeSize++;
             _score += 100;
-            _renderer->createText("menu_i", std::to_string(_score), 30, BILLBOARD_POSITION, 350);
             std::string bodystring{"body"};
             bodystring += std::to_string(_snakeSize);
             if (!_renderer->loadTexture("assets/textures/nibbler/body.png", bodystring))

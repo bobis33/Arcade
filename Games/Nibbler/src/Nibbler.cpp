@@ -7,6 +7,74 @@
 
 #include "Arcade/Nibbler.hpp"
 
+bool Arcade::Nibbler::findDirection(const Direction &direction)
+{
+    int count = 0;
+    Direction newDirection{};
+
+    switch (direction) {
+        case Direction::UP:
+            if (_mapPosition.second != 0 && _mapPositionWall[_mapPosition.first][_mapPosition.second - 1] != 'X') {
+                newDirection = Direction::LEFT;
+                count++;
+            }
+            if (_mapPosition.second != 16 && _mapPositionWall[_mapPosition.first][_mapPosition.second + 1] != 'X') {
+                newDirection = Direction::RIGHT;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
+            return false;
+        case Direction::DOWN:
+            if (_mapPosition.second != 0 && _mapPositionWall[_mapPosition.first][_mapPosition.second - 1] != 'X') {
+                newDirection = Direction::LEFT;
+                count++;
+            }
+            if (_mapPosition.second != 16 && _mapPositionWall[_mapPosition.first][_mapPosition.second + 1] != 'X') {
+                newDirection = Direction::RIGHT;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
+            return false;
+        case Direction::LEFT:
+            if (_mapPosition.first != 0 && _mapPositionWall[_mapPosition.first - 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::UP;
+                count++;
+            }
+            if (_mapPosition.first != 16 && _mapPositionWall[_mapPosition.first + 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::DOWN;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
+            return false;
+        case Direction::RIGHT:
+            if (_mapPosition.first != 0 && _mapPositionWall[_mapPosition.first - 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::UP;
+                count++;
+            }
+            if (_mapPosition.first != 16 && _mapPositionWall[_mapPosition.first + 1][_mapPosition.second] != 'X') {
+                newDirection = Direction::DOWN;
+                count++;
+            }
+            if (count == 1) {
+                setDirection(newDirection);
+                return true;
+            }
+            return false;
+
+        default:
+            return false;
+    }
+}
+
 void Arcade::Nibbler::checkLose()
 {
     for (size_t i = 4; i <= _snakeSize; i++) {
@@ -40,73 +108,4 @@ std::pair<size_t, size_t> Arcade::Nibbler::getBodyPosition()
         }
     }
     return body_position;
-}
-
-void Arcade::Nibbler::displayFood()
-{
-    std::string food_string{"Sugar"};
-
-    for (size_t i = 0; i <= _nbFood; i++) {
-        if (_mapPositionFood[i].second == true) {
-            food_string = "Sugar";
-            food_string += std::to_string(i);
-            _renderer->displaySprite(food_string);
-        }
-    }
-}
-
-void Arcade::Nibbler::displaySnake()
-{
-    std::string body_string{"body"};
-
-    if (_snakeSize > 1) {
-        for (size_t i = 1; i <= _snakeSize; i++) {
-            body_string = "body";
-            body_string += std::to_string(i);
-            _renderer->displaySprite(body_string);
-        }
-    }
-    _renderer->displaySprite("head");
-}
-
-
-void Arcade::Nibbler::loadGame()
-{
-    std::pair<size_t, size_t> body_position = {16, 8};
-    std::string body_string{"body"};
-    _mapPositionBody.resize(NB_MOVES);
-    _prevDirection.resize(NB_MOVES);
-    if (_userName.empty())
-        _userName = "error";
-
-    createMap();
-    for (size_t i = 0; i < 3; i++) {
-        _prevDirection[i] = Direction::RIGHT;
-        _snakeSize++;
-        body_string = "body";
-        body_string += std::to_string(_snakeSize);
-        if (!_renderer->loadTexture("assets/textures/nibbler/body.png", body_string))
-            throw std::runtime_error("Could not load texture body");
-        body_position.second = 8 - i;
-        _mapPositionBody[_snakeSize] = body_position;
-        _renderer->createSprite(body_string, _map[body_position.first][body_position.second].first, _map[body_position.first][body_position.second].second, 1, 1);
-    }
-    if (!_renderer->loadTexture("assets/textures/background_nibbler.png", "background_snake")) {
-        throw std::runtime_error("Could not load texture background_snake");
-    } if (!_renderer->loadTexture("assets/textures/nibbler/head.png", "head")) {
-        throw std::runtime_error("Could not load texture head");
-    } if (!_renderer->loadTexture("assets/textures/nibbler/map1_nibbler.png", "map1")) {
-        throw std::runtime_error("Could not load texture map1");
-    }
-
-    _renderer->createSprite("background_snake", 0, 0, 1, 1);
-    _renderer->createSprite("map1", 0, 0, 1, 1);
-    _renderer->createSprite("head", _map[0][0].first, _map[0][0].second, 1, 1);
-
-    _renderer->createText("menu_i", "Player:", SIZE_TITLE, BILLBOARD_POSITION, 110);
-    _renderer->createText("menu_i", _userName, SIZE_TEXT, BILLBOARD_POSITION, 160);
-    _renderer->createText("menu_i", "Score:", SIZE_TITLE, BILLBOARD_POSITION, 300);
-    _renderer->createText("menu_i", std::to_string(_score), SIZE_TEXT, BILLBOARD_POSITION, 350);
-    _renderer->createText("menu_i", "Press F2 to go back to the menu", 15, 1270, 970);
-    _renderer->createText("menu_i", "Game Over", 80, 600, 400);
 }

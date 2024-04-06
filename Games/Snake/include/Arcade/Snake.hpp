@@ -43,6 +43,10 @@ namespace Arcade {
             void isEating();
             std::pair<size_t, size_t> getBodyPosition();
 
+            void loadSnake();
+            void loadAsciiSnake();
+
+
         private:
             size_t _snakeSize{1};
             std::pair<size_t, size_t> _mapPosition{5, 5};
@@ -51,6 +55,7 @@ namespace Arcade {
             int _moveSpeed{MOVE_SPEED};
             int _increaseSpeed{0};
             std::pair<size_t, size_t> _bodyPosition;
+            bool _isAscii{false};
 
     }; // Snake
 

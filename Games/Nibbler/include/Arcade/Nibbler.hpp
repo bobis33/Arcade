@@ -48,6 +48,10 @@ namespace Arcade {
             void createFood();
             void displayFood();
 
+            void loadNibbler();
+            void loadASCIINibbler();
+            void createSnake();
+
         private:
             size_t _snakeSize{1};
             std::pair<size_t, size_t> _mapPosition{16, 9};
@@ -59,6 +63,7 @@ namespace Arcade {
             bool _canMove{true};
             std::vector<std::vector<char>> _mapPositionWall;
             size_t _nbFood{0};
+            bool _isAscii{false};
 
     }; // Nibbler
 
