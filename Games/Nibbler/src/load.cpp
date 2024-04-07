@@ -44,10 +44,13 @@ void Arcade::Nibbler::loadNibbler()
         throw std::runtime_error("Could not load texture head");
     } if (!_renderer->loadTexture("assets/textures/nibbler/map1_nibbler.png", "map1")) {
         throw std::runtime_error("Could not load texture map1");
+    } if (!_renderer->loadTexture("assets/textures/nibbler/map2_nibbler.png", "map2")) {
+        throw std::runtime_error("Could not load texture map2");
     }
 
     _renderer->createSprite("background_snake", 0, 0, 1, 1);
     _renderer->createSprite("map1", 0, 0, 1, 1);
+    _renderer->createSprite("map2", 0, 0, 1, 1);
     _renderer->createSprite("head", _map[0][0].first, _map[0][0].second, 1, 1);
 
     _renderer->createText("menu_i", "Player:", SIZE_TITLE, BILLBOARD_POSITION, 110);

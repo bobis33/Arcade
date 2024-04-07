@@ -36,9 +36,31 @@ void Arcade::Nibbler::checkIfCanMove(std::pair<size_t, size_t> pos, const Direct
 void Arcade::Nibbler::moveBody()
 {
     std::string body_string{"body"};
+    std::string body_string_corner{"body"};
     for (size_t i = 1; i <= _snakeSize; i++) {
         body_string = "body";
+        body_string_corner = "body";
         body_string += std::to_string(i);
+        body_string_corner += std::to_string(i + 2);
+        if (_prevDirection[i - 1] == Direction::UP && _prevDirection[i] == Direction::RIGHT) {
+            _renderer->loadTexture("assets/textures/nibbler/corner0.png", body_string_corner);
+        } else if (_prevDirection[i - 1] == Direction::UP && _prevDirection[i] == Direction::LEFT) {
+            _renderer->loadTexture("assets/textures/nibbler/corner3.png", body_string_corner);
+        } else if (_prevDirection[i - 1] == Direction::DOWN && _prevDirection[i] == Direction::RIGHT) {
+            _renderer->loadTexture("assets/textures/nibbler/corner3.png", body_string_corner);
+        } else if (_prevDirection[i - 1] == Direction::DOWN && _prevDirection[i] == Direction::LEFT) {
+            _renderer->loadTexture("assets/textures/nibbler/corner0.png", body_string_corner);
+        } else if (_prevDirection[i - 1] == Direction::LEFT && _prevDirection[i] == Direction::UP) {
+            _renderer->loadTexture("assets/textures/nibbler/corner0.png", body_string_corner);
+        } else if (_prevDirection[i - 1] == Direction::LEFT && _prevDirection[i] == Direction::DOWN) {
+            _renderer->loadTexture("assets/textures/nibbler/corner3.png", body_string_corner);
+        } else if (_prevDirection[i - 1] == Direction::RIGHT && _prevDirection[i] == Direction::UP) {
+            _renderer->loadTexture("assets/textures/nibbler/corner3.png", body_string_corner);
+        } else if (_prevDirection[i - 1] == Direction::RIGHT && _prevDirection[i] == Direction::DOWN) {
+            _renderer->loadTexture("assets/textures/nibbler/corner0.png", body_string_corner);
+        } else {
+            _renderer->loadTexture("assets/textures/nibbler/body.png", body_string_corner);
+        }
         switch (_prevDirection[i - 2]) {
             case Direction::UP:
                 if (_mapPositionBody[i].first == 0) {
@@ -84,6 +106,25 @@ void Arcade::Nibbler::moveBody()
 
 void Arcade::Nibbler::moveSnake()
 {
+    if (_direction == Direction::UP && _prevDirection[0] == Direction::RIGHT) {
+        _renderer->loadTexture("assets/textures/nibbler/corner0.png", "body2");
+    } else if (_direction == Direction::UP && _prevDirection[0] == Direction::LEFT) {
+        _renderer->loadTexture("assets/textures/nibbler/corner3.png", "body2");
+    } else if (_direction == Direction::DOWN && _prevDirection[0] == Direction::RIGHT) {
+        _renderer->loadTexture("assets/textures/nibbler/corner3.png", "body2");
+    } else if (_direction == Direction::DOWN && _prevDirection[0] == Direction::LEFT) {
+        _renderer->loadTexture("assets/textures/nibbler/corner0.png", "body2");
+    } else if (_direction == Direction::LEFT && _prevDirection[0] == Direction::UP) {
+        _renderer->loadTexture("assets/textures/nibbler/corner0.png", "body2");
+    } else if (_direction == Direction::LEFT && _prevDirection[0] == Direction::DOWN) {
+        _renderer->loadTexture("assets/textures/nibbler/corner3.png", "body2");
+    } else if (_direction == Direction::RIGHT && _prevDirection[0] == Direction::UP) {
+        _renderer->loadTexture("assets/textures/nibbler/corner3.png", "body2");
+    } else if (_direction == Direction::RIGHT && _prevDirection[0] == Direction::DOWN) {
+        _renderer->loadTexture("assets/textures/nibbler/corner0.png", "body2");
+    } else {
+        _renderer->loadTexture("assets/textures/nibbler/body.png", "body2");
+    }
     switch (_direction) {
         case Direction::UP:
             _mapPosition.first--;

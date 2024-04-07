@@ -39,11 +39,26 @@ void Arcade::Snake::isEating()
         _bodyPosition = getBodyPosition();
         _mapPositionBody[_snakeSize] = _bodyPosition;
         _renderer->createSprite(bodystring, _map[_bodyPosition.first][_bodyPosition.second].first, _map[_bodyPosition.first][_bodyPosition.second].second, 1, 1);
+        turnLastBody(bodystring);
         replaceFood();
         _increaseSpeed++;
         if (_increaseSpeed >= 5 && _moveSpeed > 100) {
             _increaseSpeed = 0;
             _moveSpeed -= 50;
         }
+    }
+}
+
+void Arcade::Snake::turnLastBody(std::string bodystring)
+{
+    if (_snakeSize > 1) {
+        if (_prevDirection[_snakeSize - 2] == Direction::UP)
+            _renderer->rotateSprite(bodystring, 0);
+        if (_prevDirection[_snakeSize - 2] == Direction::DOWN)
+            _renderer->rotateSprite(bodystring, 180);
+        if (_prevDirection[_snakeSize - 2] == Direction::LEFT)
+            _renderer->rotateSprite(bodystring, 90);
+        if (_prevDirection[_snakeSize - 2] == Direction::RIGHT)
+            _renderer->rotateSprite(bodystring, 270);
     }
 }

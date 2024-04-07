@@ -7,6 +7,40 @@
 
 #include "Arcade/Nibbler.hpp"
 
+void Arcade::Nibbler::resetGame()
+{
+    _mapPosition = {16, 9};
+    _direction = Direction::RIGHT;
+    _mapPositionBody.resize(NB_MOVES);
+    _prevDirection.resize(NB_MOVES);
+    _snakeSize = 1;
+    std::string body_string = "body";
+    std::pair<size_t, size_t> body_position = {16, 8};
+    for (size_t i = 0; i < 3; i++) {
+        _prevDirection[i] = Direction::RIGHT;
+        _snakeSize++;
+        body_string = "body";
+        body_string += std::to_string(_snakeSize);
+        if (!_renderer->loadTexture("assets/textures/nibbler/body.png", body_string))
+            throw std::runtime_error("Could not load texture body");
+        body_position.second = 8 - i;
+        _mapPositionBody[_snakeSize] = body_position;
+        _renderer->createSprite(body_string, _map[body_position.first][body_position.second].first, _map[body_position.first][body_position.second].second, 1, 1);
+    }
+    _moveSpeed = MOVE_SPEED;
+    _increaseSpeed = 0;
+    _mapPositionFood.clear();
+}
+
+void Arcade::Nibbler::checkWin()
+{
+    if (_foodLeft == 0) {
+        _lvl = 2;
+        resetGame();
+        createMap();
+    }
+}
+
 bool Arcade::Nibbler::findDirection(const Direction &direction)
 {
     int count = 0;

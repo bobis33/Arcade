@@ -11,7 +11,10 @@ void Arcade::Nibbler::gameLoop()
 {
     if (!_isAscii) {
         _renderer->displaySprite("background_snake");
-        _renderer->displaySprite("map1");
+        if (_lvl == 1)
+            _renderer->displaySprite("map1");
+        else if (_lvl == 2)
+            _renderer->displaySprite("map2");
         _renderer->displaySprite("head");
         displaySnake();
         displayFood();
@@ -39,6 +42,7 @@ void Arcade::Nibbler::gameLoop()
         moveSnake();
         moveBody();
         checkLose();
+        checkWin();
         for (size_t i = NB_MOVES; i > 0; i--)
             _prevDirection[i] = _prevDirection[i - 1];
         _prevDirection[0] = _direction;

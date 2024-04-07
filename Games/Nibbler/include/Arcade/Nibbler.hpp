@@ -47,6 +47,9 @@ namespace Arcade {
             bool findDirection(const Direction &direction);
             void createFood();
             void displayFood();
+            void turnLastBody(std::string bodystring);
+            void checkWin();
+            void resetGame();
 
             void loadNibbler();
             void loadASCIINibbler();
@@ -64,6 +67,8 @@ namespace Arcade {
             std::vector<std::vector<char>> _mapPositionWall;
             size_t _nbFood{0};
             bool _isAscii{false};
+            int _foodLeft{0};
+            int _lvl{1};
 
     }; // Nibbler
 

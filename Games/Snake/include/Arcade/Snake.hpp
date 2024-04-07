@@ -42,6 +42,7 @@ namespace Arcade {
             void displaySnake();
             void isEating();
             std::pair<size_t, size_t> getBodyPosition();
+            void turnLastBody(std::string bodystring);
 
             void loadSnake();
             void loadAsciiSnake();
