@@ -31,6 +31,8 @@ namespace Arcade {
 
             /**
             * @brief start the game
+            * @param renderer The renderer
+            * @param clock The clock
             */
             virtual void start(std::reference_wrapper<IRenderer> renderer, const Clock &clock) = 0;
 
@@ -51,6 +53,7 @@ namespace Arcade {
 
             /**
             * @brief handle the game event
+            * @param event The event
             */
             virtual void handleEvents(const KeyboardEvents &event) = 0;
 

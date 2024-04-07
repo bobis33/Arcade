@@ -43,14 +43,49 @@ namespace Arcade {
             }
 
         protected:
+            /**
+             * @brief Map of the game
+             */
             std::vector<std::vector<std::pair<float, float>>> _map{0};
+
+            /**
+             * @brief Score of the game
+             */
             int _score{0};
+
+            /**
+             * @brief Clock of the game
+             */
             Clock _clock{};
+
+            /**
+             * @brief Last milliseconds
+             */
             int _lastMilliseconds{0};
+
+            /**
+             * @brief User Name
+             */
             std::string _userName{};
+
+            /**
+             * @brief Renderer
+             */
             IRenderer *_renderer{nullptr};
+
+            /**
+             * @brief Game Mode
+             */
             GameMode _gameMode{GameMode::GAME};
+
+            /**
+             * @brief Direction
+             */
             Direction _direction{Direction::RIGHT};
+
+            /**
+             * @brief Previous Direction
+             */
             std::vector<Direction> _prevDirection{0, Direction::NONE};
 
     }; // AGame
