@@ -195,20 +195,44 @@ namespace Arcade
              */
             IRenderer *getRenderer() { return _renderer.get(); };
 
+            /**
+             * @brief Move cursor down, in menu
+             */
             void moveCursorDown();
 
+            /**
+             * @brief Move cursor up, in menu
+             */
             void moveCursorUp();
 
+            /**
+             * @brief Launch game, call to entry point games
+             */
             void launchGame();
 
+            /**
+             * @brief set game index, used for launch game
+             */
             void setGameIndex(size_t index) { _currentGameIndex = index; };
 
+            /**
+             * @brief get core mode
+             */
             CoreMode getMode() { return _mode; };
 
+            /**
+             * @brief set user name
+             */
             void setUserName(const std::string &userName) { _userName = userName; };
 
+            /**
+             * @brief load Login page, instead of game or menu page
+             */
             void loadLogin();
 
+            /**
+             * @brief display login page
+             */
             void displayLoginScreen();
 
     }; // Core

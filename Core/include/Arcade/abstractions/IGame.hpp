@@ -86,6 +86,10 @@ namespace Arcade {
              */
             virtual int randomize(int min, int max) = 0;
 
+            /**
+             * @brief Get the user name
+             * @param name The user name
+             */
             virtual void getUserName(const std::string &name) = 0;
 
     }; // IGame

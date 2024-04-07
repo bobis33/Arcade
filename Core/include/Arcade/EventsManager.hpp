@@ -32,13 +32,21 @@ namespace Arcade
      */
     class EventManager {
     public:
+
+        /**
+         * @brief Handle the event
+         * @param eventMap The map of events
+         * @param object The object to handle
+         * @param event The event to handle
+         */
         template<typename T>
         static void handleEvent(const std::map<const Arcade::KeyboardEvents, std::function<void(T&)>>& eventMap, T& object, const Arcade::KeyboardEvents& event)
         {
             auto map_event = eventMap.find(event);
 
-            if (map_event != eventMap.end())
+            if (map_event != eventMap.end()) {
                 map_event->second(object);
+            }
         }
 
     }; // EventManager

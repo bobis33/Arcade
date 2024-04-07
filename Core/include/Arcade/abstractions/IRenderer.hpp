@@ -102,6 +102,7 @@ namespace Arcade {
 
         /**
          * @brief Load a sound for menu
+         * @param filePath The path to the sound file
          */
         virtual void loadSound(const std::string &filePath) = 0;
 
@@ -110,16 +111,35 @@ namespace Arcade {
          */
         virtual void stopSound() = 0;
 
+        /**
+         * @brief Move sprite to the specified position
+         * @param spriteName The name of the sprite to move
+         * @param pos_x The x-coordinate of the new position
+         * @param pos_y The y-coordinate of the new position
+         */
         virtual void moveSprite(const std::string &spriteName, float pos_x, float pos_y) = 0;
 
+        /**
+         * @brief Rotate sprite to the specified angle
+         * @param spriteName The name of the sprite to rotate
+         * @param angle The angle to rotate the sprite
+         */
         virtual void rotateSprite(const std::string &spriteName, float angle) = 0;
         /**
          * @brief Update the text box for username input
          */
         virtual std::string updateTextBox() = 0;
 
+        /**
+         * @brief Set the size of the renderer
+         * @param x The width of the renderer
+         * @param y The height of the renderer
+         */
         virtual void setSize(float x, float y) = 0;
 
+        /**
+         * @brief Clear the renderer
+         */
         virtual void deleteRessources() = 0;
 
     }; // IRenderer

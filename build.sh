@@ -29,7 +29,6 @@ function clean() {
 
 function build() {
     debug=$1
-    clean
     if [ ! -d "build" ]; then
         mkdir -p build
     fi

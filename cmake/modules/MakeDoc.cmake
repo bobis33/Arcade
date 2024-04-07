@@ -8,6 +8,8 @@ if (DOXYGEN_FOUND)
             Graphics/SDL2/include
             Graphics/NCurses/include
             Graphics/SFML/include
+            Games/Nibbler/include
+            Games/Snake/include
     )
     set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/.doxygen)
     doxygen_add_docs(doc
@@ -15,6 +17,8 @@ if (DOXYGEN_FOUND)
             Graphics/SDL2/include
             Graphics/NCurses/include
             Graphics/SFML/include
+            Games/Nibbler/include
+            Games/Snake/include
             ALL
     )
     add_custom_command(TARGET doc
